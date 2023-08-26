@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Topic 5 Getting Started with Base R Graphics | STA553 E-Pack: Data Visualization</title>
+  <meta name="description" content="The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Topic 5 Getting Started with Base R Graphics | STA553 E-Pack: Data Visualization" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="The output format for this example is bookdown::gitbook." />
+  <meta name="github-repo" content="rstudio/STA553EB" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Topic 5 Getting Started with Base R Graphics | STA553 E-Pack: Data Visualization" />
+  
+  <meta name="twitter:description" content="The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Cheng Peng" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="r-functions-and-flow-controls.html"/>
+<link rel="next" href="foundations-of-data-visualization.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.1/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/proj4-2.6.2/proj4.min.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.1.1/leaflet.js"></script>
+<script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
+<script src="libs/leaflet-providers-plugin-2.1.1/leaflet-providers-plugin.js"></script>
+<link href="libs/HomeButton-0.0.1/home-button.css" rel="stylesheet" />
+<script src="libs/HomeButton-0.0.1/home-button.js"></script>
+<script src="libs/HomeButton-0.0.1/easy-button-src.min.js"></script>
+<script src="libs/clipboard-0.0.1/setClipboardText.js"></script>
+<link href="libs/mapviewCSS-0.0.1/mapview-popup.css" rel="stylesheet" />
+<link href="libs/mapviewCSS-0.0.1/mapview.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<center><li><a href="./"><font color = "darkred"><b>STA 553 E-Pack: Data Visualization</b></font></a><br><font color = "navy">Cheng Peng</font></li></center>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#data-or-information-visualization"><i class="fa fa-check"></i><b>1.1</b> Data or Information Visualization?</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#aesthetic-considerations"><i class="fa fa-check"></i><b>1.2</b> Aesthetic Considerations</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#topic-coverage"><i class="fa fa-check"></i><b>1.3</b> Topic Coverage</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="getting-started-with-rmarkdown.html"><a href="getting-started-with-rmarkdown.html"><i class="fa fa-check"></i><b>2</b> Getting Started With RMarkdown</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="getting-started-with-rmarkdown.html"><a href="getting-started-with-rmarkdown.html#what-is-rmd"><i class="fa fa-check"></i><b>2.1</b> What is RMD</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="getting-started-with-rmarkdown.html"><a href="getting-started-with-rmarkdown.html#create-an-rmarkdown-file"><i class="fa fa-check"></i><b>2.1.1</b> Create an RMarkdown file</a></li>
+<li class="chapter" data-level="2.1.2" data-path="getting-started-with-rmarkdown.html"><a href="getting-started-with-rmarkdown.html#the-yaml-header"><i class="fa fa-check"></i><b>2.1.2</b> The YAML Header</a></li>
+<li class="chapter" data-level="2.1.3" data-path="getting-started-with-rmarkdown.html"><a href="getting-started-with-rmarkdown.html#markdown-syntax"><i class="fa fa-check"></i><b>2.1.3</b> Markdown Syntax</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="getting-started-with-rmarkdown.html"><a href="getting-started-with-rmarkdown.html#code-chunks"><i class="fa fa-check"></i><b>2.2</b> Code Chunks</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="getting-started-with-rmarkdown.html"><a href="getting-started-with-rmarkdown.html#code-chunk-options"><i class="fa fa-check"></i><b>2.2.1</b> Code Chunk Options</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="getting-started-with-rmarkdown.html"><a href="getting-started-with-rmarkdown.html#inserting-graphics"><i class="fa fa-check"></i><b>2.3</b> Inserting Graphics</a></li>
+<li class="chapter" data-level="2.4" data-path="getting-started-with-rmarkdown.html"><a href="getting-started-with-rmarkdown.html#inserting-tables"><i class="fa fa-check"></i><b>2.4</b> Inserting Tables</a></li>
+<li class="chapter" data-level="2.5" data-path="getting-started-with-rmarkdown.html"><a href="getting-started-with-rmarkdown.html#creating-pdf"><i class="fa fa-check"></i><b>2.5</b> Creating PDF</a></li>
+<li class="chapter" data-level="2.6" data-path="getting-started-with-rmarkdown.html"><a href="getting-started-with-rmarkdown.html#miscellaneous"><i class="fa fa-check"></i><b>2.6</b> Miscellaneous</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="getting-started-with-rmarkdown.html"><a href="getting-started-with-rmarkdown.html#markdown-presentations"><i class="fa fa-check"></i><b>2.6.1</b> Markdown Presentations</a></li>
+<li class="chapter" data-level="2.6.2" data-path="getting-started-with-rmarkdown.html"><a href="getting-started-with-rmarkdown.html#shiny-apps-and-rmarkdown"><i class="fa fa-check"></i><b>2.6.2</b> Shiny Apps and RMarkdown</a></li>
+<li class="chapter" data-level="2.6.3" data-path="getting-started-with-rmarkdown.html"><a href="getting-started-with-rmarkdown.html#working-directory"><i class="fa fa-check"></i><b>2.6.3</b> Working Directory</a></li>
+<li class="chapter" data-level="2.6.4" data-path="getting-started-with-rmarkdown.html"><a href="getting-started-with-rmarkdown.html#css-style"><i class="fa fa-check"></i><b>2.6.4</b> CSS Style</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html"><i class="fa fa-check"></i><b>3</b> Open-Source Tools for Data Viz</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#dataviz"><i class="fa fa-check"></i><b>3.1</b> DataViz</a></li>
+<li class="chapter" data-level="3.2" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#r-rstudio"><i class="fa fa-check"></i><b>3.2</b> R &amp; RStudio</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#what-is-r"><i class="fa fa-check"></i><b>3.2.1</b> What is R?</a></li>
+<li class="chapter" data-level="3.2.2" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#rstudio"><i class="fa fa-check"></i><b>3.2.2</b> RStudio</a></li>
+<li class="chapter" data-level="3.2.3" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#the-relationship-between-r-and-rstudio"><i class="fa fa-check"></i><b>3.2.3</b> The Relationship between R and RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#tableau-public"><i class="fa fa-check"></i><b>3.3</b> Tableau Public</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#about-tableau"><i class="fa fa-check"></i><b>3.3.1</b> About Tableau</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#shiny-server"><i class="fa fa-check"></i><b>3.4</b> Shiny Server</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#what-is-shiny.io"><i class="fa fa-check"></i><b>3.4.1</b> What is shiny.io?</a></li>
+<li class="chapter" data-level="3.4.2" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#register-an-account-with-shiny.io"><i class="fa fa-check"></i><b>3.4.2</b> Register An Account with shiny.io</a></li>
+<li class="chapter" data-level="3.4.3" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#requirements"><i class="fa fa-check"></i><b>3.4.3</b> Requirements</a></li>
+<li class="chapter" data-level="3.4.4" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#steps-for-publishing-shinyapps"><i class="fa fa-check"></i><b>3.4.4</b> Steps for Publishing ShinyApps</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#rpubs"><i class="fa fa-check"></i><b>3.5</b> RPubs</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#what-is-rpubs"><i class="fa fa-check"></i><b>3.5.1</b> What is RPubs?</a></li>
+<li class="chapter" data-level="3.5.2" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#register-an-account-with-rpubs"><i class="fa fa-check"></i><b>3.5.2</b> Register An Account With RPubs</a></li>
+<li class="chapter" data-level="3.5.3" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#requirements-1"><i class="fa fa-check"></i><b>3.5.3</b> Requirements</a></li>
+<li class="chapter" data-level="3.5.4" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#steps-for-publishing-on-rpubs"><i class="fa fa-check"></i><b>3.5.4</b> Steps for Publishing on RPubs</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#github"><i class="fa fa-check"></i><b>3.6</b> Github</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#what-is-github"><i class="fa fa-check"></i><b>3.6.1</b> What is Github?</a></li>
+<li class="chapter" data-level="3.6.2" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#register-a-github-account"><i class="fa fa-check"></i><b>3.6.2</b> Register A Github Account</a></li>
+<li class="chapter" data-level="3.6.3" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#getting-started-with-github"><i class="fa fa-check"></i><b>3.6.3</b> Getting Started With GitHub</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#sas-ondemand"><i class="fa fa-check"></i><b>3.7</b> SAS OnDemand</a>
+<ul>
+<li class="chapter" data-level="3.7.1" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#what-is-sas-ondemand-sas-studio"><i class="fa fa-check"></i><b>3.7.1</b> What is SAS OnDemand (SAS Studio)</a></li>
+<li class="chapter" data-level="3.7.2" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#sign-in-sign-up"><i class="fa fa-check"></i><b>3.7.2</b> Sign-in / Sign-up</a></li>
+<li class="chapter" data-level="3.7.3" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#create-an-sas-profile"><i class="fa fa-check"></i><b>3.7.3</b> Create An SAS Profile</a></li>
+<li class="chapter" data-level="3.7.4" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#log-into-sas-academic-ondemand"><i class="fa fa-check"></i><b>3.7.4</b> Log Into SAS Academic OnDemand</a></li>
+<li class="chapter" data-level="3.7.5" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#sas-studio-user-interfacce"><i class="fa fa-check"></i><b>3.7.5</b> SAS Studio User Interfacce</a></li>
+<li class="chapter" data-level="3.7.6" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#a-cautionary-note-on-data-security"><i class="fa fa-check"></i><b>3.7.6</b> <strong>A Cautionary Note On Data Security</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#r-viz-libraries"><i class="fa fa-check"></i><b>3.8</b> R Viz Libraries</a>
+<ul>
+<li class="chapter" data-level="3.8.1" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#tidyverse"><i class="fa fa-check"></i><b>3.8.1</b> Tidyverse</a></li>
+<li class="chapter" data-level="3.8.2" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#ggplot2"><i class="fa fa-check"></i><b>3.8.2</b> ggplot2</a></li>
+<li class="chapter" data-level="3.8.3" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#plotly"><i class="fa fa-check"></i><b>3.8.3</b> plotly</a></li>
+<li class="chapter" data-level="3.8.4" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#leaflet"><i class="fa fa-check"></i><b>3.8.4</b> leaflet</a></li>
+<li class="chapter" data-level="3.8.5" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#mapview"><i class="fa fa-check"></i><b>3.8.5</b> mapview</a></li>
+<li class="chapter" data-level="3.8.6" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#tmap"><i class="fa fa-check"></i><b>3.8.6</b> tmap</a></li>
+<li class="chapter" data-level="3.8.7" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#other-infrequently-used-packages"><i class="fa fa-check"></i><b>3.8.7</b> Other infrequently used packages</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="r-functions-and-flow-controls.html"><a href="r-functions-and-flow-controls.html"><i class="fa fa-check"></i><b>4</b> R Functions and Flow Controls</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="r-functions-and-flow-controls.html"><a href="r-functions-and-flow-controls.html#control-flow"><i class="fa fa-check"></i><b>4.1</b> Control flow</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="r-functions-and-flow-controls.html"><a href="r-functions-and-flow-controls.html#choices"><i class="fa fa-check"></i><b>4.1.1</b> Choices</a></li>
+<li class="chapter" data-level="4.1.2" data-path="r-functions-and-flow-controls.html"><a href="r-functions-and-flow-controls.html#loops"><i class="fa fa-check"></i><b>4.1.2</b> Loops</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="r-functions-and-flow-controls.html"><a href="r-functions-and-flow-controls.html#functions"><i class="fa fa-check"></i><b>4.2</b> Functions</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="r-functions-and-flow-controls.html"><a href="r-functions-and-flow-controls.html#function-fundamentals"><i class="fa fa-check"></i><b>4.2.1</b> Function fundamentals</a></li>
+<li class="chapter" data-level="4.2.2" data-path="r-functions-and-flow-controls.html"><a href="r-functions-and-flow-controls.html#function-composition"><i class="fa fa-check"></i><b>4.2.2</b> Function Composition</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="getting-started-with-base-r-graphics.html"><a href="getting-started-with-base-r-graphics.html"><i class="fa fa-check"></i><b>5</b> Getting Started with Base R Graphics</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="getting-started-with-base-r-graphics.html"><a href="getting-started-with-base-r-graphics.html#base-graphics"><i class="fa fa-check"></i><b>5.1</b> Base Graphics</a></li>
+<li class="chapter" data-level="5.2" data-path="getting-started-with-base-r-graphics.html"><a href="getting-started-with-base-r-graphics.html#simple-base-graphics"><i class="fa fa-check"></i><b>5.2</b> Simple Base Graphics</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="getting-started-with-base-r-graphics.html"><a href="getting-started-with-base-r-graphics.html#histogram"><i class="fa fa-check"></i><b>5.2.1</b> Histogram</a></li>
+<li class="chapter" data-level="5.2.2" data-path="getting-started-with-base-r-graphics.html"><a href="getting-started-with-base-r-graphics.html#boxplot"><i class="fa fa-check"></i><b>5.2.2</b> Boxplot</a></li>
+<li class="chapter" data-level="5.2.3" data-path="getting-started-with-base-r-graphics.html"><a href="getting-started-with-base-r-graphics.html#scatterplot"><i class="fa fa-check"></i><b>5.2.3</b> Scatterplot</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="getting-started-with-base-r-graphics.html"><a href="getting-started-with-base-r-graphics.html#some-important-base-graphics-parameters"><i class="fa fa-check"></i><b>5.3</b> Some Important Base Graphics Parameters</a></li>
+<li class="chapter" data-level="5.4" data-path="getting-started-with-base-r-graphics.html"><a href="getting-started-with-base-r-graphics.html#base-plotting-functions"><i class="fa fa-check"></i><b>5.4</b> Base Plotting Functions</a></li>
+<li class="chapter" data-level="5.5" data-path="getting-started-with-base-r-graphics.html"><a href="getting-started-with-base-r-graphics.html#base-plot-with-regression-line"><i class="fa fa-check"></i><b>5.5</b> Base Plot with Regression Line</a></li>
+<li class="chapter" data-level="5.6" data-path="getting-started-with-base-r-graphics.html"><a href="getting-started-with-base-r-graphics.html#multiple-base-plots"><i class="fa fa-check"></i><b>5.6</b> Multiple Base Plots</a></li>
+<li class="chapter" data-level="5.7" data-path="getting-started-with-base-r-graphics.html"><a href="getting-started-with-base-r-graphics.html#controlling-point-size-and-transparency"><i class="fa fa-check"></i><b>5.7</b> Controlling Point Size and Transparency</a></li>
+<li class="chapter" data-level="5.8" data-path="getting-started-with-base-r-graphics.html"><a href="getting-started-with-base-r-graphics.html#annotations"><i class="fa fa-check"></i><b>5.8</b> Annotations</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="foundations-of-data-visualization.html"><a href="foundations-of-data-visualization.html"><i class="fa fa-check"></i><b>6</b> Foundations of Data Visualization</a></li>
+<li class="chapter" data-level="7" data-path="ethics-in-data-visualization.html"><a href="ethics-in-data-visualization.html"><i class="fa fa-check"></i><b>7</b> Ethics in Data Visualization</a></li>
+<li class="chapter" data-level="8" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html"><i class="fa fa-check"></i><b>8</b> Data Processing with Tidyverse</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#data-cleaning-and-preparation-for-visualization"><i class="fa fa-check"></i><b>8.1</b> Data Cleaning and Preparation for Visualization</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#data-cleaning"><i class="fa fa-check"></i><b>8.1.1</b> Data Cleaning</a></li>
+<li class="chapter" data-level="8.1.2" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#data-preparation-for-visualization"><i class="fa fa-check"></i><b>8.1.2</b> Data Preparation for Visualization</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#basic-data-management-merging-data-sets"><i class="fa fa-check"></i><b>8.2</b> Basic Data Management: Merging Data Sets</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#merge-data-sets"><i class="fa fa-check"></i><b>8.2.1</b> Merge Data Sets</a></li>
+<li class="chapter" data-level="8.2.2" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#merging-data-in-base-r"><i class="fa fa-check"></i><b>8.2.2</b> Merging Data in Base R</a></li>
+<li class="chapter" data-level="8.2.3" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#merging-data-with-mutating-joins-in-dplyr"><i class="fa fa-check"></i><b>8.2.3</b> Merging Data with Mutating Joins in <strong>dplyr</strong></a></li>
+<li class="chapter" data-level="8.2.4" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#use-of-pipe-operator-with-mutating-joins"><i class="fa fa-check"></i><b>8.2.4</b> Use of Pipe Operator <code>%&gt;%</code> with Mutating Joins</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#basic-data-management-subsetting-data"><i class="fa fa-check"></i><b>8.3</b> Basic Data Management: Subsetting Data</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#accessors-in-r-and"><i class="fa fa-check"></i><b>8.3.1</b> Accessors in R <code>[</code>, <code>[[</code> and <code>$</code></a></li>
+<li class="chapter" data-level="8.3.2" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#subsetting-data-in-base-r"><i class="fa fa-check"></i><b>8.3.2</b> Subsetting Data in Base R</a></li>
+<li class="chapter" data-level="8.3.3" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#subsetting-data-with-dplyr"><i class="fa fa-check"></i><b>8.3.3</b> Subsetting Data with <code>dplyr</code></a></li>
+<li class="chapter" data-level="8.3.4" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#variable-definition-and-variable-type-conversion"><i class="fa fa-check"></i><b>8.3.4</b> Variable Definition and Variable Type Conversion</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#importingexporting-data"><i class="fa fa-check"></i><b>8.4</b> Importing/Exporting Data</a></li>
+<li class="chapter" data-level="8.5" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#importing-dara"><i class="fa fa-check"></i><b>8.5</b> Importing Dara</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#exporting-data"><i class="fa fa-check"></i><b>8.5.1</b> Exporting Data</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#overview-of-tidyverse-optional"><i class="fa fa-check"></i><b>8.6</b> <strong>Overview of <code>Tidyverse</code> (Optional)</strong></a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#packages-for-data-wrangling-and-transformation"><i class="fa fa-check"></i><b>8.6.1</b> Packages for Data Wrangling and Transformation</a></li>
+<li class="chapter" data-level="8.6.2" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#packages-for-data-import-and-management"><i class="fa fa-check"></i><b>8.6.2</b> Packages for Data Import and Management</a></li>
+<li class="chapter" data-level="8.6.3" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#functional-programming-with-library-purrr"><i class="fa fa-check"></i><b>8.6.3</b> Functional Programming with Library <strong>{purrr}</strong></a></li>
+<li class="chapter" data-level="8.6.4" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#data-visualization-and-exploration"><i class="fa fa-check"></i><b>8.6.4</b> Data Visualization and Exploration</a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#data-management-with-dplyr-optional"><i class="fa fa-check"></i><b>8.7</b> Data Management with <code>dplyr</code> (Optional)</a>
+<ul>
+<li class="chapter" data-level="8.7.1" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#common-dplyr-functions"><i class="fa fa-check"></i><b>8.7.1</b> Common <code>dplyr</code> Functions</a></li>
+<li class="chapter" data-level="8.7.2" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#reshaping-functions-in-tidyr"><i class="fa fa-check"></i><b>8.7.2</b> Reshaping Functions in <code>tidyr</code></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html"><i class="fa fa-check"></i><b>9</b> Introduction to Ggplot</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#basics-of-ggplot"><i class="fa fa-check"></i><b>9.1</b> Basics of <code>ggplot()</code></a></li>
+<li class="chapter" data-level="9.2" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#structure-of-ggplot"><i class="fa fa-check"></i><b>9.2</b> Structure of <code>ggplot()</code></a></li>
+<li class="chapter" data-level="9.3" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#geoms"><i class="fa fa-check"></i><b>9.3</b> Geoms</a></li>
+<li class="chapter" data-level="9.4" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#mapping-data-to-plot"><i class="fa fa-check"></i><b>9.4</b> Mapping Data to Plot</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#arranging-multiple-grobs-on-the-same-page"><i class="fa fa-check"></i><b>9.4.1</b> Arranging Multiple Grobs on the Same Page</a></li>
+<li class="chapter" data-level="9.4.2" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#plot-aesthetics"><i class="fa fa-check"></i><b>9.4.2</b> Plot Aesthetics</a></li>
+<li class="chapter" data-level="9.4.3" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#labels-in-ggplot"><i class="fa fa-check"></i><b>9.4.3</b> Labels in <code>ggplot()</code></a></li>
+<li class="chapter" data-level="9.4.4" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#themes-in-ggplot"><i class="fa fa-check"></i><b>9.4.4</b> Themes in <code>ggplot()</code></a></li>
+<li class="chapter" data-level="9.4.5" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#complete-components-of-theme"><i class="fa fa-check"></i><b>9.4.5</b> Complete Components of Theme</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#adding-annotations-to-graphics"><i class="fa fa-check"></i><b>9.5</b> Adding Annotations to Graphics</a>
+<ul>
+<li class="chapter" data-level="9.5.1" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#adding-text-annotation-to-graphics"><i class="fa fa-check"></i><b>9.5.1</b> Adding Text Annotation to Graphics</a></li>
+<li class="chapter" data-level="9.5.2" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#adding-mathematical-equations-to-graphics"><i class="fa fa-check"></i><b>9.5.2</b> Adding Mathematical Equations to Graphics</a></li>
+<li class="chapter" data-level="9.5.3" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#adding-images-to-existing-ggplots"><i class="fa fa-check"></i><b>9.5.3</b> Adding Images to Existing ggPlots</a></li>
+<li class="chapter" data-level="9.5.4" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#removing-chart-junks"><i class="fa fa-check"></i><b>9.5.4</b> Removing Chart Junks</a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#aminated-graph-with-gganimate"><i class="fa fa-check"></i><b>9.6</b> Aminated Graph with <code>gganimate()</code></a></li>
+<li class="chapter" data-level="9.7" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#ridgetline-plot-with-ggridges-library"><i class="fa fa-check"></i><b>9.7</b> Ridgetline Plot with <code>ggridges</code> Library</a></li>
+<li class="chapter" data-level="9.8" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#other-extensions-to-ggplot"><i class="fa fa-check"></i><b>9.8</b> Other Extensions to ggplot</a></li>
+<li class="chapter" data-level="9.9" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#save-ggplot-images"><i class="fa fa-check"></i><b>9.9</b> Save <code>ggplot</code> Images</a>
+<ul>
+<li class="chapter" data-level="9.9.1" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#general-steps"><i class="fa fa-check"></i><b>9.9.1</b> General Steps</a></li>
+<li class="chapter" data-level="9.9.2" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#save-ggplot-into-a-pdf-file"><i class="fa fa-check"></i><b>9.9.2</b> Save <code>ggplot</code> into a PDF File</a></li>
+</ul></li>
+<li class="chapter" data-level="9.10" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#save-ggplot-with-ggsave"><i class="fa fa-check"></i><b>9.10</b> Save ggplot with <code>ggsave()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="interactive-statistics-graphics.html"><a href="interactive-statistics-graphics.html"><i class="fa fa-check"></i><b>10</b> Interactive Statistics Graphics</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="interactive-statistics-graphics.html"><a href="interactive-statistics-graphics.html#plotly-1"><i class="fa fa-check"></i><b>10.1</b> Plotly</a></li>
+<li class="chapter" data-level="10.2" data-path="interactive-statistics-graphics.html"><a href="interactive-statistics-graphics.html#scatterplot-1"><i class="fa fa-check"></i><b>10.2</b> ScatterPlot</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="interactive-statistics-graphics.html"><a href="interactive-statistics-graphics.html#the-default-plot"><i class="fa fa-check"></i><b>10.2.1</b> The Default Plot</a></li>
+<li class="chapter" data-level="10.2.2" data-path="interactive-statistics-graphics.html"><a href="interactive-statistics-graphics.html#addiing-additional-information-through-hovertemplate"><i class="fa fa-check"></i><b>10.2.2</b> Addiing Additional Information Through <code>hovertemplate</code></a></li>
+<li class="chapter" data-level="10.2.3" data-path="interactive-statistics-graphics.html"><a href="interactive-statistics-graphics.html#enhancing-the-plot-with-layout-function"><i class="fa fa-check"></i><b>10.2.3</b> Enhancing the Plot with Layout() Function</a></li>
+<li class="chapter" data-level="10.2.4" data-path="interactive-statistics-graphics.html"><a href="interactive-statistics-graphics.html#rendering-a-ggplot-with-ggplotly"><i class="fa fa-check"></i><b>10.2.4</b> Rendering A GGPLOT with <code>ggplotly</code></a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="interactive-statistics-graphics.html"><a href="interactive-statistics-graphics.html#barplot"><i class="fa fa-check"></i><b>10.3</b> Barplot</a></li>
+<li class="chapter" data-level="10.4" data-path="interactive-statistics-graphics.html"><a href="interactive-statistics-graphics.html#histogram-1"><i class="fa fa-check"></i><b>10.4</b> Histogram</a></li>
+<li class="chapter" data-level="10.5" data-path="interactive-statistics-graphics.html"><a href="interactive-statistics-graphics.html#boxplot-1"><i class="fa fa-check"></i><b>10.5</b> Boxplot</a></li>
+<li class="chapter" data-level="10.6" data-path="interactive-statistics-graphics.html"><a href="interactive-statistics-graphics.html#pie-chart"><i class="fa fa-check"></i><b>10.6</b> Pie Chart</a></li>
+<li class="chapter" data-level="10.7" data-path="interactive-statistics-graphics.html"><a href="interactive-statistics-graphics.html#density-curve"><i class="fa fa-check"></i><b>10.7</b> Density Curve</a></li>
+<li class="chapter" data-level="10.8" data-path="interactive-statistics-graphics.html"><a href="interactive-statistics-graphics.html#serial-plot"><i class="fa fa-check"></i><b>10.8</b> Serial Plot</a></li>
+<li class="chapter" data-level="10.9" data-path="interactive-statistics-graphics.html"><a href="interactive-statistics-graphics.html#plotly-maps"><i class="fa fa-check"></i><b>10.9</b> Plotly Maps</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="interactive-maps.html"><a href="interactive-maps.html"><i class="fa fa-check"></i><b>11</b> Interactive Maps</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="interactive-maps.html"><a href="interactive-maps.html#map-types"><i class="fa fa-check"></i><b>11.1</b> Map Types</a></li>
+<li class="chapter" data-level="11.2" data-path="interactive-maps.html"><a href="interactive-maps.html#leaflet-maps"><i class="fa fa-check"></i><b>11.2</b> Leaflet Maps</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="interactive-maps.html"><a href="interactive-maps.html#introduction-1"><i class="fa fa-check"></i><b>11.2.1</b> 1. Introduction</a></li>
+<li class="chapter" data-level="11.2.2" data-path="interactive-maps.html"><a href="interactive-maps.html#customizing-marker-icons"><i class="fa fa-check"></i><b>11.2.2</b> 2. Customizing Marker Icons</a></li>
+<li class="chapter" data-level="11.2.3" data-path="interactive-maps.html"><a href="interactive-maps.html#popups-and-labels"><i class="fa fa-check"></i><b>11.2.3</b> 3. Popups and Labels</a></li>
+<li class="chapter" data-level="11.2.4" data-path="interactive-maps.html"><a href="interactive-maps.html#examples-using-real-world-data"><i class="fa fa-check"></i><b>11.2.4</b> 4. Examples Using Real-World Data</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="interactive-maps.html"><a href="interactive-maps.html#choropleth-maps"><i class="fa fa-check"></i><b>11.3</b> Choropleth Maps</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="interactive-maps.html"><a href="interactive-maps.html#loading-data"><i class="fa fa-check"></i><b>11.3.1</b> Loading Data</a></li>
+<li class="chapter" data-level="11.3.2" data-path="interactive-maps.html"><a href="interactive-maps.html#load-map-shape-data"><i class="fa fa-check"></i><b>11.3.2</b> Load Map Shape Data</a></li>
+<li class="chapter" data-level="11.3.3" data-path="interactive-maps.html"><a href="interactive-maps.html#merge-the-map-data-with-the-price-data"><i class="fa fa-check"></i><b>11.3.3</b> Merge the Map Data with the Price Data</a></li>
+<li class="chapter" data-level="11.3.4" data-path="interactive-maps.html"><a href="interactive-maps.html#color-states-based-on-unit-price"><i class="fa fa-check"></i><b>11.3.4</b> Color States Based On Unit Price</a></li>
+<li class="chapter" data-level="11.3.5" data-path="interactive-maps.html"><a href="interactive-maps.html#labeling-cost-information"><i class="fa fa-check"></i><b>11.3.5</b> 5. Labeling Cost Information</a></li>
+<li class="chapter" data-level="11.3.6" data-path="interactive-maps.html"><a href="interactive-maps.html#finalizing-the-map"><i class="fa fa-check"></i><b>11.3.6</b> 6. Finalizing The Map</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="interactive-maps.html"><a href="interactive-maps.html#plotly-map"><i class="fa fa-check"></i><b>11.4</b> Plotly Map</a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="interactive-maps.html"><a href="interactive-maps.html#choropleth-maps-with-plot_geo"><i class="fa fa-check"></i><b>11.4.1</b> 2. Choropleth Maps with <code>plot_geo()</code></a></li>
+<li class="chapter" data-level="11.4.2" data-path="interactive-maps.html"><a href="interactive-maps.html#scatter-map-with-plot_geo-and-add_markers"><i class="fa fa-check"></i><b>11.4.2</b> 3.Scatter Map with <code>plot_geo()</code> and <code>add_markers()</code></a></li>
+<li class="chapter" data-level="11.4.3" data-path="interactive-maps.html"><a href="interactive-maps.html#custom-map-with-special-libraries"><i class="fa fa-check"></i><b>11.4.3</b> 4. Custom Map With Special Libraries</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="interactive-maps.html"><a href="interactive-maps.html#mapview-maps"><i class="fa fa-check"></i><b>11.5</b> Mapview Maps</a>
+<ul>
+<li class="chapter" data-level="11.5.1" data-path="interactive-maps.html"><a href="interactive-maps.html#choropleth-map-with-mapview"><i class="fa fa-check"></i><b>11.5.1</b> 1. Choropleth Map with <code>mapview</code></a></li>
+<li class="chapter" data-level="11.5.2" data-path="interactive-maps.html"><a href="interactive-maps.html#scatter-map-with-mapview"><i class="fa fa-check"></i><b>11.5.2</b> 2. Scatter Map with <code>mapview</code></a></li>
+<li class="chapter" data-level="11.5.3" data-path="interactive-maps.html"><a href="interactive-maps.html#scatter-map-without-using-sf-object"><i class="fa fa-check"></i><b>11.5.3</b> 3. Scatter Map Without Using <code>sf</code> Object</a></li>
+<li class="chapter" data-level="11.5.4" data-path="interactive-maps.html"><a href="interactive-maps.html#customizing-default-maps"><i class="fa fa-check"></i><b>11.5.4</b> 4. Customizing Default Maps</a></li>
+<li class="chapter" data-level="11.5.5" data-path="interactive-maps.html"><a href="interactive-maps.html#mapview-options"><i class="fa fa-check"></i><b>11.5.5</b> 5. Mapview Options</a></li>
+<li class="chapter" data-level="11.5.6" data-path="interactive-maps.html"><a href="interactive-maps.html#more-enhancements-of-mapview-leaflet"><i class="fa fa-check"></i><b>11.5.6</b> 6. More Enhancements of Mapview (Leaflet)</a></li>
+</ul></li>
+<li class="chapter" data-level="11.6" data-path="interactive-maps.html"><a href="interactive-maps.html#thematic-maps"><i class="fa fa-check"></i><b>11.6</b> Thematic Maps</a>
+<ul>
+<li class="chapter" data-level="11.6.1" data-path="interactive-maps.html"><a href="interactive-maps.html#choropleth-maps-1"><i class="fa fa-check"></i><b>11.6.1</b> 1. Choropleth Maps</a></li>
+<li class="chapter" data-level="11.6.2" data-path="interactive-maps.html"><a href="interactive-maps.html#mixed-maps-multilayer"><i class="fa fa-check"></i><b>11.6.2</b> Mixed Maps (Multilayer)</a></li>
+<li class="chapter" data-level="11.6.3" data-path="interactive-maps.html"><a href="interactive-maps.html#scatter-maps-with-geocoordinates"><i class="fa fa-check"></i><b>11.6.3</b> Scatter Maps With geoCoordinates</a></li>
+</ul></li>
+<li class="chapter" data-level="11.7" data-path="interactive-maps.html"><a href="interactive-maps.html#tableau-maps"><i class="fa fa-check"></i><b>11.7</b> Tableau Maps</a>
+<ul>
+<li class="chapter" data-level="11.7.1" data-path="interactive-maps.html"><a href="interactive-maps.html#choropleth-map"><i class="fa fa-check"></i><b>11.7.1</b> Choropleth Map</a></li>
+<li class="chapter" data-level="11.7.2" data-path="interactive-maps.html"><a href="interactive-maps.html#scatter-map"><i class="fa fa-check"></i><b>11.7.2</b> Scatter Map</a></li>
+</ul></li>
+<li class="chapter" data-level="11.8" data-path="interactive-maps.html"><a href="interactive-maps.html#r-color-palettes"><i class="fa fa-check"></i><b>11.8</b> R Color Palettes</a>
+<ul>
+<li class="chapter" data-level="11.8.1" data-path="interactive-maps.html"><a href="interactive-maps.html#all-palettes"><i class="fa fa-check"></i><b>11.8.1</b> All Palettes</a></li>
+<li class="chapter" data-level="11.8.2" data-path="interactive-maps.html"><a href="interactive-maps.html#color-bind-friendly-palettes"><i class="fa fa-check"></i><b>11.8.2</b> <strong>2. Color-bind Friendly Palettes</strong></a></li>
+<li class="chapter" data-level="11.8.3" data-path="interactive-maps.html"><a href="interactive-maps.html#color-palette-codes"><i class="fa fa-check"></i><b>11.8.3</b> <strong>3. Color Palette Codes</strong></a></li>
+<li class="chapter" data-level="11.8.4" data-path="interactive-maps.html"><a href="interactive-maps.html#functions-for-selecting-specific-color-palettes"><i class="fa fa-check"></i><b>11.8.4</b> <strong>4. Functions for Selecting Specific Color Palettes</strong></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="a-mapview-map-demo.html"><a href="a-mapview-map-demo.html"><i class="fa fa-check"></i><b>12</b> A <code>mapview</code> Map Demo</a></li>
+<li class="chapter" data-level="13" data-path="creating-maps-using-shapefiles.html"><a href="creating-maps-using-shapefiles.html"><i class="fa fa-check"></i><b>13</b> Creating Maps Using Shapefiles</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="creating-maps-using-shapefiles.html"><a href="creating-maps-using-shapefiles.html#existing-base-map-file-and-new-information"><i class="fa fa-check"></i><b>13.1</b> Existing Base Map File and New Information</a></li>
+<li class="chapter" data-level="13.2" data-path="creating-maps-using-shapefiles.html"><a href="creating-maps-using-shapefiles.html#creating-shapefiles-from-dataframes"><i class="fa fa-check"></i><b>13.2</b> Creating Shapefiles from Dataframes</a></li>
+<li class="chapter" data-level="13.3" data-path="creating-maps-using-shapefiles.html"><a href="creating-maps-using-shapefiles.html#thematics-map-with-created-and-built-in-shapefiles"><i class="fa fa-check"></i><b>13.3</b> Thematics Map with Created and Built-in Shapefiles</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="creating-maps-using-shapefiles.html"><a href="creating-maps-using-shapefiles.html#example-1-gapminder-data"><i class="fa fa-check"></i><b>13.3.1</b> Example 1: Gapminder Data</a></li>
+<li class="chapter" data-level="13.3.2" data-path="creating-maps-using-shapefiles.html"><a href="creating-maps-using-shapefiles.html#example-2-philadelphia-neighborhood-shapefiles-in-json"><i class="fa fa-check"></i><b>13.3.2</b> Example 2: Philadelphia Neighborhood Shapefiles in Json</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="introduction-to-tableau.html"><a href="introduction-to-tableau.html"><i class="fa fa-check"></i><b>14</b> Introduction to Tableau</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="introduction-to-tableau.html"><a href="introduction-to-tableau.html#data-loading"><i class="fa fa-check"></i><b>14.1</b> Data Loading</a></li>
+<li class="chapter" data-level="14.2" data-path="introduction-to-tableau.html"><a href="introduction-to-tableau.html#opening-work-sheet"><i class="fa fa-check"></i><b>14.2</b> Opening Work Sheet</a></li>
+<li class="chapter" data-level="14.3" data-path="introduction-to-tableau.html"><a href="introduction-to-tableau.html#basic-statistical-charts-with-existing-variables"><i class="fa fa-check"></i><b>14.3</b> Basic Statistical Charts with Existing Variables</a>
+<ul>
+<li class="chapter" data-level="14.3.1" data-path="introduction-to-tableau.html"><a href="introduction-to-tableau.html#bar-chart"><i class="fa fa-check"></i><b>14.3.1</b> Bar Chart</a></li>
+<li class="chapter" data-level="14.3.2" data-path="introduction-to-tableau.html"><a href="introduction-to-tableau.html#pie-chart-1"><i class="fa fa-check"></i><b>14.3.2</b> Pie Chart</a></li>
+<li class="chapter" data-level="14.3.3" data-path="introduction-to-tableau.html"><a href="introduction-to-tableau.html#histogram-2"><i class="fa fa-check"></i><b>14.3.3</b> Histogram</a></li>
+<li class="chapter" data-level="14.3.4" data-path="introduction-to-tableau.html"><a href="introduction-to-tableau.html#box-plot"><i class="fa fa-check"></i><b>14.3.4</b> Box-plot</a></li>
+<li class="chapter" data-level="14.3.5" data-path="introduction-to-tableau.html"><a href="introduction-to-tableau.html#line-chart"><i class="fa fa-check"></i><b>14.3.5</b> Line Chart</a></li>
+<li class="chapter" data-level="14.3.6" data-path="introduction-to-tableau.html"><a href="introduction-to-tableau.html#scatter-plot"><i class="fa fa-check"></i><b>14.3.6</b> Scatter Plot</a></li>
+<li class="chapter" data-level="14.3.7" data-path="introduction-to-tableau.html"><a href="introduction-to-tableau.html#bubble-chart"><i class="fa fa-check"></i><b>14.3.7</b> Bubble Chart</a></li>
+<li class="chapter" data-level="14.3.8" data-path="introduction-to-tableau.html"><a href="introduction-to-tableau.html#treemap"><i class="fa fa-check"></i><b>14.3.8</b> Treemap</a></li>
+<li class="chapter" data-level="14.3.9" data-path="introduction-to-tableau.html"><a href="introduction-to-tableau.html#maps"><i class="fa fa-check"></i><b>14.3.9</b> Maps</a></li>
+<li class="chapter" data-level="14.3.10" data-path="introduction-to-tableau.html"><a href="introduction-to-tableau.html#density-maps"><i class="fa fa-check"></i><b>14.3.10</b> Density Maps</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="introduction-to-tableau.html"><a href="introduction-to-tableau.html#basic-charts-with-derived-variables"><i class="fa fa-check"></i><b>14.4</b> Basic Charts with Derived Variables</a></li>
+<li class="chapter" data-level="14.5" data-path="introduction-to-tableau.html"><a href="introduction-to-tableau.html#tableau-dashboards"><i class="fa fa-check"></i><b>14.5</b> Tableau Dashboards</a>
+<ul>
+<li class="chapter" data-level="14.5.1" data-path="introduction-to-tableau.html"><a href="introduction-to-tableau.html#design-dashboards-with-tableau"><i class="fa fa-check"></i><b>14.5.1</b> Design Dashboards with Tableau</a></li>
+<li class="chapter" data-level="14.5.2" data-path="introduction-to-tableau.html"><a href="introduction-to-tableau.html#tableau-story-point"><i class="fa fa-check"></i><b>14.5.2</b> Tableau Story Point</a></li>
+</ul></li>
+<li class="chapter" data-level="14.6" data-path="introduction-to-tableau.html"><a href="introduction-to-tableau.html#some-youtube-tutorials-on-tableau"><i class="fa fa-check"></i><b>14.6</b> Some Youtube Tutorials on Tableau</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="getting-started-with-r-shiny.html"><a href="getting-started-with-r-shiny.html"><i class="fa fa-check"></i><b>15</b> Getting Started with R Shiny</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="getting-started-with-r-shiny.html"><a href="getting-started-with-r-shiny.html#the-ide-of-rshiny-apps"><i class="fa fa-check"></i><b>15.1</b> The IDE of RShiny Apps</a></li>
+<li class="chapter" data-level="15.2" data-path="getting-started-with-r-shiny.html"><a href="getting-started-with-r-shiny.html#embedding-shiny-apps-in-rmarkdown"><i class="fa fa-check"></i><b>15.2</b> Embedding Shiny Apps in RMarkdown</a></li>
+<li class="chapter" data-level="15.3" data-path="getting-started-with-r-shiny.html"><a href="getting-started-with-r-shiny.html#components-of-an-shiny-applications"><i class="fa fa-check"></i><b>15.3</b> Components of An Shiny Applications</a></li>
+<li class="chapter" data-level="15.4" data-path="getting-started-with-r-shiny.html"><a href="getting-started-with-r-shiny.html#the-anatomy-of-a-shiny-application"><i class="fa fa-check"></i><b>15.4</b> The Anatomy of a Shiny Application</a></li>
+<li class="chapter" data-level="15.5" data-path="getting-started-with-r-shiny.html"><a href="getting-started-with-r-shiny.html#how-shiny-apps-work"><i class="fa fa-check"></i><b>15.5</b> How Shiny Apps Work?</a></li>
+<li class="chapter" data-level="15.6" data-path="getting-started-with-r-shiny.html"><a href="getting-started-with-r-shiny.html#some-built-in-demonstrations-of-shiny-apps"><i class="fa fa-check"></i><b>15.6</b> Some Built-in Demonstrations of Shiny Apps</a></li>
+<li class="chapter" data-level="15.7" data-path="getting-started-with-r-shiny.html"><a href="getting-started-with-r-shiny.html#ui-layout-designs---a-glance"><i class="fa fa-check"></i><b>15.7</b> UI Layout Designs - A Glance</a>
+<ul>
+<li class="chapter" data-level="15.7.1" data-path="getting-started-with-r-shiny.html"><a href="getting-started-with-r-shiny.html#siderbar-layout"><i class="fa fa-check"></i><b>15.7.1</b> Siderbar Layout</a></li>
+</ul></li>
+<li class="chapter" data-level="15.8" data-path="getting-started-with-r-shiny.html"><a href="getting-started-with-r-shiny.html#some-basic-input-widgets"><i class="fa fa-check"></i><b>15.8</b> Some Basic Input Widgets</a>
+<ul>
+<li class="chapter" data-level="15.8.1" data-path="getting-started-with-r-shiny.html"><a href="getting-started-with-r-shiny.html#free-text"><i class="fa fa-check"></i><b>15.8.1</b> Free Text</a></li>
+<li class="chapter" data-level="15.8.2" data-path="getting-started-with-r-shiny.html"><a href="getting-started-with-r-shiny.html#numeric-inputs"><i class="fa fa-check"></i><b>15.8.2</b> Numeric Inputs</a></li>
+<li class="chapter" data-level="15.8.3" data-path="getting-started-with-r-shiny.html"><a href="getting-started-with-r-shiny.html#limited-choices"><i class="fa fa-check"></i><b>15.8.3</b> Limited Choices</a></li>
+<li class="chapter" data-level="15.8.4" data-path="getting-started-with-r-shiny.html"><a href="getting-started-with-r-shiny.html#file-uploading-and-downloading"><i class="fa fa-check"></i><b>15.8.4</b> File Uploading and Downloading</a></li>
+</ul></li>
+<li class="chapter" data-level="15.9" data-path="getting-started-with-r-shiny.html"><a href="getting-started-with-r-shiny.html#case-study-i---density-of-normal-distribution"><i class="fa fa-check"></i><b>15.9</b> Case Study I - Density of Normal Distribution</a></li>
+<li class="chapter" data-level="15.10" data-path="getting-started-with-r-shiny.html"><a href="getting-started-with-r-shiny.html#case-study-2---central-limit-theorem"><i class="fa fa-check"></i><b>15.10</b> Case Study 2 - Central Limit Theorem</a></li>
+<li class="chapter" data-level="15.11" data-path="getting-started-with-r-shiny.html"><a href="getting-started-with-r-shiny.html#more-effective-code"><i class="fa fa-check"></i><b>15.11</b> More Effective Code</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="shiny-ui-and-server-design.html"><a href="shiny-ui-and-server-design.html"><i class="fa fa-check"></i><b>16</b> Shiny UI and Server Design</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="shiny-ui-and-server-design.html"><a href="shiny-ui-and-server-design.html#naming-conventions-revisited"><i class="fa fa-check"></i><b>16.1</b> Naming Conventions Revisited</a></li>
+<li class="chapter" data-level="16.2" data-path="shiny-ui-and-server-design.html"><a href="shiny-ui-and-server-design.html#working-data-set"><i class="fa fa-check"></i><b>16.2</b> Working Data Set</a></li>
+<li class="chapter" data-level="16.3" data-path="shiny-ui-and-server-design.html"><a href="shiny-ui-and-server-design.html#ui-module-front-end-design"><i class="fa fa-check"></i><b>16.3</b> UI Module: Front-end Design</a></li>
+<li class="chapter" data-level="16.4" data-path="shiny-ui-and-server-design.html"><a href="shiny-ui-and-server-design.html#server-module-back-end-coding"><i class="fa fa-check"></i><b>16.4</b> Server Module: Back-end Coding</a></li>
+<li class="chapter" data-level="16.5" data-path="shiny-ui-and-server-design.html"><a href="shiny-ui-and-server-design.html#file-uploading"><i class="fa fa-check"></i><b>16.5</b> File Uploading</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="shiny-dashboard-and-storyboard.html"><a href="shiny-dashboard-and-storyboard.html"><i class="fa fa-check"></i><b>17</b> Shiny Dashboard and Storyboard</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="shiny-dashboard-and-storyboard.html"><a href="shiny-dashboard-and-storyboard.html#flexdashboard"><i class="fa fa-check"></i><b>17.1</b> <strong>flexdashboard</strong></a></li>
+<li class="chapter" data-level="17.2" data-path="shiny-dashboard-and-storyboard.html"><a href="shiny-dashboard-and-storyboard.html#shinydashboard"><i class="fa fa-check"></i><b>17.2</b> <strong>shinydashboard</strong></a></li>
+<li class="chapter" data-level="17.3" data-path="shiny-dashboard-and-storyboard.html"><a href="shiny-dashboard-and-storyboard.html#three-web-application-terms"><i class="fa fa-check"></i><b>17.3</b> Three Web Application Terms</a></li>
+<li class="chapter" data-level="17.4" data-path="shiny-dashboard-and-storyboard.html"><a href="shiny-dashboard-and-storyboard.html#using-flexdashboard"><i class="fa fa-check"></i><b>17.4</b> Using Flexdashboard</a>
+<ul>
+<li class="chapter" data-level="17.4.1" data-path="shiny-dashboard-and-storyboard.html"><a href="shiny-dashboard-and-storyboard.html#components"><i class="fa fa-check"></i><b>17.4.1</b> Components</a></li>
+<li class="chapter" data-level="17.4.2" data-path="shiny-dashboard-and-storyboard.html"><a href="shiny-dashboard-and-storyboard.html#basic-flexdashboar-layout"><i class="fa fa-check"></i><b>17.4.2</b> Basic Flexdashboar Layout</a></li>
+</ul></li>
+<li class="chapter" data-level="17.5" data-path="shiny-dashboard-and-storyboard.html"><a href="shiny-dashboard-and-storyboard.html#storyboards"><i class="fa fa-check"></i><b>17.5</b> Storyboards</a>
+<ul>
+<li class="chapter" data-level="17.5.1" data-path="shiny-dashboard-and-storyboard.html"><a href="shiny-dashboard-and-storyboard.html#storyboard-basics"><i class="fa fa-check"></i><b>17.5.1</b> Storyboard Basics</a></li>
+<li class="chapter" data-level="17.5.2" data-path="shiny-dashboard-and-storyboard.html"><a href="shiny-dashboard-and-storyboard.html#storyboard-pages"><i class="fa fa-check"></i><b>17.5.2</b> Storyboard Pages</a></li>
+<li class="chapter" data-level="17.5.3" data-path="shiny-dashboard-and-storyboard.html"><a href="shiny-dashboard-and-storyboard.html#commentary"><i class="fa fa-check"></i><b>17.5.3</b> Commentary</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">STA553 E-Pack: Data Visualization</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="getting-started-with-base-r-graphics" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Topic 5</span> Getting Started with Base R Graphics<a href="getting-started-with-base-r-graphics.html#getting-started-with-base-r-graphics" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>The two core plotting and graphics packages in the base R are:</p>
+<ul>
+<li><p><strong>graphics</strong>: contains plotting functions for the “base” graphing systems, including plot, hist, boxplot, and many others.</p></li>
+<li><p><strong>grDevices</strong>: contains all the code implementing the various graphics devices, including X11, PDF, PostScript, PNG, etc.</p></li>
+</ul>
+<p>The <code>grDevices</code> package contains the functionality for sending plots to various output devices. The <code>graphics</code> package contains the code for actually constructing and annotating plots.</p>
+<p>In this note, we focus on using the base plotting system to create graphics on the screen device.</p>
+<div id="base-graphics" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Base Graphics<a href="getting-started-with-base-r-graphics.html#base-graphics" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Base graphics are used most commonly and are a very powerful system for creating data graphics. There are two phases to creating a base plot:</p>
+<ul>
+<li><p>Initializing a new plot.</p></li>
+<li><p>Annotating (adding to) an existing plot.</p></li>
+</ul>
+<p>For example, calling the base plot functions <code>plot(x, y)</code> or <code>hist(x)</code> will launch a graphics device (if one is not already open) and draw a new plot on the device. The based plot function has many arguments, letting us set the title, x-axis label, y-axis label, etc.</p>
+<p>The base graphics system has many global parameters that can be set and tweaked. These parameters are documented in <code>?par</code> and are used to control the global behavior of plots, such as the margins, axis orientation, and other details.</p>
+</div>
+<div id="simple-base-graphics" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Simple Base Graphics<a href="getting-started-with-base-r-graphics.html#simple-base-graphics" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This section explains how to use the base plotting functions to make basic statistical graphics.</p>
+<div id="histogram" class="section level3 hasAnchor" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> Histogram<a href="getting-started-with-base-r-graphics.html#histogram" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Here is an example of a simple histogram made using the <code>hist()</code> function in the graphics package. If we run this code and our graphics window is not already open, it should open once you call the <code>hist()</code> function.</p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="getting-started-with-base-r-graphics.html#cb93-1" tabindex="-1"></a><span class="do">## Draw a new plot on the screen device</span></span>
+<span id="cb93-2"><a href="getting-started-with-base-r-graphics.html#cb93-2" tabindex="-1"></a><span class="fu">hist</span>(iris<span class="sc">$</span>Sepal.Length,</span>
+<span id="cb93-3"><a href="getting-started-with-base-r-graphics.html#cb93-3" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Sepal Length&quot;</span>,</span>
+<span id="cb93-4"><a href="getting-started-with-base-r-graphics.html#cb93-4" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Counts&quot;</span>,</span>
+<span id="cb93-5"><a href="getting-started-with-base-r-graphics.html#cb93-5" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Frequency distribution of sepal length&quot;</span>) </span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-57"></span>
+<img src="STA553EB_files/figure-html/unnamed-chunk-57-1.png" alt="Figure 1. Sepal width of iris" width="672" />
+<p class="caption">
+Figure 5.1: Figure 1. Sepal width of iris
+</p>
+</div>
+</div>
+<div id="boxplot" class="section level3 hasAnchor" number="5.2.2">
+<h3><span class="header-section-number">5.2.2</span> Boxplot<a href="getting-started-with-base-r-graphics.html#boxplot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Boxplots can be made in R using the <code>boxplot()</code> function, which takes as its first argument a formula. The formula has a form of <code>y-axis ~ x-axis</code>. Anytime you see a <code>~</code> in R, it’s a formula. Here, we are plotting the sepal length of iris flowers and the right-hand side of <code>~</code> the Species.</p>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="getting-started-with-base-r-graphics.html#cb94-1" tabindex="-1"></a><span class="fu">boxplot</span>(Sepal.Length <span class="sc">~</span> Species, <span class="at">data =</span> iris, <span class="at">xlab =</span> <span class="st">&quot;Species&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Sepal Length&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-58"></span>
+<img src="STA553EB_files/figure-html/unnamed-chunk-58-1.png" alt="Box plot of sepal length by species" width="672" />
+<p class="caption">
+Figure 5.2: Box plot of sepal length by species
+</p>
+</div>
+<p>Each boxplot shows the median, 25th, and 75th percentiles of the data (the “box”), as well as +/- 1.5 times the interquartile range (IQR) of the data (the “whiskers”). Any data points beyond 1.5 times the IQR of the data are indicated separately with circles.</p>
+<p>We can see that Virginica has an outlier.</p>
+</div>
+<div id="scatterplot" class="section level3 hasAnchor" number="5.2.3">
+<h3><span class="header-section-number">5.2.3</span> Scatterplot<a href="getting-started-with-base-r-graphics.html#scatterplot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Here is a simple scatter plot made with the <code>plot()</code> function.</p>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="getting-started-with-base-r-graphics.html#cb95-1" tabindex="-1"></a><span class="fu">plot</span>(iris<span class="sc">$</span>Sepal.Length, iris<span class="sc">$</span>Sepal.Width, </span>
+<span id="cb95-2"><a href="getting-started-with-base-r-graphics.html#cb95-2" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;sepal length&quot;</span>,</span>
+<span id="cb95-3"><a href="getting-started-with-base-r-graphics.html#cb95-3" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;sepal width&quot;</span>,</span>
+<span id="cb95-4"><a href="getting-started-with-base-r-graphics.html#cb95-4" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot; &quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-59"></span>
+<img src="STA553EB_files/figure-html/unnamed-chunk-59-1.png" alt="Scatter plot of sepal length and sepal width" width="672" />
+<p class="caption">
+Figure 5.3: Scatter plot of sepal length and sepal width
+</p>
+</div>
+<p>Generally, the <code>plot()</code> function takes two vectors of numbers: one for the x-axis coordinates and one for the y-axis coordinates. However, <code>plot()</code> is a generic function in R, which means its behavior can change depending on what kinds of data are passed to the function.</p>
+<p>One thing to note here is that we have provided labels for the x- and the y-axis and title as well. If they were not specified, the plot function will provide this information automatically using the names of the variables.</p>
+</div>
+</div>
+<div id="some-important-base-graphics-parameters" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> Some Important Base Graphics Parameters<a href="getting-started-with-base-r-graphics.html#some-important-base-graphics-parameters" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Many base plotting functions share a set of global parameters. Here are a few key ones.</p>
+<ul>
+<li><code>pch</code>: the plotting symbol (default is an open circle).</li>
+<li><code>lty</code>: the line type (default is a solid line), can be dashed, dotted, etc.</li>
+<li><code>lwd</code>: the line width, specified as an integer multiple.</li>
+<li><code>col</code>: the plotting color, specified as a number, string, or hex code; the colors() function gives you a vector of colors by name.</li>
+<li><code>xlab</code>: character string for the x-axis label.</li>
+<li><code>ylab</code>: character string for the y-axis label.</li>
+</ul>
+<p>The <code>par()</code> function is used to specify the global graphics parameters that affect all plots in an R session. These parameters can be overridden when they are specified as arguments to specific plotting functions.</p>
+<ul>
+<li><code>las</code>: the orientation of the axis labels on the plot.</li>
+<li><code>bg</code>: the background color.</li>
+<li><code>mar</code>: the margin size.</li>
+<li><code>oma</code>: the outer margin size (default is 0 for all sides).</li>
+<li><code>mfrow</code>: number of plots per row, column (plots are filled row-wise).</li>
+<li><code>mfcol</code>: number of plots per row, column (plots are filled column-wise).</li>
+</ul>
+<p>We can see the default values for global graphics parameters by calling the <code>par()</code> function and passing the name of the parameter in quotes.</p>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="getting-started-with-base-r-graphics.html#cb96-1" tabindex="-1"></a><span class="fu">par</span>(<span class="st">&quot;lty&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;solid&quot;</code></pre>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="getting-started-with-base-r-graphics.html#cb98-1" tabindex="-1"></a><span class="fu">par</span>(<span class="st">&quot;col&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;black&quot;</code></pre>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="getting-started-with-base-r-graphics.html#cb100-1" tabindex="-1"></a><span class="fu">par</span>(<span class="st">&quot;pch&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<p>Here are some more default values for global graphics parameters.</p>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="getting-started-with-base-r-graphics.html#cb102-1" tabindex="-1"></a><span class="fu">par</span>(<span class="st">&quot;bg&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;white&quot;</code></pre>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="getting-started-with-base-r-graphics.html#cb104-1" tabindex="-1"></a><span class="fu">par</span>(<span class="st">&quot;mar&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] 5.1 4.1 4.1 2.1</code></pre>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="getting-started-with-base-r-graphics.html#cb106-1" tabindex="-1"></a><span class="fu">par</span>(<span class="st">&quot;mfrow&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] 1 1</code></pre>
+<p>For the most part, we usually don’t have to modify these when making quick plots. However, we might need to tweak them to finalize the plots.</p>
+</div>
+<div id="base-plotting-functions" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> Base Plotting Functions<a href="getting-started-with-base-r-graphics.html#base-plotting-functions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The most basic base plotting function is <code>plot()</code>. The <code>plot()</code> function makes a scatter-plot, or other types of plot depending on the class of the object being plotted. Calling <code>plot()</code> will draw a plot on the screen device (and open the screen device if not already open). After that, annotation functions can be called to add to the already-made plot.</p>
+<p>Some key annotation functions are</p>
+<ul>
+<li><code>lines()</code>: add lines to a plot, given a vector of x values and a corresponding vector of y values (or a 2-column matrix); this function just connects the dots</li>
+<li><code>points()</code>: add points to a plot</li>
+<li><code>text()</code>: add text labels to a plot using specified x, y coordinates</li>
+<li><code>title()</code>: add annotations to x, y-axis labels, title, subtitle, outer margin</li>
+<li><code>mtext()</code>: add arbitrary text to the margins (inner or outer) of the plot</li>
+<li><code>axis()</code>: adding axis ticks/labels</li>
+</ul>
+<p>Here’s an example of creating a base plot and adding some annotation. First, we make the plot with the <code>plot()</code> function and then add a title to the top of the plot with the <code>title()</code> function.</p>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="getting-started-with-base-r-graphics.html#cb108-1" tabindex="-1"></a><span class="do">## Make the initial plot</span></span>
+<span id="cb108-2"><a href="getting-started-with-base-r-graphics.html#cb108-2" tabindex="-1"></a><span class="fu">plot</span>(iris<span class="sc">$</span>Sepal.Length, iris<span class="sc">$</span>Sepal.Width)</span>
+<span id="cb108-3"><a href="getting-started-with-base-r-graphics.html#cb108-3" tabindex="-1"></a><span class="do">## Add a title</span></span>
+<span id="cb108-4"><a href="getting-started-with-base-r-graphics.html#cb108-4" tabindex="-1"></a><span class="fu">title</span>(<span class="at">main =</span> <span class="st">&quot;Sepal length and width of iris&quot;</span>)  </span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-62"></span>
+<img src="STA553EB_files/figure-html/unnamed-chunk-62-1.png" alt="Base plot with annotation: Iris" width="672" />
+<p class="caption">
+Figure 5.4: Base plot with annotation: Iris
+</p>
+</div>
+<p>Here, I start with the same plot as above (although I add the title right away using the main argument to <code>plot()</code>) and then annotate it by coloring the data points corresponding.</p>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="getting-started-with-base-r-graphics.html#cb109-1" tabindex="-1"></a>sepal.length <span class="ot">=</span> iris<span class="sc">$</span>Sepal.Length</span>
+<span id="cb109-2"><a href="getting-started-with-base-r-graphics.html#cb109-2" tabindex="-1"></a>sepal.width <span class="ot">=</span> iris<span class="sc">$</span>Sepal.Width</span>
+<span id="cb109-3"><a href="getting-started-with-base-r-graphics.html#cb109-3" tabindex="-1"></a>species <span class="ot">=</span> iris<span class="sc">$</span>Species</span>
+<span id="cb109-4"><a href="getting-started-with-base-r-graphics.html#cb109-4" tabindex="-1"></a><span class="do">## identifying the ID of Virginica</span></span>
+<span id="cb109-5"><a href="getting-started-with-base-r-graphics.html#cb109-5" tabindex="-1"></a>virginca.id <span class="ot">=</span> <span class="fu">which</span>(species<span class="sc">==</span><span class="st">&quot;virginica&quot;</span>)  <span class="co"># value are case sensitive!</span></span>
+<span id="cb109-6"><a href="getting-started-with-base-r-graphics.html#cb109-6" tabindex="-1"></a><span class="do">## making scatter plot</span></span>
+<span id="cb109-7"><a href="getting-started-with-base-r-graphics.html#cb109-7" tabindex="-1"></a><span class="fu">plot</span>(sepal.length, sepal.width, <span class="at">main =</span> <span class="st">&quot;Sepal legnth vs sepal width&quot;</span>)</span>
+<span id="cb109-8"><a href="getting-started-with-base-r-graphics.html#cb109-8" tabindex="-1"></a><span class="do">##</span></span>
+<span id="cb109-9"><a href="getting-started-with-base-r-graphics.html#cb109-9" tabindex="-1"></a><span class="fu">points</span>(sepal.length[virginca.id], sepal.width[virginca.id], <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<p><img src="STA553EB_files/figure-html/unnamed-chunk-63-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>The following plot colors the data points with different colors based on species. <code>legend()</code> function explains the meaning of the different colors in the plot.</p>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="getting-started-with-base-r-graphics.html#cb110-1" tabindex="-1"></a>sepal.length <span class="ot">=</span> iris<span class="sc">$</span>Sepal.Length</span>
+<span id="cb110-2"><a href="getting-started-with-base-r-graphics.html#cb110-2" tabindex="-1"></a>sepal.width <span class="ot">=</span> iris<span class="sc">$</span>Sepal.Width</span>
+<span id="cb110-3"><a href="getting-started-with-base-r-graphics.html#cb110-3" tabindex="-1"></a>species <span class="ot">=</span> iris<span class="sc">$</span>Species</span>
+<span id="cb110-4"><a href="getting-started-with-base-r-graphics.html#cb110-4" tabindex="-1"></a><span class="do">## identifying the ID of Virginica</span></span>
+<span id="cb110-5"><a href="getting-started-with-base-r-graphics.html#cb110-5" tabindex="-1"></a>virginca.id <span class="ot">=</span> <span class="fu">which</span>(species<span class="sc">==</span><span class="st">&quot;virginica&quot;</span>)  <span class="co"># value are case sensitive!</span></span>
+<span id="cb110-6"><a href="getting-started-with-base-r-graphics.html#cb110-6" tabindex="-1"></a>setosa.id <span class="ot">=</span> <span class="fu">which</span>(species<span class="sc">==</span><span class="st">&quot;setosa&quot;</span>)</span>
+<span id="cb110-7"><a href="getting-started-with-base-r-graphics.html#cb110-7" tabindex="-1"></a>versicolor.id <span class="ot">=</span> <span class="fu">which</span>(species<span class="sc">==</span><span class="st">&quot;versicolor&quot;</span>)</span>
+<span id="cb110-8"><a href="getting-started-with-base-r-graphics.html#cb110-8" tabindex="-1"></a><span class="do">## making an empty plot: type = &quot;n&quot; ==&gt; no point</span></span>
+<span id="cb110-9"><a href="getting-started-with-base-r-graphics.html#cb110-9" tabindex="-1"></a><span class="fu">plot</span>(sepal.length, sepal.width, <span class="at">main =</span> <span class="st">&quot;Sepal legnth vs sepal width&quot;</span>, <span class="at">type =</span> <span class="st">&quot;n&quot;</span>)</span>
+<span id="cb110-10"><a href="getting-started-with-base-r-graphics.html#cb110-10" tabindex="-1"></a><span class="do">##</span></span>
+<span id="cb110-11"><a href="getting-started-with-base-r-graphics.html#cb110-11" tabindex="-1"></a><span class="fu">points</span>(sepal.length[virginca.id], sepal.width[virginca.id], <span class="at">pch =</span> <span class="dv">18</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb110-12"><a href="getting-started-with-base-r-graphics.html#cb110-12" tabindex="-1"></a><span class="fu">points</span>(sepal.length[setosa.id], sepal.width[setosa.id], <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb110-13"><a href="getting-started-with-base-r-graphics.html#cb110-13" tabindex="-1"></a><span class="fu">points</span>(sepal.length[versicolor.id], sepal.width[versicolor.id], <span class="at">pch =</span> <span class="dv">20</span>, <span class="at">col =</span> <span class="st">&quot;cyan&quot;</span>)</span>
+<span id="cb110-14"><a href="getting-started-with-base-r-graphics.html#cb110-14" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;virginica&quot;</span>, <span class="st">&quot;setosa&quot;</span>, <span class="st">&quot;versicolor&quot;</span>), </span>
+<span id="cb110-15"><a href="getting-started-with-base-r-graphics.html#cb110-15" tabindex="-1"></a>                  <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;cyan&quot;</span>),</span>
+<span id="cb110-16"><a href="getting-started-with-base-r-graphics.html#cb110-16" tabindex="-1"></a>                  <span class="at">pch=</span><span class="fu">c</span>(<span class="dv">18</span>, <span class="dv">19</span>, <span class="dv">20</span>))</span></code></pre></div>
+<p><img src="STA553EB_files/figure-html/unnamed-chunk-64-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="base-plot-with-regression-line" class="section level2 hasAnchor" number="5.5">
+<h2><span class="header-section-number">5.5</span> Base Plot with Regression Line<a href="getting-started-with-base-r-graphics.html#base-plot-with-regression-line" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>It’s fairly common to make a scatterplot and then want to draw a simple linear regression line through the data. This can be done with the <code>abline()</code> function.</p>
+<p>Below, we first make the plot (as above). Then we fit a simple linear regression model using the <code>lm()</code> function. Here, we try to model Ozone as a function of Wind. Then we take the output of <code>lm()</code> and pass it to the <code>abline()</code> function which automatically takes the information from the model object and calculates the corresponding regression line.</p>
+<p>Note that in the call to <code>plot()</code> below, we set <code>pch = 20</code> to change the plotting symbol to a filled circle.</p>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="getting-started-with-base-r-graphics.html#cb111-1" tabindex="-1"></a>sepal.length <span class="ot">=</span> iris<span class="sc">$</span>Sepal.Length</span>
+<span id="cb111-2"><a href="getting-started-with-base-r-graphics.html#cb111-2" tabindex="-1"></a>sepal.width <span class="ot">=</span> iris<span class="sc">$</span>Sepal.Width</span>
+<span id="cb111-3"><a href="getting-started-with-base-r-graphics.html#cb111-3" tabindex="-1"></a><span class="do">## making a plot </span></span>
+<span id="cb111-4"><a href="getting-started-with-base-r-graphics.html#cb111-4" tabindex="-1"></a><span class="fu">plot</span>(sepal.length, sepal.width, <span class="at">main =</span> <span class="st">&quot;Sepal legnth vs sepal width&quot;</span>, <span class="at">pch =</span> <span class="dv">21</span>)</span>
+<span id="cb111-5"><a href="getting-started-with-base-r-graphics.html#cb111-5" tabindex="-1"></a><span class="do">##</span></span>
+<span id="cb111-6"><a href="getting-started-with-base-r-graphics.html#cb111-6" tabindex="-1"></a> model <span class="ot">&lt;-</span> <span class="fu">lm</span>( sepal.width <span class="sc">~</span> sepal.length)</span>
+<span id="cb111-7"><a href="getting-started-with-base-r-graphics.html#cb111-7" tabindex="-1"></a> <span class="do">## Draw regression line on plot</span></span>
+<span id="cb111-8"><a href="getting-started-with-base-r-graphics.html#cb111-8" tabindex="-1"></a> <span class="fu">abline</span>(model, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<p><img src="STA553EB_files/figure-html/unnamed-chunk-65-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="multiple-base-plots" class="section level2 hasAnchor" number="5.6">
+<h2><span class="header-section-number">5.6</span> Multiple Base Plots<a href="getting-started-with-base-r-graphics.html#multiple-base-plots" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Making multiple plots side by side is a useful way to visualize many relationships between variables with static 2-D plots. Often the repetition of data across a single plot window can be a useful way to identify patterns in the data. In order to do this, the <code>mfrow</code> and <code>mfcol</code> parameters set by the <code>par()</code> function are critical.</p>
+<p>Both the <code>mfrow</code> and <code>mfcol</code> parameters take two numbers: the number of rows of plots followed by the number of columns. The multiple plots will be arranged in a matrix-like pattern. The only difference between the two parameters is that if <code>mfrow</code> is set, then the plots will be drawn row-wise; if <code>mfcol</code> is set, the plots will be drawn column-wise.</p>
+<p>In the example below, we make two plots: sepal length vs sepal width and petal length vs petal width. We set <code>par(mfrow = c(1, 2))</code>, which indicates that we have one row of plots and two columns of plots.</p>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="getting-started-with-base-r-graphics.html#cb112-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb112-2"><a href="getting-started-with-base-r-graphics.html#cb112-2" tabindex="-1"></a>sepal.length <span class="ot">=</span> iris<span class="sc">$</span>Sepal.Length</span>
+<span id="cb112-3"><a href="getting-started-with-base-r-graphics.html#cb112-3" tabindex="-1"></a>sepal.width <span class="ot">=</span> iris<span class="sc">$</span>Sepal.Width</span>
+<span id="cb112-4"><a href="getting-started-with-base-r-graphics.html#cb112-4" tabindex="-1"></a>petal.length <span class="ot">=</span> iris<span class="sc">$</span>Petal.Length</span>
+<span id="cb112-5"><a href="getting-started-with-base-r-graphics.html#cb112-5" tabindex="-1"></a>petal.width <span class="ot">=</span> iris<span class="sc">$</span>Petal.Width</span>
+<span id="cb112-6"><a href="getting-started-with-base-r-graphics.html#cb112-6" tabindex="-1"></a><span class="do">## making a plot </span></span>
+<span id="cb112-7"><a href="getting-started-with-base-r-graphics.html#cb112-7" tabindex="-1"></a><span class="fu">plot</span>(sepal.length, sepal.width, <span class="at">main =</span> <span class="st">&quot;Sepal legnth vs sepal width&quot;</span>, <span class="at">pch =</span> <span class="dv">20</span>)</span>
+<span id="cb112-8"><a href="getting-started-with-base-r-graphics.html#cb112-8" tabindex="-1"></a><span class="fu">plot</span>(petal.length, petal.width, <span class="at">main =</span> <span class="st">&quot;Petal legnth vs petal width&quot;</span>, <span class="at">pch =</span> <span class="dv">21</span>)</span></code></pre></div>
+<p><img src="STA553EB_files/figure-html/unnamed-chunk-66-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>The example below creates three plots in a row by setting <code>par(mfrow = c(1, 3))</code>. Here we also change the plot margins with the mar parameter. The various margin parameters, like <code>mar</code>, are specified by setting a value for each side of the plot. <code>Side 1</code> is the bottom of the plot, <code>side 2</code> is the left-hand side, <code>side 3</code> is the top, and <code>side 4</code> is the right-hand side.</p>
+<p>In the example below we also modify the outer margin via the <code>oma</code> parameter to create a little more space for the plots and to place them closer together.</p>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="getting-started-with-base-r-graphics.html#cb113-1" tabindex="-1"></a><span class="co"># layout of the plot</span></span>
+<span id="cb113-2"><a href="getting-started-with-base-r-graphics.html#cb113-2" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>), </span>
+<span id="cb113-3"><a href="getting-started-with-base-r-graphics.html#cb113-3" tabindex="-1"></a>    <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>), </span>
+<span id="cb113-4"><a href="getting-started-with-base-r-graphics.html#cb113-4" tabindex="-1"></a>    <span class="at">oma =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">0</span>))</span>
+<span id="cb113-5"><a href="getting-started-with-base-r-graphics.html#cb113-5" tabindex="-1"></a><span class="co"># extract variables from the data frame</span></span>
+<span id="cb113-6"><a href="getting-started-with-base-r-graphics.html#cb113-6" tabindex="-1"></a>sepal.length <span class="ot">=</span> iris<span class="sc">$</span>Sepal.Length</span>
+<span id="cb113-7"><a href="getting-started-with-base-r-graphics.html#cb113-7" tabindex="-1"></a>sepal.width <span class="ot">=</span> iris<span class="sc">$</span>Sepal.Width</span>
+<span id="cb113-8"><a href="getting-started-with-base-r-graphics.html#cb113-8" tabindex="-1"></a>species <span class="ot">=</span> iris<span class="sc">$</span>Species</span>
+<span id="cb113-9"><a href="getting-started-with-base-r-graphics.html#cb113-9" tabindex="-1"></a><span class="do">## identifying the ID of Virginica</span></span>
+<span id="cb113-10"><a href="getting-started-with-base-r-graphics.html#cb113-10" tabindex="-1"></a>virginca.id <span class="ot">=</span> <span class="fu">which</span>(species<span class="sc">==</span><span class="st">&quot;virginica&quot;</span>)  <span class="co"># value are case sensitive!</span></span>
+<span id="cb113-11"><a href="getting-started-with-base-r-graphics.html#cb113-11" tabindex="-1"></a>setosa.id <span class="ot">=</span> <span class="fu">which</span>(species<span class="sc">==</span><span class="st">&quot;setosa&quot;</span>)</span>
+<span id="cb113-12"><a href="getting-started-with-base-r-graphics.html#cb113-12" tabindex="-1"></a>versicolor.id <span class="ot">=</span> <span class="fu">which</span>(species<span class="sc">==</span><span class="st">&quot;versicolor&quot;</span>)</span>
+<span id="cb113-13"><a href="getting-started-with-base-r-graphics.html#cb113-13" tabindex="-1"></a><span class="do">## making three plots</span></span>
+<span id="cb113-14"><a href="getting-started-with-base-r-graphics.html#cb113-14" tabindex="-1"></a><span class="fu">plot</span>(sepal.length[virginca.id], sepal.width[virginca.id], <span class="at">main =</span> <span class="st">&quot;virginca&quot;</span>)</span>
+<span id="cb113-15"><a href="getting-started-with-base-r-graphics.html#cb113-15" tabindex="-1"></a><span class="fu">plot</span>(sepal.length[setosa.id], sepal.width[setosa.id], <span class="at">main =</span> <span class="st">&quot;setosa&quot;</span>)</span>
+<span id="cb113-16"><a href="getting-started-with-base-r-graphics.html#cb113-16" tabindex="-1"></a><span class="fu">plot</span>(sepal.length[versicolor.id], sepal.width[versicolor.id], <span class="at">main =</span> <span class="st">&quot;versicolor&quot;</span>)</span>
+<span id="cb113-17"><a href="getting-started-with-base-r-graphics.html#cb113-17" tabindex="-1"></a><span class="do">##</span></span>
+<span id="cb113-18"><a href="getting-started-with-base-r-graphics.html#cb113-18" tabindex="-1"></a><span class="fu">mtext</span>(<span class="st">&quot;Sepal length vs width: Iris&quot;</span>, <span class="at">outer =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p><img src="STA553EB_files/figure-html/unnamed-chunk-67-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>In the above example, the <code>mtext()</code> function was used to create an overall title for the panel of plots. Hence, each individual plot has a title, while the overall set of plots also has a summary title. The <code>mtext()</code> function is important for adding text annotations that aren’t specific to a single plot.</p>
+<p>Notice that the scales of the vertical axes of the three plots are not the same. To misleading visual comparison, we should make the scales of both axes the same.</p>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="getting-started-with-base-r-graphics.html#cb114-1" tabindex="-1"></a><span class="co"># layout of the plot</span></span>
+<span id="cb114-2"><a href="getting-started-with-base-r-graphics.html#cb114-2" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>), </span>
+<span id="cb114-3"><a href="getting-started-with-base-r-graphics.html#cb114-3" tabindex="-1"></a>    <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>), </span>
+<span id="cb114-4"><a href="getting-started-with-base-r-graphics.html#cb114-4" tabindex="-1"></a>    <span class="at">oma =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">0</span>))</span>
+<span id="cb114-5"><a href="getting-started-with-base-r-graphics.html#cb114-5" tabindex="-1"></a><span class="co"># extract variables from the data frame</span></span>
+<span id="cb114-6"><a href="getting-started-with-base-r-graphics.html#cb114-6" tabindex="-1"></a>sepal.length <span class="ot">=</span> iris<span class="sc">$</span>Sepal.Length</span>
+<span id="cb114-7"><a href="getting-started-with-base-r-graphics.html#cb114-7" tabindex="-1"></a>sepal.width <span class="ot">=</span> iris<span class="sc">$</span>Sepal.Width</span>
+<span id="cb114-8"><a href="getting-started-with-base-r-graphics.html#cb114-8" tabindex="-1"></a>species <span class="ot">=</span> iris<span class="sc">$</span>Species</span>
+<span id="cb114-9"><a href="getting-started-with-base-r-graphics.html#cb114-9" tabindex="-1"></a><span class="do">## identifying the ID of Virginica</span></span>
+<span id="cb114-10"><a href="getting-started-with-base-r-graphics.html#cb114-10" tabindex="-1"></a>virginca.id <span class="ot">=</span> <span class="fu">which</span>(species<span class="sc">==</span><span class="st">&quot;virginica&quot;</span>)  <span class="co"># value are case sensitive!</span></span>
+<span id="cb114-11"><a href="getting-started-with-base-r-graphics.html#cb114-11" tabindex="-1"></a>setosa.id <span class="ot">=</span> <span class="fu">which</span>(species<span class="sc">==</span><span class="st">&quot;setosa&quot;</span>)</span>
+<span id="cb114-12"><a href="getting-started-with-base-r-graphics.html#cb114-12" tabindex="-1"></a>versicolor.id <span class="ot">=</span> <span class="fu">which</span>(species<span class="sc">==</span><span class="st">&quot;versicolor&quot;</span>)</span>
+<span id="cb114-13"><a href="getting-started-with-base-r-graphics.html#cb114-13" tabindex="-1"></a><span class="do">## making three plots</span></span>
+<span id="cb114-14"><a href="getting-started-with-base-r-graphics.html#cb114-14" tabindex="-1"></a><span class="fu">plot</span>(sepal.length[virginca.id], sepal.width[virginca.id], <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">8</span>), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">2</span>, <span class="fl">4.5</span>), <span class="at">main =</span> <span class="st">&quot;virginca&quot;</span>)</span>
+<span id="cb114-15"><a href="getting-started-with-base-r-graphics.html#cb114-15" tabindex="-1"></a><span class="fu">plot</span>(sepal.length[setosa.id], sepal.width[setosa.id], <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">8</span>), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">2</span>, <span class="fl">4.5</span>),<span class="at">main =</span> <span class="st">&quot;setosa&quot;</span>)</span>
+<span id="cb114-16"><a href="getting-started-with-base-r-graphics.html#cb114-16" tabindex="-1"></a><span class="fu">plot</span>(sepal.length[versicolor.id], sepal.width[versicolor.id], <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">8</span>), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">2</span>, <span class="fl">4.5</span>),<span class="at">main =</span> <span class="st">&quot;versicolor&quot;</span>)</span>
+<span id="cb114-17"><a href="getting-started-with-base-r-graphics.html#cb114-17" tabindex="-1"></a><span class="do">##</span></span>
+<span id="cb114-18"><a href="getting-started-with-base-r-graphics.html#cb114-18" tabindex="-1"></a><span class="fu">mtext</span>(<span class="st">&quot;Sepal length vs width: Iris&quot;</span>, <span class="at">outer =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p><img src="STA553EB_files/figure-html/unnamed-chunk-68-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>We now can visualize the mean sepal width and sepal length among the species.</p>
+</div>
+<div id="controlling-point-size-and-transparency" class="section level2 hasAnchor" number="5.7">
+<h2><span class="header-section-number">5.7</span> Controlling Point Size and Transparency<a href="getting-started-with-base-r-graphics.html#controlling-point-size-and-transparency" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>we use <code>cex=</code> and <code>alpha=</code> to control the point size according to the value of a variable and the level of transparency of the point.</p>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="getting-started-with-base-r-graphics.html#cb115-1" tabindex="-1"></a>sepal.length <span class="ot">=</span> iris<span class="sc">$</span>Sepal.Length</span>
+<span id="cb115-2"><a href="getting-started-with-base-r-graphics.html#cb115-2" tabindex="-1"></a>sepal.width <span class="ot">=</span> iris<span class="sc">$</span>Sepal.Width</span>
+<span id="cb115-3"><a href="getting-started-with-base-r-graphics.html#cb115-3" tabindex="-1"></a>size.petal <span class="ot">=</span> iris<span class="sc">$</span>Petal.Width</span>
+<span id="cb115-4"><a href="getting-started-with-base-r-graphics.html#cb115-4" tabindex="-1"></a>species <span class="ot">=</span> iris<span class="sc">$</span>Species</span>
+<span id="cb115-5"><a href="getting-started-with-base-r-graphics.html#cb115-5" tabindex="-1"></a><span class="do">## identifying the ID of Virginica</span></span>
+<span id="cb115-6"><a href="getting-started-with-base-r-graphics.html#cb115-6" tabindex="-1"></a>virginca.id <span class="ot">=</span> <span class="fu">which</span>(species<span class="sc">==</span><span class="st">&quot;virginica&quot;</span>)  <span class="co"># value are case sensitive!</span></span>
+<span id="cb115-7"><a href="getting-started-with-base-r-graphics.html#cb115-7" tabindex="-1"></a>setosa.id <span class="ot">=</span> <span class="fu">which</span>(species<span class="sc">==</span><span class="st">&quot;setosa&quot;</span>)</span>
+<span id="cb115-8"><a href="getting-started-with-base-r-graphics.html#cb115-8" tabindex="-1"></a>versicolor.id <span class="ot">=</span> <span class="fu">which</span>(species<span class="sc">==</span><span class="st">&quot;versicolor&quot;</span>)</span>
+<span id="cb115-9"><a href="getting-started-with-base-r-graphics.html#cb115-9" tabindex="-1"></a><span class="do">## color code</span></span>
+<span id="cb115-10"><a href="getting-started-with-base-r-graphics.html#cb115-10" tabindex="-1"></a>col.code <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">alpha</span>(<span class="st">&quot;red&quot;</span>,<span class="fl">0.5</span>),<span class="fu">alpha</span>(<span class="st">&quot;blue&quot;</span>,<span class="fl">0.5</span>),<span class="fu">alpha</span>(<span class="st">&quot;cyan&quot;</span>,<span class="fl">0.5</span>))</span>
+<span id="cb115-11"><a href="getting-started-with-base-r-graphics.html#cb115-11" tabindex="-1"></a><span class="do">## making an empty plot: type = &quot;n&quot; ==&gt; no point</span></span>
+<span id="cb115-12"><a href="getting-started-with-base-r-graphics.html#cb115-12" tabindex="-1"></a><span class="fu">plot</span>(sepal.length, sepal.width, <span class="at">main =</span> <span class="st">&quot;Sepal legnth vs sepal width&quot;</span>, <span class="at">type =</span> <span class="st">&quot;n&quot;</span>)</span>
+<span id="cb115-13"><a href="getting-started-with-base-r-graphics.html#cb115-13" tabindex="-1"></a><span class="do">## change the point size based on their average of sepal length and width</span></span>
+<span id="cb115-14"><a href="getting-started-with-base-r-graphics.html#cb115-14" tabindex="-1"></a><span class="fu">points</span>(sepal.length[virginca.id], sepal.width[virginca.id], </span>
+<span id="cb115-15"><a href="getting-started-with-base-r-graphics.html#cb115-15" tabindex="-1"></a>       <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">col =</span> col.code[<span class="dv">1</span>], <span class="at">cex =</span> size.petal[virginca.id])</span>
+<span id="cb115-16"><a href="getting-started-with-base-r-graphics.html#cb115-16" tabindex="-1"></a><span class="fu">points</span>(sepal.length[setosa.id], sepal.width[setosa.id], </span>
+<span id="cb115-17"><a href="getting-started-with-base-r-graphics.html#cb115-17" tabindex="-1"></a>       <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">col =</span> col.code[<span class="dv">2</span>], <span class="at">cex =</span> size.petal[setosa.id])</span>
+<span id="cb115-18"><a href="getting-started-with-base-r-graphics.html#cb115-18" tabindex="-1"></a><span class="fu">points</span>(sepal.length[versicolor.id], sepal.width[versicolor.id], </span>
+<span id="cb115-19"><a href="getting-started-with-base-r-graphics.html#cb115-19" tabindex="-1"></a>       <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">col =</span> col.code[<span class="dv">3</span>], <span class="at">cex =</span> size.petal[versicolor.id])</span>
+<span id="cb115-20"><a href="getting-started-with-base-r-graphics.html#cb115-20" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;virginica&quot;</span>, <span class="st">&quot;setosa&quot;</span>, <span class="st">&quot;versicolor&quot;</span>), </span>
+<span id="cb115-21"><a href="getting-started-with-base-r-graphics.html#cb115-21" tabindex="-1"></a>                  <span class="at">col=</span>col.code,</span>
+<span id="cb115-22"><a href="getting-started-with-base-r-graphics.html#cb115-22" tabindex="-1"></a>                  <span class="at">pch=</span><span class="fu">c</span>(<span class="dv">19</span>, <span class="dv">19</span>, <span class="dv">19</span>))</span></code></pre></div>
+<p><img src="STA553EB_files/figure-html/unnamed-chunk-69-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="annotations" class="section level2 hasAnchor" number="5.8">
+<h2><span class="header-section-number">5.8</span> Annotations<a href="getting-started-with-base-r-graphics.html#annotations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We add annotations to the base R plot. The annotations could be plain texts, images, and mathematical expressions.</p>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="getting-started-with-base-r-graphics.html#cb116-1" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
+<span id="cb116-2"><a href="getting-started-with-base-r-graphics.html#cb116-2" tabindex="-1"></a>my_iris <span class="ot">&lt;-</span> <span class="fu">readPNG</span>(<span class="st">&#39;img02/irisPNG.png&#39;</span>)</span>
+<span id="cb116-3"><a href="getting-started-with-base-r-graphics.html#cb116-3" tabindex="-1"></a>raster.iris <span class="ot">&lt;-</span> <span class="fu">as.raster</span>(my_iris) </span>
+<span id="cb116-4"><a href="getting-started-with-base-r-graphics.html#cb116-4" tabindex="-1"></a><span class="co"># Use the code in the precious section</span></span>
+<span id="cb116-5"><a href="getting-started-with-base-r-graphics.html#cb116-5" tabindex="-1"></a>sepal.length <span class="ot">=</span> iris<span class="sc">$</span>Sepal.Length</span>
+<span id="cb116-6"><a href="getting-started-with-base-r-graphics.html#cb116-6" tabindex="-1"></a>sepal.width <span class="ot">=</span> iris<span class="sc">$</span>Sepal.Width</span>
+<span id="cb116-7"><a href="getting-started-with-base-r-graphics.html#cb116-7" tabindex="-1"></a>size.petal <span class="ot">=</span> iris<span class="sc">$</span>Petal.Width</span>
+<span id="cb116-8"><a href="getting-started-with-base-r-graphics.html#cb116-8" tabindex="-1"></a>species <span class="ot">=</span> iris<span class="sc">$</span>Species</span>
+<span id="cb116-9"><a href="getting-started-with-base-r-graphics.html#cb116-9" tabindex="-1"></a><span class="do">## identifying the ID of Virginica</span></span>
+<span id="cb116-10"><a href="getting-started-with-base-r-graphics.html#cb116-10" tabindex="-1"></a>virginca.id <span class="ot">=</span> <span class="fu">which</span>(species<span class="sc">==</span><span class="st">&quot;virginica&quot;</span>)  <span class="co"># value are case sensitive!</span></span>
+<span id="cb116-11"><a href="getting-started-with-base-r-graphics.html#cb116-11" tabindex="-1"></a>setosa.id <span class="ot">=</span> <span class="fu">which</span>(species<span class="sc">==</span><span class="st">&quot;setosa&quot;</span>)</span>
+<span id="cb116-12"><a href="getting-started-with-base-r-graphics.html#cb116-12" tabindex="-1"></a>versicolor.id <span class="ot">=</span> <span class="fu">which</span>(species<span class="sc">==</span><span class="st">&quot;versicolor&quot;</span>)</span>
+<span id="cb116-13"><a href="getting-started-with-base-r-graphics.html#cb116-13" tabindex="-1"></a><span class="do">## color code</span></span>
+<span id="cb116-14"><a href="getting-started-with-base-r-graphics.html#cb116-14" tabindex="-1"></a><span class="co">#  col.code = c(alpha(&quot;red&quot;,0.5),alpha(&quot;blue&quot;,0.5),alpha(&quot;cyan&quot;,0.5))</span></span>
+<span id="cb116-15"><a href="getting-started-with-base-r-graphics.html#cb116-15" tabindex="-1"></a><span class="do">## making an empty plot: type = &quot;n&quot; ==&gt; no point</span></span>
+<span id="cb116-16"><a href="getting-started-with-base-r-graphics.html#cb116-16" tabindex="-1"></a><span class="fu">plot</span>(sepal.length, sepal.width, <span class="at">main =</span> <span class="st">&quot;Sepal legnth vs sepal width&quot;</span>, <span class="at">type =</span> <span class="st">&quot;n&quot;</span>)</span>
+<span id="cb116-17"><a href="getting-started-with-base-r-graphics.html#cb116-17" tabindex="-1"></a><span class="do">## change the point size based on their average of sepal length and width</span></span>
+<span id="cb116-18"><a href="getting-started-with-base-r-graphics.html#cb116-18" tabindex="-1"></a><span class="fu">points</span>(sepal.length[virginca.id], sepal.width[virginca.id], </span>
+<span id="cb116-19"><a href="getting-started-with-base-r-graphics.html#cb116-19" tabindex="-1"></a>       <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">col =</span> <span class="st">&quot;purple&quot;</span>, <span class="at">cex =</span> size.petal[virginca.id], <span class="at">alpha =</span> <span class="fl">0.6</span>)</span>
+<span id="cb116-20"><a href="getting-started-with-base-r-graphics.html#cb116-20" tabindex="-1"></a><span class="fu">points</span>(sepal.length[setosa.id], sepal.width[setosa.id], </span>
+<span id="cb116-21"><a href="getting-started-with-base-r-graphics.html#cb116-21" tabindex="-1"></a>       <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">col =</span> <span class="st">&quot;navy&quot;</span>, <span class="at">cex =</span> size.petal[setosa.id], <span class="at">alpha =</span> <span class="fl">0.6</span>)</span>
+<span id="cb116-22"><a href="getting-started-with-base-r-graphics.html#cb116-22" tabindex="-1"></a><span class="fu">points</span>(sepal.length[versicolor.id], sepal.width[versicolor.id], </span>
+<span id="cb116-23"><a href="getting-started-with-base-r-graphics.html#cb116-23" tabindex="-1"></a>       <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">col =</span> <span class="st">&quot;cyan&quot;</span>, <span class="at">cex =</span> size.petal[versicolor.id], <span class="at">alpha =</span> <span class="fl">0.6</span>)</span>
+<span id="cb116-24"><a href="getting-started-with-base-r-graphics.html#cb116-24" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;virginica&quot;</span>, <span class="st">&quot;setosa&quot;</span>, <span class="st">&quot;versicolor&quot;</span>), </span>
+<span id="cb116-25"><a href="getting-started-with-base-r-graphics.html#cb116-25" tabindex="-1"></a>                  <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;purple&quot;</span>, <span class="st">&quot;navy&quot;</span>, <span class="st">&quot;cyan&quot;</span>),</span>
+<span id="cb116-26"><a href="getting-started-with-base-r-graphics.html#cb116-26" tabindex="-1"></a>                  <span class="at">pch=</span><span class="fu">c</span>(<span class="dv">19</span>, <span class="dv">19</span>, <span class="dv">19</span>))</span>
+<span id="cb116-27"><a href="getting-started-with-base-r-graphics.html#cb116-27" tabindex="-1"></a><span class="do">## various annotations</span></span>
+<span id="cb116-28"><a href="getting-started-with-base-r-graphics.html#cb116-28" tabindex="-1"></a><span class="co">#specify the position of the image through bottom-left and top-right coords</span></span>
+<span id="cb116-29"><a href="getting-started-with-base-r-graphics.html#cb116-29" tabindex="-1"></a><span class="fu">rasterImage</span>(raster.iris,<span class="dv">6</span>,<span class="fl">3.5</span>,<span class="dv">7</span>,<span class="fl">4.4</span>)</span>
+<span id="cb116-30"><a href="getting-started-with-base-r-graphics.html#cb116-30" tabindex="-1"></a><span class="fu">text</span>(<span class="fl">7.25</span>, <span class="fl">2.25</span>, <span class="st">&quot;The size is proportional to petal length&quot;</span>, <span class="at">col =</span> <span class="st">&quot;purple&quot;</span>, <span class="at">cex =</span> <span class="fl">0.5</span>)</span></code></pre></div>
+<p><img src="STA553EB_files/figure-html/unnamed-chunk-70-1.png" width="672" /></p>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="getting-started-with-base-r-graphics.html#cb117-1" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>scales,<span class="at">unload=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="r-functions-and-flow-controls.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="foundations-of-data-visualization.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/pengdsci/STA553EB/edit/master/04-BaseRGraphics.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["STA553EB.pdf", "STA553EB.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

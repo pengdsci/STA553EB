@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Topic 14 Introduction to Tableau | STA553 E-Pack: Data Visualization</title>
+  <meta name="description" content="The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Topic 14 Introduction to Tableau | STA553 E-Pack: Data Visualization" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="The output format for this example is bookdown::gitbook." />
+  <meta name="github-repo" content="rstudio/STA553EB" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Topic 14 Introduction to Tableau | STA553 E-Pack: Data Visualization" />
+  
+  <meta name="twitter:description" content="The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Cheng Peng" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="creating-maps-using-shapefiles.html"/>
+<link rel="next" href="getting-started-with-r-shiny.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.1/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/proj4-2.6.2/proj4.min.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.1.1/leaflet.js"></script>
+<script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
+<script src="libs/leaflet-providers-plugin-2.1.1/leaflet-providers-plugin.js"></script>
+<link href="libs/HomeButton-0.0.1/home-button.css" rel="stylesheet" />
+<script src="libs/HomeButton-0.0.1/home-button.js"></script>
+<script src="libs/HomeButton-0.0.1/easy-button-src.min.js"></script>
+<script src="libs/clipboard-0.0.1/setClipboardText.js"></script>
+<link href="libs/mapviewCSS-0.0.1/mapview-popup.css" rel="stylesheet" />
+<link href="libs/mapviewCSS-0.0.1/mapview.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<center><li><a href="./"><font color = "darkred"><b>STA 553 E-Pack: Data Visualization</b></font></a><br><font color = "navy">Cheng Peng</font></li></center>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#data-or-information-visualization"><i class="fa fa-check"></i><b>1.1</b> Data or Information Visualization?</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#aesthetic-considerations"><i class="fa fa-check"></i><b>1.2</b> Aesthetic Considerations</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#topic-coverage"><i class="fa fa-check"></i><b>1.3</b> Topic Coverage</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="getting-started-with-rmarkdown.html"><a href="getting-started-with-rmarkdown.html"><i class="fa fa-check"></i><b>2</b> Getting Started With RMarkdown</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="getting-started-with-rmarkdown.html"><a href="getting-started-with-rmarkdown.html#what-is-rmd"><i class="fa fa-check"></i><b>2.1</b> What is RMD</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="getting-started-with-rmarkdown.html"><a href="getting-started-with-rmarkdown.html#create-an-rmarkdown-file"><i class="fa fa-check"></i><b>2.1.1</b> Create an RMarkdown file</a></li>
+<li class="chapter" data-level="2.1.2" data-path="getting-started-with-rmarkdown.html"><a href="getting-started-with-rmarkdown.html#the-yaml-header"><i class="fa fa-check"></i><b>2.1.2</b> The YAML Header</a></li>
+<li class="chapter" data-level="2.1.3" data-path="getting-started-with-rmarkdown.html"><a href="getting-started-with-rmarkdown.html#markdown-syntax"><i class="fa fa-check"></i><b>2.1.3</b> Markdown Syntax</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="getting-started-with-rmarkdown.html"><a href="getting-started-with-rmarkdown.html#code-chunks"><i class="fa fa-check"></i><b>2.2</b> Code Chunks</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="getting-started-with-rmarkdown.html"><a href="getting-started-with-rmarkdown.html#code-chunk-options"><i class="fa fa-check"></i><b>2.2.1</b> Code Chunk Options</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="getting-started-with-rmarkdown.html"><a href="getting-started-with-rmarkdown.html#inserting-graphics"><i class="fa fa-check"></i><b>2.3</b> Inserting Graphics</a></li>
+<li class="chapter" data-level="2.4" data-path="getting-started-with-rmarkdown.html"><a href="getting-started-with-rmarkdown.html#inserting-tables"><i class="fa fa-check"></i><b>2.4</b> Inserting Tables</a></li>
+<li class="chapter" data-level="2.5" data-path="getting-started-with-rmarkdown.html"><a href="getting-started-with-rmarkdown.html#creating-pdf"><i class="fa fa-check"></i><b>2.5</b> Creating PDF</a></li>
+<li class="chapter" data-level="2.6" data-path="getting-started-with-rmarkdown.html"><a href="getting-started-with-rmarkdown.html#miscellaneous"><i class="fa fa-check"></i><b>2.6</b> Miscellaneous</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="getting-started-with-rmarkdown.html"><a href="getting-started-with-rmarkdown.html#markdown-presentations"><i class="fa fa-check"></i><b>2.6.1</b> Markdown Presentations</a></li>
+<li class="chapter" data-level="2.6.2" data-path="getting-started-with-rmarkdown.html"><a href="getting-started-with-rmarkdown.html#shiny-apps-and-rmarkdown"><i class="fa fa-check"></i><b>2.6.2</b> Shiny Apps and RMarkdown</a></li>
+<li class="chapter" data-level="2.6.3" data-path="getting-started-with-rmarkdown.html"><a href="getting-started-with-rmarkdown.html#working-directory"><i class="fa fa-check"></i><b>2.6.3</b> Working Directory</a></li>
+<li class="chapter" data-level="2.6.4" data-path="getting-started-with-rmarkdown.html"><a href="getting-started-with-rmarkdown.html#css-style"><i class="fa fa-check"></i><b>2.6.4</b> CSS Style</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html"><i class="fa fa-check"></i><b>3</b> Open-Source Tools for Data Viz</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#dataviz"><i class="fa fa-check"></i><b>3.1</b> DataViz</a></li>
+<li class="chapter" data-level="3.2" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#r-rstudio"><i class="fa fa-check"></i><b>3.2</b> R &amp; RStudio</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#what-is-r"><i class="fa fa-check"></i><b>3.2.1</b> What is R?</a></li>
+<li class="chapter" data-level="3.2.2" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#rstudio"><i class="fa fa-check"></i><b>3.2.2</b> RStudio</a></li>
+<li class="chapter" data-level="3.2.3" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#the-relationship-between-r-and-rstudio"><i class="fa fa-check"></i><b>3.2.3</b> The Relationship between R and RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#tableau-public"><i class="fa fa-check"></i><b>3.3</b> Tableau Public</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#about-tableau"><i class="fa fa-check"></i><b>3.3.1</b> About Tableau</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#shiny-server"><i class="fa fa-check"></i><b>3.4</b> Shiny Server</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#what-is-shiny.io"><i class="fa fa-check"></i><b>3.4.1</b> What is shiny.io?</a></li>
+<li class="chapter" data-level="3.4.2" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#register-an-account-with-shiny.io"><i class="fa fa-check"></i><b>3.4.2</b> Register An Account with shiny.io</a></li>
+<li class="chapter" data-level="3.4.3" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#requirements"><i class="fa fa-check"></i><b>3.4.3</b> Requirements</a></li>
+<li class="chapter" data-level="3.4.4" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#steps-for-publishing-shinyapps"><i class="fa fa-check"></i><b>3.4.4</b> Steps for Publishing ShinyApps</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#rpubs"><i class="fa fa-check"></i><b>3.5</b> RPubs</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#what-is-rpubs"><i class="fa fa-check"></i><b>3.5.1</b> What is RPubs?</a></li>
+<li class="chapter" data-level="3.5.2" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#register-an-account-with-rpubs"><i class="fa fa-check"></i><b>3.5.2</b> Register An Account With RPubs</a></li>
+<li class="chapter" data-level="3.5.3" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#requirements-1"><i class="fa fa-check"></i><b>3.5.3</b> Requirements</a></li>
+<li class="chapter" data-level="3.5.4" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#steps-for-publishing-on-rpubs"><i class="fa fa-check"></i><b>3.5.4</b> Steps for Publishing on RPubs</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#github"><i class="fa fa-check"></i><b>3.6</b> Github</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#what-is-github"><i class="fa fa-check"></i><b>3.6.1</b> What is Github?</a></li>
+<li class="chapter" data-level="3.6.2" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#register-a-github-account"><i class="fa fa-check"></i><b>3.6.2</b> Register A Github Account</a></li>
+<li class="chapter" data-level="3.6.3" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#getting-started-with-github"><i class="fa fa-check"></i><b>3.6.3</b> Getting Started With GitHub</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#sas-ondemand"><i class="fa fa-check"></i><b>3.7</b> SAS OnDemand</a>
+<ul>
+<li class="chapter" data-level="3.7.1" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#what-is-sas-ondemand-sas-studio"><i class="fa fa-check"></i><b>3.7.1</b> What is SAS OnDemand (SAS Studio)</a></li>
+<li class="chapter" data-level="3.7.2" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#sign-in-sign-up"><i class="fa fa-check"></i><b>3.7.2</b> Sign-in / Sign-up</a></li>
+<li class="chapter" data-level="3.7.3" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#create-an-sas-profile"><i class="fa fa-check"></i><b>3.7.3</b> Create An SAS Profile</a></li>
+<li class="chapter" data-level="3.7.4" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#log-into-sas-academic-ondemand"><i class="fa fa-check"></i><b>3.7.4</b> Log Into SAS Academic OnDemand</a></li>
+<li class="chapter" data-level="3.7.5" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#sas-studio-user-interfacce"><i class="fa fa-check"></i><b>3.7.5</b> SAS Studio User Interfacce</a></li>
+<li class="chapter" data-level="3.7.6" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#a-cautionary-note-on-data-security"><i class="fa fa-check"></i><b>3.7.6</b> <strong>A Cautionary Note On Data Security</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#r-viz-libraries"><i class="fa fa-check"></i><b>3.8</b> R Viz Libraries</a>
+<ul>
+<li class="chapter" data-level="3.8.1" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#tidyverse"><i class="fa fa-check"></i><b>3.8.1</b> Tidyverse</a></li>
+<li class="chapter" data-level="3.8.2" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#ggplot2"><i class="fa fa-check"></i><b>3.8.2</b> ggplot2</a></li>
+<li class="chapter" data-level="3.8.3" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#plotly"><i class="fa fa-check"></i><b>3.8.3</b> plotly</a></li>
+<li class="chapter" data-level="3.8.4" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#leaflet"><i class="fa fa-check"></i><b>3.8.4</b> leaflet</a></li>
+<li class="chapter" data-level="3.8.5" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#mapview"><i class="fa fa-check"></i><b>3.8.5</b> mapview</a></li>
+<li class="chapter" data-level="3.8.6" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#tmap"><i class="fa fa-check"></i><b>3.8.6</b> tmap</a></li>
+<li class="chapter" data-level="3.8.7" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#other-infrequently-used-packages"><i class="fa fa-check"></i><b>3.8.7</b> Other infrequently used packages</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="r-functions-and-flow-controls.html"><a href="r-functions-and-flow-controls.html"><i class="fa fa-check"></i><b>4</b> R Functions and Flow Controls</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="r-functions-and-flow-controls.html"><a href="r-functions-and-flow-controls.html#control-flow"><i class="fa fa-check"></i><b>4.1</b> Control flow</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="r-functions-and-flow-controls.html"><a href="r-functions-and-flow-controls.html#choices"><i class="fa fa-check"></i><b>4.1.1</b> Choices</a></li>
+<li class="chapter" data-level="4.1.2" data-path="r-functions-and-flow-controls.html"><a href="r-functions-and-flow-controls.html#loops"><i class="fa fa-check"></i><b>4.1.2</b> Loops</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="r-functions-and-flow-controls.html"><a href="r-functions-and-flow-controls.html#functions"><i class="fa fa-check"></i><b>4.2</b> Functions</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="r-functions-and-flow-controls.html"><a href="r-functions-and-flow-controls.html#function-fundamentals"><i class="fa fa-check"></i><b>4.2.1</b> Function fundamentals</a></li>
+<li class="chapter" data-level="4.2.2" data-path="r-functions-and-flow-controls.html"><a href="r-functions-and-flow-controls.html#function-composition"><i class="fa fa-check"></i><b>4.2.2</b> Function Composition</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="getting-started-with-base-r-graphics.html"><a href="getting-started-with-base-r-graphics.html"><i class="fa fa-check"></i><b>5</b> Getting Started with Base R Graphics</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="getting-started-with-base-r-graphics.html"><a href="getting-started-with-base-r-graphics.html#base-graphics"><i class="fa fa-check"></i><b>5.1</b> Base Graphics</a></li>
+<li class="chapter" data-level="5.2" data-path="getting-started-with-base-r-graphics.html"><a href="getting-started-with-base-r-graphics.html#simple-base-graphics"><i class="fa fa-check"></i><b>5.2</b> Simple Base Graphics</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="getting-started-with-base-r-graphics.html"><a href="getting-started-with-base-r-graphics.html#histogram"><i class="fa fa-check"></i><b>5.2.1</b> Histogram</a></li>
+<li class="chapter" data-level="5.2.2" data-path="getting-started-with-base-r-graphics.html"><a href="getting-started-with-base-r-graphics.html#boxplot"><i class="fa fa-check"></i><b>5.2.2</b> Boxplot</a></li>
+<li class="chapter" data-level="5.2.3" data-path="getting-started-with-base-r-graphics.html"><a href="getting-started-with-base-r-graphics.html#scatterplot"><i class="fa fa-check"></i><b>5.2.3</b> Scatterplot</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="getting-started-with-base-r-graphics.html"><a href="getting-started-with-base-r-graphics.html#some-important-base-graphics-parameters"><i class="fa fa-check"></i><b>5.3</b> Some Important Base Graphics Parameters</a></li>
+<li class="chapter" data-level="5.4" data-path="getting-started-with-base-r-graphics.html"><a href="getting-started-with-base-r-graphics.html#base-plotting-functions"><i class="fa fa-check"></i><b>5.4</b> Base Plotting Functions</a></li>
+<li class="chapter" data-level="5.5" data-path="getting-started-with-base-r-graphics.html"><a href="getting-started-with-base-r-graphics.html#base-plot-with-regression-line"><i class="fa fa-check"></i><b>5.5</b> Base Plot with Regression Line</a></li>
+<li class="chapter" data-level="5.6" data-path="getting-started-with-base-r-graphics.html"><a href="getting-started-with-base-r-graphics.html#multiple-base-plots"><i class="fa fa-check"></i><b>5.6</b> Multiple Base Plots</a></li>
+<li class="chapter" data-level="5.7" data-path="getting-started-with-base-r-graphics.html"><a href="getting-started-with-base-r-graphics.html#controlling-point-size-and-transparency"><i class="fa fa-check"></i><b>5.7</b> Controlling Point Size and Transparency</a></li>
+<li class="chapter" data-level="5.8" data-path="getting-started-with-base-r-graphics.html"><a href="getting-started-with-base-r-graphics.html#annotations"><i class="fa fa-check"></i><b>5.8</b> Annotations</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="foundations-of-data-visualization.html"><a href="foundations-of-data-visualization.html"><i class="fa fa-check"></i><b>6</b> Foundations of Data Visualization</a></li>
+<li class="chapter" data-level="7" data-path="ethics-in-data-visualization.html"><a href="ethics-in-data-visualization.html"><i class="fa fa-check"></i><b>7</b> Ethics in Data Visualization</a></li>
+<li class="chapter" data-level="8" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html"><i class="fa fa-check"></i><b>8</b> Data Processing with Tidyverse</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#data-cleaning-and-preparation-for-visualization"><i class="fa fa-check"></i><b>8.1</b> Data Cleaning and Preparation for Visualization</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#data-cleaning"><i class="fa fa-check"></i><b>8.1.1</b> Data Cleaning</a></li>
+<li class="chapter" data-level="8.1.2" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#data-preparation-for-visualization"><i class="fa fa-check"></i><b>8.1.2</b> Data Preparation for Visualization</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#basic-data-management-merging-data-sets"><i class="fa fa-check"></i><b>8.2</b> Basic Data Management: Merging Data Sets</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#merge-data-sets"><i class="fa fa-check"></i><b>8.2.1</b> Merge Data Sets</a></li>
+<li class="chapter" data-level="8.2.2" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#merging-data-in-base-r"><i class="fa fa-check"></i><b>8.2.2</b> Merging Data in Base R</a></li>
+<li class="chapter" data-level="8.2.3" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#merging-data-with-mutating-joins-in-dplyr"><i class="fa fa-check"></i><b>8.2.3</b> Merging Data with Mutating Joins in <strong>dplyr</strong></a></li>
+<li class="chapter" data-level="8.2.4" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#use-of-pipe-operator-with-mutating-joins"><i class="fa fa-check"></i><b>8.2.4</b> Use of Pipe Operator <code>%&gt;%</code> with Mutating Joins</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#basic-data-management-subsetting-data"><i class="fa fa-check"></i><b>8.3</b> Basic Data Management: Subsetting Data</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#accessors-in-r-and"><i class="fa fa-check"></i><b>8.3.1</b> Accessors in R <code>[</code>, <code>[[</code> and <code>$</code></a></li>
+<li class="chapter" data-level="8.3.2" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#subsetting-data-in-base-r"><i class="fa fa-check"></i><b>8.3.2</b> Subsetting Data in Base R</a></li>
+<li class="chapter" data-level="8.3.3" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#subsetting-data-with-dplyr"><i class="fa fa-check"></i><b>8.3.3</b> Subsetting Data with <code>dplyr</code></a></li>
+<li class="chapter" data-level="8.3.4" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#variable-definition-and-variable-type-conversion"><i class="fa fa-check"></i><b>8.3.4</b> Variable Definition and Variable Type Conversion</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#importingexporting-data"><i class="fa fa-check"></i><b>8.4</b> Importing/Exporting Data</a></li>
+<li class="chapter" data-level="8.5" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#importing-dara"><i class="fa fa-check"></i><b>8.5</b> Importing Dara</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#exporting-data"><i class="fa fa-check"></i><b>8.5.1</b> Exporting Data</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#overview-of-tidyverse-optional"><i class="fa fa-check"></i><b>8.6</b> <strong>Overview of <code>Tidyverse</code> (Optional)</strong></a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#packages-for-data-wrangling-and-transformation"><i class="fa fa-check"></i><b>8.6.1</b> Packages for Data Wrangling and Transformation</a></li>
+<li class="chapter" data-level="8.6.2" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#packages-for-data-import-and-management"><i class="fa fa-check"></i><b>8.6.2</b> Packages for Data Import and Management</a></li>
+<li class="chapter" data-level="8.6.3" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#functional-programming-with-library-purrr"><i class="fa fa-check"></i><b>8.6.3</b> Functional Programming with Library <strong>{purrr}</strong></a></li>
+<li class="chapter" data-level="8.6.4" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#data-visualization-and-exploration"><i class="fa fa-check"></i><b>8.6.4</b> Data Visualization and Exploration</a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#data-management-with-dplyr-optional"><i class="fa fa-check"></i><b>8.7</b> Data Management with <code>dplyr</code> (Optional)</a>
+<ul>
+<li class="chapter" data-level="8.7.1" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#common-dplyr-functions"><i class="fa fa-check"></i><b>8.7.1</b> Common <code>dplyr</code> Functions</a></li>
+<li class="chapter" data-level="8.7.2" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#reshaping-functions-in-tidyr"><i class="fa fa-check"></i><b>8.7.2</b> Reshaping Functions in <code>tidyr</code></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html"><i class="fa fa-check"></i><b>9</b> Introduction to Ggplot</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#basics-of-ggplot"><i class="fa fa-check"></i><b>9.1</b> Basics of <code>ggplot()</code></a></li>
+<li class="chapter" data-level="9.2" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#structure-of-ggplot"><i class="fa fa-check"></i><b>9.2</b> Structure of <code>ggplot()</code></a></li>
+<li class="chapter" data-level="9.3" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#geoms"><i class="fa fa-check"></i><b>9.3</b> Geoms</a></li>
+<li class="chapter" data-level="9.4" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#mapping-data-to-plot"><i class="fa fa-check"></i><b>9.4</b> Mapping Data to Plot</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#arranging-multiple-grobs-on-the-same-page"><i class="fa fa-check"></i><b>9.4.1</b> Arranging Multiple Grobs on the Same Page</a></li>
+<li class="chapter" data-level="9.4.2" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#plot-aesthetics"><i class="fa fa-check"></i><b>9.4.2</b> Plot Aesthetics</a></li>
+<li class="chapter" data-level="9.4.3" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#labels-in-ggplot"><i class="fa fa-check"></i><b>9.4.3</b> Labels in <code>ggplot()</code></a></li>
+<li class="chapter" data-level="9.4.4" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#themes-in-ggplot"><i class="fa fa-check"></i><b>9.4.4</b> Themes in <code>ggplot()</code></a></li>
+<li class="chapter" data-level="9.4.5" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#complete-components-of-theme"><i class="fa fa-check"></i><b>9.4.5</b> Complete Components of Theme</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#adding-annotations-to-graphics"><i class="fa fa-check"></i><b>9.5</b> Adding Annotations to Graphics</a>
+<ul>
+<li class="chapter" data-level="9.5.1" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#adding-text-annotation-to-graphics"><i class="fa fa-check"></i><b>9.5.1</b> Adding Text Annotation to Graphics</a></li>
+<li class="chapter" data-level="9.5.2" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#adding-mathematical-equations-to-graphics"><i class="fa fa-check"></i><b>9.5.2</b> Adding Mathematical Equations to Graphics</a></li>
+<li class="chapter" data-level="9.5.3" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#adding-images-to-existing-ggplots"><i class="fa fa-check"></i><b>9.5.3</b> Adding Images to Existing ggPlots</a></li>
+<li class="chapter" data-level="9.5.4" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#removing-chart-junks"><i class="fa fa-check"></i><b>9.5.4</b> Removing Chart Junks</a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#aminated-graph-with-gganimate"><i class="fa fa-check"></i><b>9.6</b> Aminated Graph with <code>gganimate()</code></a></li>
+<li class="chapter" data-level="9.7" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#ridgetline-plot-with-ggridges-library"><i class="fa fa-check"></i><b>9.7</b> Ridgetline Plot with <code>ggridges</code> Library</a></li>
+<li class="chapter" data-level="9.8" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#other-extensions-to-ggplot"><i class="fa fa-check"></i><b>9.8</b> Other Extensions to ggplot</a></li>
+<li class="chapter" data-level="9.9" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#save-ggplot-images"><i class="fa fa-check"></i><b>9.9</b> Save <code>ggplot</code> Images</a>
+<ul>
+<li class="chapter" data-level="9.9.1" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#general-steps"><i class="fa fa-check"></i><b>9.9.1</b> General Steps</a></li>
+<li class="chapter" data-level="9.9.2" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#save-ggplot-into-a-pdf-file"><i class="fa fa-check"></i><b>9.9.2</b> Save <code>ggplot</code> into a PDF File</a></li>
+</ul></li>
+<li class="chapter" data-level="9.10" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#save-ggplot-with-ggsave"><i class="fa fa-check"></i><b>9.10</b> Save ggplot with <code>ggsave()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="interactive-statistics-graphics.html"><a href="interactive-statistics-graphics.html"><i class="fa fa-check"></i><b>10</b> Interactive Statistics Graphics</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="interactive-statistics-graphics.html"><a href="interactive-statistics-graphics.html#plotly-1"><i class="fa fa-check"></i><b>10.1</b> Plotly</a></li>
+<li class="chapter" data-level="10.2" data-path="interactive-statistics-graphics.html"><a href="interactive-statistics-graphics.html#scatterplot-1"><i class="fa fa-check"></i><b>10.2</b> ScatterPlot</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="interactive-statistics-graphics.html"><a href="interactive-statistics-graphics.html#the-default-plot"><i class="fa fa-check"></i><b>10.2.1</b> The Default Plot</a></li>
+<li class="chapter" data-level="10.2.2" data-path="interactive-statistics-graphics.html"><a href="interactive-statistics-graphics.html#addiing-additional-information-through-hovertemplate"><i class="fa fa-check"></i><b>10.2.2</b> Addiing Additional Information Through <code>hovertemplate</code></a></li>
+<li class="chapter" data-level="10.2.3" data-path="interactive-statistics-graphics.html"><a href="interactive-statistics-graphics.html#enhancing-the-plot-with-layout-function"><i class="fa fa-check"></i><b>10.2.3</b> Enhancing the Plot with Layout() Function</a></li>
+<li class="chapter" data-level="10.2.4" data-path="interactive-statistics-graphics.html"><a href="interactive-statistics-graphics.html#rendering-a-ggplot-with-ggplotly"><i class="fa fa-check"></i><b>10.2.4</b> Rendering A GGPLOT with <code>ggplotly</code></a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="interactive-statistics-graphics.html"><a href="interactive-statistics-graphics.html#barplot"><i class="fa fa-check"></i><b>10.3</b> Barplot</a></li>
+<li class="chapter" data-level="10.4" data-path="interactive-statistics-graphics.html"><a href="interactive-statistics-graphics.html#histogram-1"><i class="fa fa-check"></i><b>10.4</b> Histogram</a></li>
+<li class="chapter" data-level="10.5" data-path="interactive-statistics-graphics.html"><a href="interactive-statistics-graphics.html#boxplot-1"><i class="fa fa-check"></i><b>10.5</b> Boxplot</a></li>
+<li class="chapter" data-level="10.6" data-path="interactive-statistics-graphics.html"><a href="interactive-statistics-graphics.html#pie-chart"><i class="fa fa-check"></i><b>10.6</b> Pie Chart</a></li>
+<li class="chapter" data-level="10.7" data-path="interactive-statistics-graphics.html"><a href="interactive-statistics-graphics.html#density-curve"><i class="fa fa-check"></i><b>10.7</b> Density Curve</a></li>
+<li class="chapter" data-level="10.8" data-path="interactive-statistics-graphics.html"><a href="interactive-statistics-graphics.html#serial-plot"><i class="fa fa-check"></i><b>10.8</b> Serial Plot</a></li>
+<li class="chapter" data-level="10.9" data-path="interactive-statistics-graphics.html"><a href="interactive-statistics-graphics.html#plotly-maps"><i class="fa fa-check"></i><b>10.9</b> Plotly Maps</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="interactive-maps.html"><a href="interactive-maps.html"><i class="fa fa-check"></i><b>11</b> Interactive Maps</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="interactive-maps.html"><a href="interactive-maps.html#map-types"><i class="fa fa-check"></i><b>11.1</b> Map Types</a></li>
+<li class="chapter" data-level="11.2" data-path="interactive-maps.html"><a href="interactive-maps.html#leaflet-maps"><i class="fa fa-check"></i><b>11.2</b> Leaflet Maps</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="interactive-maps.html"><a href="interactive-maps.html#introduction-1"><i class="fa fa-check"></i><b>11.2.1</b> 1. Introduction</a></li>
+<li class="chapter" data-level="11.2.2" data-path="interactive-maps.html"><a href="interactive-maps.html#customizing-marker-icons"><i class="fa fa-check"></i><b>11.2.2</b> 2. Customizing Marker Icons</a></li>
+<li class="chapter" data-level="11.2.3" data-path="interactive-maps.html"><a href="interactive-maps.html#popups-and-labels"><i class="fa fa-check"></i><b>11.2.3</b> 3. Popups and Labels</a></li>
+<li class="chapter" data-level="11.2.4" data-path="interactive-maps.html"><a href="interactive-maps.html#examples-using-real-world-data"><i class="fa fa-check"></i><b>11.2.4</b> 4. Examples Using Real-World Data</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="interactive-maps.html"><a href="interactive-maps.html#choropleth-maps"><i class="fa fa-check"></i><b>11.3</b> Choropleth Maps</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="interactive-maps.html"><a href="interactive-maps.html#loading-data"><i class="fa fa-check"></i><b>11.3.1</b> Loading Data</a></li>
+<li class="chapter" data-level="11.3.2" data-path="interactive-maps.html"><a href="interactive-maps.html#load-map-shape-data"><i class="fa fa-check"></i><b>11.3.2</b> Load Map Shape Data</a></li>
+<li class="chapter" data-level="11.3.3" data-path="interactive-maps.html"><a href="interactive-maps.html#merge-the-map-data-with-the-price-data"><i class="fa fa-check"></i><b>11.3.3</b> Merge the Map Data with the Price Data</a></li>
+<li class="chapter" data-level="11.3.4" data-path="interactive-maps.html"><a href="interactive-maps.html#color-states-based-on-unit-price"><i class="fa fa-check"></i><b>11.3.4</b> Color States Based On Unit Price</a></li>
+<li class="chapter" data-level="11.3.5" data-path="interactive-maps.html"><a href="interactive-maps.html#labeling-cost-information"><i class="fa fa-check"></i><b>11.3.5</b> 5. Labeling Cost Information</a></li>
+<li class="chapter" data-level="11.3.6" data-path="interactive-maps.html"><a href="interactive-maps.html#finalizing-the-map"><i class="fa fa-check"></i><b>11.3.6</b> 6. Finalizing The Map</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="interactive-maps.html"><a href="interactive-maps.html#plotly-map"><i class="fa fa-check"></i><b>11.4</b> Plotly Map</a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="interactive-maps.html"><a href="interactive-maps.html#choropleth-maps-with-plot_geo"><i class="fa fa-check"></i><b>11.4.1</b> 2. Choropleth Maps with <code>plot_geo()</code></a></li>
+<li class="chapter" data-level="11.4.2" data-path="interactive-maps.html"><a href="interactive-maps.html#scatter-map-with-plot_geo-and-add_markers"><i class="fa fa-check"></i><b>11.4.2</b> 3.Scatter Map with <code>plot_geo()</code> and <code>add_markers()</code></a></li>
+<li class="chapter" data-level="11.4.3" data-path="interactive-maps.html"><a href="interactive-maps.html#custom-map-with-special-libraries"><i class="fa fa-check"></i><b>11.4.3</b> 4. Custom Map With Special Libraries</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="interactive-maps.html"><a href="interactive-maps.html#mapview-maps"><i class="fa fa-check"></i><b>11.5</b> Mapview Maps</a>
+<ul>
+<li class="chapter" data-level="11.5.1" data-path="interactive-maps.html"><a href="interactive-maps.html#choropleth-map-with-mapview"><i class="fa fa-check"></i><b>11.5.1</b> 1. Choropleth Map with <code>mapview</code></a></li>
+<li class="chapter" data-level="11.5.2" data-path="interactive-maps.html"><a href="interactive-maps.html#scatter-map-with-mapview"><i class="fa fa-check"></i><b>11.5.2</b> 2. Scatter Map with <code>mapview</code></a></li>
+<li class="chapter" data-level="11.5.3" data-path="interactive-maps.html"><a href="interactive-maps.html#scatter-map-without-using-sf-object"><i class="fa fa-check"></i><b>11.5.3</b> 3. Scatter Map Without Using <code>sf</code> Object</a></li>
+<li class="chapter" data-level="11.5.4" data-path="interactive-maps.html"><a href="interactive-maps.html#customizing-default-maps"><i class="fa fa-check"></i><b>11.5.4</b> 4. Customizing Default Maps</a></li>
+<li class="chapter" data-level="11.5.5" data-path="interactive-maps.html"><a href="interactive-maps.html#mapview-options"><i class="fa fa-check"></i><b>11.5.5</b> 5. Mapview Options</a></li>
+<li class="chapter" data-level="11.5.6" data-path="interactive-maps.html"><a href="interactive-maps.html#more-enhancements-of-mapview-leaflet"><i class="fa fa-check"></i><b>11.5.6</b> 6. More Enhancements of Mapview (Leaflet)</a></li>
+</ul></li>
+<li class="chapter" data-level="11.6" data-path="interactive-maps.html"><a href="interactive-maps.html#thematic-maps"><i class="fa fa-check"></i><b>11.6</b> Thematic Maps</a>
+<ul>
+<li class="chapter" data-level="11.6.1" data-path="interactive-maps.html"><a href="interactive-maps.html#choropleth-maps-1"><i class="fa fa-check"></i><b>11.6.1</b> 1. Choropleth Maps</a></li>
+<li class="chapter" data-level="11.6.2" data-path="interactive-maps.html"><a href="interactive-maps.html#mixed-maps-multilayer"><i class="fa fa-check"></i><b>11.6.2</b> Mixed Maps (Multilayer)</a></li>
+<li class="chapter" data-level="11.6.3" data-path="interactive-maps.html"><a href="interactive-maps.html#scatter-maps-with-geocoordinates"><i class="fa fa-check"></i><b>11.6.3</b> Scatter Maps With geoCoordinates</a></li>
+</ul></li>
+<li class="chapter" data-level="11.7" data-path="interactive-maps.html"><a href="interactive-maps.html#tableau-maps"><i class="fa fa-check"></i><b>11.7</b> Tableau Maps</a>
+<ul>
+<li class="chapter" data-level="11.7.1" data-path="interactive-maps.html"><a href="interactive-maps.html#choropleth-map"><i class="fa fa-check"></i><b>11.7.1</b> Choropleth Map</a></li>
+<li class="chapter" data-level="11.7.2" data-path="interactive-maps.html"><a href="interactive-maps.html#scatter-map"><i class="fa fa-check"></i><b>11.7.2</b> Scatter Map</a></li>
+</ul></li>
+<li class="chapter" data-level="11.8" data-path="interactive-maps.html"><a href="interactive-maps.html#r-color-palettes"><i class="fa fa-check"></i><b>11.8</b> R Color Palettes</a>
+<ul>
+<li class="chapter" data-level="11.8.1" data-path="interactive-maps.html"><a href="interactive-maps.html#all-palettes"><i class="fa fa-check"></i><b>11.8.1</b> All Palettes</a></li>
+<li class="chapter" data-level="11.8.2" data-path="interactive-maps.html"><a href="interactive-maps.html#color-bind-friendly-palettes"><i class="fa fa-check"></i><b>11.8.2</b> <strong>2. Color-bind Friendly Palettes</strong></a></li>
+<li class="chapter" data-level="11.8.3" data-path="interactive-maps.html"><a href="interactive-maps.html#color-palette-codes"><i class="fa fa-check"></i><b>11.8.3</b> <strong>3. Color Palette Codes</strong></a></li>
+<li class="chapter" data-level="11.8.4" data-path="interactive-maps.html"><a href="interactive-maps.html#functions-for-selecting-specific-color-palettes"><i class="fa fa-check"></i><b>11.8.4</b> <strong>4. Functions for Selecting Specific Color Palettes</strong></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="a-mapview-map-demo.html"><a href="a-mapview-map-demo.html"><i class="fa fa-check"></i><b>12</b> A <code>mapview</code> Map Demo</a></li>
+<li class="chapter" data-level="13" data-path="creating-maps-using-shapefiles.html"><a href="creating-maps-using-shapefiles.html"><i class="fa fa-check"></i><b>13</b> Creating Maps Using Shapefiles</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="creating-maps-using-shapefiles.html"><a href="creating-maps-using-shapefiles.html#existing-base-map-file-and-new-information"><i class="fa fa-check"></i><b>13.1</b> Existing Base Map File and New Information</a></li>
+<li class="chapter" data-level="13.2" data-path="creating-maps-using-shapefiles.html"><a href="creating-maps-using-shapefiles.html#creating-shapefiles-from-dataframes"><i class="fa fa-check"></i><b>13.2</b> Creating Shapefiles from Dataframes</a></li>
+<li class="chapter" data-level="13.3" data-path="creating-maps-using-shapefiles.html"><a href="creating-maps-using-shapefiles.html#thematics-map-with-created-and-built-in-shapefiles"><i class="fa fa-check"></i><b>13.3</b> Thematics Map with Created and Built-in Shapefiles</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="creating-maps-using-shapefiles.html"><a href="creating-maps-using-shapefiles.html#example-1-gapminder-data"><i class="fa fa-check"></i><b>13.3.1</b> Example 1: Gapminder Data</a></li>
+<li class="chapter" data-level="13.3.2" data-path="creating-maps-using-shapefiles.html"><a href="creating-maps-using-shapefiles.html#example-2-philadelphia-neighborhood-shapefiles-in-json"><i class="fa fa-check"></i><b>13.3.2</b> Example 2: Philadelphia Neighborhood Shapefiles in Json</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="introduction-to-tableau.html"><a href="introduction-to-tableau.html"><i class="fa fa-check"></i><b>14</b> Introduction to Tableau</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="introduction-to-tableau.html"><a href="introduction-to-tableau.html#data-loading"><i class="fa fa-check"></i><b>14.1</b> Data Loading</a></li>
+<li class="chapter" data-level="14.2" data-path="introduction-to-tableau.html"><a href="introduction-to-tableau.html#opening-work-sheet"><i class="fa fa-check"></i><b>14.2</b> Opening Work Sheet</a></li>
+<li class="chapter" data-level="14.3" data-path="introduction-to-tableau.html"><a href="introduction-to-tableau.html#basic-statistical-charts-with-existing-variables"><i class="fa fa-check"></i><b>14.3</b> Basic Statistical Charts with Existing Variables</a>
+<ul>
+<li class="chapter" data-level="14.3.1" data-path="introduction-to-tableau.html"><a href="introduction-to-tableau.html#bar-chart"><i class="fa fa-check"></i><b>14.3.1</b> Bar Chart</a></li>
+<li class="chapter" data-level="14.3.2" data-path="introduction-to-tableau.html"><a href="introduction-to-tableau.html#pie-chart-1"><i class="fa fa-check"></i><b>14.3.2</b> Pie Chart</a></li>
+<li class="chapter" data-level="14.3.3" data-path="introduction-to-tableau.html"><a href="introduction-to-tableau.html#histogram-2"><i class="fa fa-check"></i><b>14.3.3</b> Histogram</a></li>
+<li class="chapter" data-level="14.3.4" data-path="introduction-to-tableau.html"><a href="introduction-to-tableau.html#box-plot"><i class="fa fa-check"></i><b>14.3.4</b> Box-plot</a></li>
+<li class="chapter" data-level="14.3.5" data-path="introduction-to-tableau.html"><a href="introduction-to-tableau.html#line-chart"><i class="fa fa-check"></i><b>14.3.5</b> Line Chart</a></li>
+<li class="chapter" data-level="14.3.6" data-path="introduction-to-tableau.html"><a href="introduction-to-tableau.html#scatter-plot"><i class="fa fa-check"></i><b>14.3.6</b> Scatter Plot</a></li>
+<li class="chapter" data-level="14.3.7" data-path="introduction-to-tableau.html"><a href="introduction-to-tableau.html#bubble-chart"><i class="fa fa-check"></i><b>14.3.7</b> Bubble Chart</a></li>
+<li class="chapter" data-level="14.3.8" data-path="introduction-to-tableau.html"><a href="introduction-to-tableau.html#treemap"><i class="fa fa-check"></i><b>14.3.8</b> Treemap</a></li>
+<li class="chapter" data-level="14.3.9" data-path="introduction-to-tableau.html"><a href="introduction-to-tableau.html#maps"><i class="fa fa-check"></i><b>14.3.9</b> Maps</a></li>
+<li class="chapter" data-level="14.3.10" data-path="introduction-to-tableau.html"><a href="introduction-to-tableau.html#density-maps"><i class="fa fa-check"></i><b>14.3.10</b> Density Maps</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="introduction-to-tableau.html"><a href="introduction-to-tableau.html#basic-charts-with-derived-variables"><i class="fa fa-check"></i><b>14.4</b> Basic Charts with Derived Variables</a></li>
+<li class="chapter" data-level="14.5" data-path="introduction-to-tableau.html"><a href="introduction-to-tableau.html#tableau-dashboards"><i class="fa fa-check"></i><b>14.5</b> Tableau Dashboards</a>
+<ul>
+<li class="chapter" data-level="14.5.1" data-path="introduction-to-tableau.html"><a href="introduction-to-tableau.html#design-dashboards-with-tableau"><i class="fa fa-check"></i><b>14.5.1</b> Design Dashboards with Tableau</a></li>
+<li class="chapter" data-level="14.5.2" data-path="introduction-to-tableau.html"><a href="introduction-to-tableau.html#tableau-story-point"><i class="fa fa-check"></i><b>14.5.2</b> Tableau Story Point</a></li>
+</ul></li>
+<li class="chapter" data-level="14.6" data-path="introduction-to-tableau.html"><a href="introduction-to-tableau.html#some-youtube-tutorials-on-tableau"><i class="fa fa-check"></i><b>14.6</b> Some Youtube Tutorials on Tableau</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="getting-started-with-r-shiny.html"><a href="getting-started-with-r-shiny.html"><i class="fa fa-check"></i><b>15</b> Getting Started with R Shiny</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="getting-started-with-r-shiny.html"><a href="getting-started-with-r-shiny.html#the-ide-of-rshiny-apps"><i class="fa fa-check"></i><b>15.1</b> The IDE of RShiny Apps</a></li>
+<li class="chapter" data-level="15.2" data-path="getting-started-with-r-shiny.html"><a href="getting-started-with-r-shiny.html#embedding-shiny-apps-in-rmarkdown"><i class="fa fa-check"></i><b>15.2</b> Embedding Shiny Apps in RMarkdown</a></li>
+<li class="chapter" data-level="15.3" data-path="getting-started-with-r-shiny.html"><a href="getting-started-with-r-shiny.html#components-of-an-shiny-applications"><i class="fa fa-check"></i><b>15.3</b> Components of An Shiny Applications</a></li>
+<li class="chapter" data-level="15.4" data-path="getting-started-with-r-shiny.html"><a href="getting-started-with-r-shiny.html#the-anatomy-of-a-shiny-application"><i class="fa fa-check"></i><b>15.4</b> The Anatomy of a Shiny Application</a></li>
+<li class="chapter" data-level="15.5" data-path="getting-started-with-r-shiny.html"><a href="getting-started-with-r-shiny.html#how-shiny-apps-work"><i class="fa fa-check"></i><b>15.5</b> How Shiny Apps Work?</a></li>
+<li class="chapter" data-level="15.6" data-path="getting-started-with-r-shiny.html"><a href="getting-started-with-r-shiny.html#some-built-in-demonstrations-of-shiny-apps"><i class="fa fa-check"></i><b>15.6</b> Some Built-in Demonstrations of Shiny Apps</a></li>
+<li class="chapter" data-level="15.7" data-path="getting-started-with-r-shiny.html"><a href="getting-started-with-r-shiny.html#ui-layout-designs---a-glance"><i class="fa fa-check"></i><b>15.7</b> UI Layout Designs - A Glance</a>
+<ul>
+<li class="chapter" data-level="15.7.1" data-path="getting-started-with-r-shiny.html"><a href="getting-started-with-r-shiny.html#siderbar-layout"><i class="fa fa-check"></i><b>15.7.1</b> Siderbar Layout</a></li>
+</ul></li>
+<li class="chapter" data-level="15.8" data-path="getting-started-with-r-shiny.html"><a href="getting-started-with-r-shiny.html#some-basic-input-widgets"><i class="fa fa-check"></i><b>15.8</b> Some Basic Input Widgets</a>
+<ul>
+<li class="chapter" data-level="15.8.1" data-path="getting-started-with-r-shiny.html"><a href="getting-started-with-r-shiny.html#free-text"><i class="fa fa-check"></i><b>15.8.1</b> Free Text</a></li>
+<li class="chapter" data-level="15.8.2" data-path="getting-started-with-r-shiny.html"><a href="getting-started-with-r-shiny.html#numeric-inputs"><i class="fa fa-check"></i><b>15.8.2</b> Numeric Inputs</a></li>
+<li class="chapter" data-level="15.8.3" data-path="getting-started-with-r-shiny.html"><a href="getting-started-with-r-shiny.html#limited-choices"><i class="fa fa-check"></i><b>15.8.3</b> Limited Choices</a></li>
+<li class="chapter" data-level="15.8.4" data-path="getting-started-with-r-shiny.html"><a href="getting-started-with-r-shiny.html#file-uploading-and-downloading"><i class="fa fa-check"></i><b>15.8.4</b> File Uploading and Downloading</a></li>
+</ul></li>
+<li class="chapter" data-level="15.9" data-path="getting-started-with-r-shiny.html"><a href="getting-started-with-r-shiny.html#case-study-i---density-of-normal-distribution"><i class="fa fa-check"></i><b>15.9</b> Case Study I - Density of Normal Distribution</a></li>
+<li class="chapter" data-level="15.10" data-path="getting-started-with-r-shiny.html"><a href="getting-started-with-r-shiny.html#case-study-2---central-limit-theorem"><i class="fa fa-check"></i><b>15.10</b> Case Study 2 - Central Limit Theorem</a></li>
+<li class="chapter" data-level="15.11" data-path="getting-started-with-r-shiny.html"><a href="getting-started-with-r-shiny.html#more-effective-code"><i class="fa fa-check"></i><b>15.11</b> More Effective Code</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="shiny-ui-and-server-design.html"><a href="shiny-ui-and-server-design.html"><i class="fa fa-check"></i><b>16</b> Shiny UI and Server Design</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="shiny-ui-and-server-design.html"><a href="shiny-ui-and-server-design.html#naming-conventions-revisited"><i class="fa fa-check"></i><b>16.1</b> Naming Conventions Revisited</a></li>
+<li class="chapter" data-level="16.2" data-path="shiny-ui-and-server-design.html"><a href="shiny-ui-and-server-design.html#working-data-set"><i class="fa fa-check"></i><b>16.2</b> Working Data Set</a></li>
+<li class="chapter" data-level="16.3" data-path="shiny-ui-and-server-design.html"><a href="shiny-ui-and-server-design.html#ui-module-front-end-design"><i class="fa fa-check"></i><b>16.3</b> UI Module: Front-end Design</a></li>
+<li class="chapter" data-level="16.4" data-path="shiny-ui-and-server-design.html"><a href="shiny-ui-and-server-design.html#server-module-back-end-coding"><i class="fa fa-check"></i><b>16.4</b> Server Module: Back-end Coding</a></li>
+<li class="chapter" data-level="16.5" data-path="shiny-ui-and-server-design.html"><a href="shiny-ui-and-server-design.html#file-uploading"><i class="fa fa-check"></i><b>16.5</b> File Uploading</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="shiny-dashboard-and-storyboard.html"><a href="shiny-dashboard-and-storyboard.html"><i class="fa fa-check"></i><b>17</b> Shiny Dashboard and Storyboard</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="shiny-dashboard-and-storyboard.html"><a href="shiny-dashboard-and-storyboard.html#flexdashboard"><i class="fa fa-check"></i><b>17.1</b> <strong>flexdashboard</strong></a></li>
+<li class="chapter" data-level="17.2" data-path="shiny-dashboard-and-storyboard.html"><a href="shiny-dashboard-and-storyboard.html#shinydashboard"><i class="fa fa-check"></i><b>17.2</b> <strong>shinydashboard</strong></a></li>
+<li class="chapter" data-level="17.3" data-path="shiny-dashboard-and-storyboard.html"><a href="shiny-dashboard-and-storyboard.html#three-web-application-terms"><i class="fa fa-check"></i><b>17.3</b> Three Web Application Terms</a></li>
+<li class="chapter" data-level="17.4" data-path="shiny-dashboard-and-storyboard.html"><a href="shiny-dashboard-and-storyboard.html#using-flexdashboard"><i class="fa fa-check"></i><b>17.4</b> Using Flexdashboard</a>
+<ul>
+<li class="chapter" data-level="17.4.1" data-path="shiny-dashboard-and-storyboard.html"><a href="shiny-dashboard-and-storyboard.html#components"><i class="fa fa-check"></i><b>17.4.1</b> Components</a></li>
+<li class="chapter" data-level="17.4.2" data-path="shiny-dashboard-and-storyboard.html"><a href="shiny-dashboard-and-storyboard.html#basic-flexdashboar-layout"><i class="fa fa-check"></i><b>17.4.2</b> Basic Flexdashboar Layout</a></li>
+</ul></li>
+<li class="chapter" data-level="17.5" data-path="shiny-dashboard-and-storyboard.html"><a href="shiny-dashboard-and-storyboard.html#storyboards"><i class="fa fa-check"></i><b>17.5</b> Storyboards</a>
+<ul>
+<li class="chapter" data-level="17.5.1" data-path="shiny-dashboard-and-storyboard.html"><a href="shiny-dashboard-and-storyboard.html#storyboard-basics"><i class="fa fa-check"></i><b>17.5.1</b> Storyboard Basics</a></li>
+<li class="chapter" data-level="17.5.2" data-path="shiny-dashboard-and-storyboard.html"><a href="shiny-dashboard-and-storyboard.html#storyboard-pages"><i class="fa fa-check"></i><b>17.5.2</b> Storyboard Pages</a></li>
+<li class="chapter" data-level="17.5.3" data-path="shiny-dashboard-and-storyboard.html"><a href="shiny-dashboard-and-storyboard.html#commentary"><i class="fa fa-check"></i><b>17.5.3</b> Commentary</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">STA553 E-Pack: Data Visualization</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="introduction-to-tableau" class="section level1 hasAnchor" number="14">
+<h1><span class="header-section-number">Topic 14</span> Introduction to Tableau<a href="introduction-to-tableau.html#introduction-to-tableau" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>The Hawks data set was collected by students from Cornell College. It is built in in the R library {Stat2Data}. I also made a copy and posted it at <a href="https://raw.githubusercontent.com/pengdsci/sta553/main/Tableau/hawks.csv" class="uri">https://raw.githubusercontent.com/pengdsci/sta553/main/Tableau/hawks.csv</a>. You can download it and save it to a folder on your machine.</p>
+<pre><code>data(&quot;Hawks&quot;)
+write.csv(Hawks, file=&quot;/Users/chengpeng/WCU/Teaching/2022Spring/STA553/tableau/hawks.csv&quot;)</code></pre>
+<p>Tableau uses manual manual-driven approach to load data in certain formats. The following figure shows the types of external data that are connected to Tableau. There are some built-in data sets available in Tableau for practice purposes.</p>
+<div id="data-loading" class="section level2 hasAnchor" number="14.1">
+<h2><span class="header-section-number">14.1</span> Data Loading<a href="introduction-to-tableau.html#data-loading" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We open the program and see the following UI.</p>
+<p><br />
+</p>
+<p><img src="tblu/TBLFrontPage.png" width="85%" style="display: block; margin: auto;" /></p>
+<p>The Hawks data is in CSV format, we choose <code>text file</code> to connect to the data set. After the data is connected, we will see the following Data Source page with brief information on the data set.</p>
+<p><img src="tblu/TBLDataSourcePage.png" width="85%" style="display: block; margin: auto;" /></p>
+<p>We can explore the variables in the data set on the data source page. We can connect to multiple data sets and merge them on this page.</p>
+</div>
+<div id="opening-work-sheet" class="section level2 hasAnchor" number="14.2">
+<h2><span class="header-section-number">14.2</span> Opening Work Sheet<a href="introduction-to-tableau.html#opening-work-sheet" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Click the Sheet Tab in the bottom left of the data source data, we will the list of the variables and the panels of visualization tools for making charts.</p>
+<p><img src="tblu/TBLSheet.png" width="85%" style="display: block; margin: auto;" /></p>
+<p>Statistical charts are created on different sheets. We can add more sheets as needed and change the default sheet name to a meaningful name.</p>
+<p>Next, we create commonly used statistical charts in separate sheets.</p>
+</div>
+<div id="basic-statistical-charts-with-existing-variables" class="section level2 hasAnchor" number="14.3">
+<h2><span class="header-section-number">14.3</span> Basic Statistical Charts with Existing Variables<a href="introduction-to-tableau.html#basic-statistical-charts-with-existing-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="bar-chart" class="section level3 hasAnchor" number="14.3.1">
+<h3><span class="header-section-number">14.3.1</span> Bar Chart<a href="introduction-to-tableau.html#bar-chart" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Bar charts are one of the most common data visualizations. We can use them to quickly compare data across categories, highlight differences, show trends and outliers, and reveal historical highs and lows at a glance. Bar charts are especially effective when you have data that can be split into multiple categories.</p>
+<p>We consider the distribution of hawk species. Change <code>Sheet 1</code> to <code>barChart</code>.</p>
+<p><strong>Step 1</strong>: Drag <code>Species</code> to the Column field</p>
+<p><strong>Step 2</strong>: Drag <code>Species</code> to the Row field and change it to counts (frequencies).</p>
+<center>
+<table border="0">
+<col style="width:47%">
+<col style="width:6%">
+<col style="width:47%">
+<tr>
+<td>
+<img src="tblu/TBLbarChart01.png" width="85%" style="display: block; margin: auto;" />
+</td>
+<td>
+</td>
+<img src="tblu/TBLbarChart02.png" width="85%" style="display: block; margin: auto;" />
+</td>
+</tr>
+</table>
+</center>
+</div>
+<div id="pie-chart-1" class="section level3 hasAnchor" number="14.3.2">
+<h3><span class="header-section-number">14.3.2</span> Pie Chart<a href="introduction-to-tableau.html#pie-chart-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Pie charts are powerful for adding detail to other visualizations. Alone, a pie chart doesn’t give the viewer a way to quickly and accurately compare information. Since the viewer has to create context on their own, key points from your data are missed. Instead of making a pie chart the focus of your dashboard, try using it to drill down on other visualizations.</p>
+<p><strong>Step 1</strong>: Repeat the two steps in bar chart.</p>
+<p><strong>Step 2</strong>: Click <code>Show Me</code> on the top-right of the UI and select <code>piechart icon</code>.</p>
+<p><strong>Step 3</strong>: Select the <code>Entire View</code> from the top panel drop-down menu.</p>
+<p><strong>Step 4</strong>: drag <code>Species</code> to <code>Label</code> in <strong>Marks</strong> panel.</p>
+<center>
+<table border="0">
+<col style="width:47%">
+<col style="width:6%">
+<col style="width:47%">
+<tr>
+<td>
+<img src="tblu/TBLpieChart01.png" width="85%" style="display: block; margin: auto;" />
+</td>
+<td>
+</td>
+<img src="tblu/TBLpieChart02.png" width="85%" style="display: block; margin: auto;" />
+</td>
+</tr>
+</table>
+</center>
+</div>
+<div id="histogram-2" class="section level3 hasAnchor" number="14.3.3">
+<h3><span class="header-section-number">14.3.3</span> Histogram<a href="introduction-to-tableau.html#histogram-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A histogram is a chart that displays the shape of a distribution. A histogram looks like a bar chart but groups values for a continuous measure into ranges or bins.</p>
+<p><strong>Step 1</strong>: drag <code>weight</code> to the column field.</p>
+<p><strong>Step 2</strong>: Click <code>show me</code>, in the drop-down menu and select the <code>histogram</code> icon.</p>
+<p><strong>Step 3</strong>: Click the <code>color</code> icon in the Marks panel to adjust the color and border of the histogram.</p>
+<center>
+<table border="0">
+<col style="width:47%">
+<col style="width:6%">
+<col style="width:47%">
+<tr>
+<td>
+<img src="tblu/TBLhistogram02.png" width="85%" style="display: block; margin: auto;" />
+</td>
+<td>
+</td>
+<td>
+<img src="tblu/TBLhistogram01.png" width="85%" style="display: block; margin: auto;" />
+</td>
+</tr>
+</table>
+</center>
+</div>
+<div id="box-plot" class="section level3 hasAnchor" number="14.3.4">
+<h3><span class="header-section-number">14.3.4</span> Box-plot<a href="introduction-to-tableau.html#box-plot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We can use box plots, also known as box-and-whisker plots, to show the distribution of values along an axis. Boxes indicate the middle 50 percent of the data (that is, the middle two quartiles of the data’s distribution).</p>
+<p>The following steps are used to create a simple box plot.</p>
+<p><strong>Step 1</strong>: add a numerical variable to the sheet (we use <code>weight</code> in this example).</p>
+<p><strong>Step 2</strong>: change <code>weight</code> to dimension. It will automatically create a default box plot with data points plotted on the numerical axis.</p>
+<p><strong>Step 3</strong>: change the appearance of the box-plot by selecting <strong>Entire View</strong> (see the screenshot)</p>
+<p><strong>Step 4</strong>: choose <code>Gantt Bar</code> to show the density of the values and edit the boxplot to get a better chart.</p>
+<center>
+<table border="0">
+<col style="width:47%">
+<col style="width:6%">
+<col style="width:47%">
+<tr>
+<td>
+<img src="tblu/TBLboxPlot01.png" width="85%" style="display: block; margin: auto;" />
+</td>
+<td>
+</td>
+<td>
+<img src="tblu/TBLboxPlot02.png" width="85%" style="display: block; margin: auto;" />
+</td>
+</tr>
+</table>
+</center>
+</div>
+<div id="line-chart" class="section level3 hasAnchor" number="14.3.5">
+<h3><span class="header-section-number">14.3.5</span> Line Chart<a href="introduction-to-tableau.html#line-chart" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The line chart, or line graph, connects several distinct data points, presenting them as one continuous evolution. Use line charts to view trends in data, usually over time (like stock price changes over five years or website page views for the month). The result is a simple, straightforward way to visualize changes in one value relative to another.</p>
+<p><strong>Step 1</strong>: Drap <code>year</code> to the column field and <code>Species</code> to the row field and convert them into frequencies.</p>
+<p><strong>Step 2</strong>: Click <code>Show Me</code> on the top-right of the UI and select the <code>line plot</code> icon.</p>
+<p><strong>Step 3</strong>: Right-click <code>Species</code> and <code>Sex</code> and send them to the <strong>Filter</strong> panel.</p>
+<p><strong>Step 4</strong>: Choose an appropriate display form of the filter (see the right panel of the following screenshot)</p>
+<center>
+<table border="0">
+<col style="width:47%">
+<col style="width:6%">
+<col style="width:47%">
+<tr>
+<td>
+<img src="tblu/TBLlinePlot01.png" width="85%" style="display: block; margin: auto;" />
+</td>
+<td>
+</td>
+<td>
+<img src="tblu/TBLlinePlot02.png" width="85%" style="display: block; margin: auto;" />
+</td>
+</tr>
+</table>
+</center>
+</div>
+<div id="scatter-plot" class="section level3 hasAnchor" number="14.3.6">
+<h3><span class="header-section-number">14.3.6</span> Scatter Plot<a href="introduction-to-tableau.html#scatter-plot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Scatter plots are an effective way to investigate the relationship between different variables, showing if one variable is a good predictor of another, or if they tend to change independently. A scatter plot presents lots of distinct data points on a single chart. The chart can then be enhanced with analytics like cluster analysis or trend lines.</p>
+<p>Let’s explore the association between the lengths of wings and tails of hawks across the species. The following steps create a simple scatter plot in Tableau.</p>
+<p><strong>Step 1</strong>: Drag the two numerical variables to column and row fields.</p>
+<p><strong>Step 2</strong>: Change the two aggregated variables (by default) to <code>dimension</code> (see the left-hand side screenshot).</p>
+<p><strong>Step 3</strong>: Color code the species (drag <code>species</code> to the <strong>color</strong> mark).</p>
+<p><strong>Step 4</strong>: Choose the categorical variables to define filters to explore the association of a subset of the data (partial association) using a drop-down menu, radio button, slider, etc.</p>
+<center>
+<table border="0">
+<col style="width:47%">
+<col style="width:6%">
+<col style="width:47%">
+<tr>
+<td>
+<img src="tblu/TBLscatterPlot01.png" width="85%" style="display: block; margin: auto;" />
+</td>
+<td>
+</td>
+<td>
+<img src="tblu/TBLscatterPlot02.png" width="85%" style="display: block; margin: auto;" />
+</td>
+</tr>
+</table>
+</center>
+</div>
+<div id="bubble-chart" class="section level3 hasAnchor" number="14.3.7">
+<h3><span class="header-section-number">14.3.7</span> Bubble Chart<a href="introduction-to-tableau.html#bubble-chart" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Although bubbles aren’t technically their own type of visualization, using them as a technique adds detail to scatter plots or maps to show the relationship between three or more measures. Varying the size and color of circles create visually compelling charts that present large volumes of data at once.</p>
+<p>A bubble chart is modified from a regular scatter plot. We next use the above scatter plot as a base plot and make the point size proportional to the value of variable <code>wing</code>.</p>
+<p><strong>Step 1</strong>: create a basic scatter plot (following steps 1-4 in the previous section of the scatter plot).</p>
+<p><strong>Step 2</strong>: drag variable <code>wing</code> to <strong>size</strong> icon (Marks panel).</p>
+<p><strong>Step 3</strong>: right <strong>color</strong> icon in Marks panel to adjust transparency and modify the point border to make partially overlapped points distinguishable.</p>
+<p><strong>Step 4</strong>: convert <code>year</code> to a string variable and add <code>sex</code> and <code>year</code> to the filter.</p>
+<p><strong>Step 5</strong>: Change the default display of year from <code>select menu</code> to <strong>drop-down menu</strong> and <code>sex</code> to <strong>radio button</strong></p>
+<center>
+<table border="0">
+<col style="width:47%">
+<col style="width:6%">
+<col style="width:47%">
+<tr>
+<td>
+<img src="tblu/TBLbubblePlot01.png" width="85%" style="display: block; margin: auto;" />
+</td>
+<td>
+</td>
+<td>
+<img src="tblu/TBLbubblePlot02.png" width="85%" style="display: block; margin: auto;" />
+</td>
+</tr>
+</table>
+</center>
+</div>
+<div id="treemap" class="section level3 hasAnchor" number="14.3.8">
+<h3><span class="header-section-number">14.3.8</span> Treemap<a href="introduction-to-tableau.html#treemap" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Treemaps relate different segments of your data to the whole. As the name of the chart suggests, each rectangle in a treemap is subdivided into smaller rectangles, or sub-branches, based on its proportion to the whole. They make efficient use of space to show the percent total for each category.</p>
+</div>
+<div id="maps" class="section level3 hasAnchor" number="14.3.9">
+<h3><span class="header-section-number">14.3.9</span> Maps<a href="introduction-to-tableau.html#maps" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Maps are a no-brainer for visualizing any kind of location information, whether it’s postal codes, state abbreviations, country names, or your own custom geocoding. If you have geographic information associated with your data, maps are a simple and compelling way to show how location correlates with trends in your data. Let’s look at a small data set with geo-information. The data set can be found at <a href="https://raw.githubusercontent.com/pengdsci/datasets/main/Realestate.csv" class="uri">https://raw.githubusercontent.com/pengdsci/datasets/main/Realestate.csv</a>. We first download this data and save it to a local folder so we can connect the data to Tableau.</p>
+<p>The following steps will create a map to view the spatial distribution of properties in the Bay Area.</p>
+<p><strong>Step 1</strong>. Drag <code>longitude</code> and <code>latitude</code> to row and column fields respectively.</p>
+<p><strong>Step 2</strong>. Click <code>Show me</code> and select the World Map in the list of the template plots.</p>
+<p><strong>Step 3</strong>. Go to the top menu bar, and click <code>Map</code> to select a background map.</p>
+<p><strong>Step 4</strong>. Click the <code>Color</code> shelf in the Marks field, and change the default color to an appropriate color.</p>
+<p><strong>Step 5</strong>. Choose an appropriate color.</p>
+<p><strong>Step 6</strong> Select an appropriate variable to determine the point size.</p>
+<p><strong>Step 7</strong> Drag the variable you want to display in the hover text.</p>
+<p>The following screenshot shows the above steps.</p>
+<p><img src="tblu/TBLRealEstMap.png" width="85%" style="display: block; margin: auto;" /></p>
+<p><br />
+</p>
+<p>The actual map is available on the Tableau Public Server at <a href="https://public.tableau.com/app/profile/cpeng/viz/Book1_16487389941160/Sheet4?publish=yes" class="uri">https://public.tableau.com/app/profile/cpeng/viz/Book1_16487389941160/Sheet4?publish=yes</a></p>
+</div>
+<div id="density-maps" class="section level3 hasAnchor" number="14.3.10">
+<h3><span class="header-section-number">14.3.10</span> Density Maps<a href="introduction-to-tableau.html#density-maps" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Density maps reveal patterns or relative concentrations that might otherwise be hidden due to an overlapping mark on a map—helping you identify locations with greater or fewer numbers of data points. Density maps are most effective when working with a data set containing many data points in a small geographic area.</p>
+<p>Let’s use the POC (US gas station data) as an example of how to deal with many data points. The data can be found at: <a href="https://github.com/pengdsci/datasets/raw/main/POC.csv" class="uri">https://github.com/pengdsci/datasets/raw/main/POC.csv</a>. We first download this data file save it into a local folder and then connect Tableau to this data.</p>
+<p>The following suggested steps will create a density map for the US gas stations.</p>
+<p><strong>Step 1</strong>. Convert <code>xcoord</code> and <code>ycoord</code> to longitude and latitude (see the left screenshot below).</p>
+<p><strong>Step 2</strong>. Drag <code>xcoord</code> and <code>ycoord</code> to row and column fields respectively.</p>
+<p><strong>Step 3</strong>. In the drop-down menu of the Marks field, select <code>density</code>.</p>
+<p><strong>Step 4</strong>. Go to the top menu bar, and click <code>Map</code> to select a background map.</p>
+<p><strong>Step 5</strong>. Click the <code>Color</code> shelf in the Marks field, change the default color to an appropriate color.</p>
+<center>
+<table border="0">
+<col style="width:47%">
+<col style="width:6%">
+<col style="width:47%">
+<tr>
+<td>
+<img src="tblu/TBLpocLong.png" width="85%" style="display: block; margin: auto;" />
+</td>
+<td>
+</td>
+<td>
+<img src="tblu/TBLpoc-density.png" width="85%" style="display: block; margin: auto;" />
+</td>
+</tr>
+</table>
+</center>
+</div>
+</div>
+<div id="basic-charts-with-derived-variables" class="section level2 hasAnchor" number="14.4">
+<h2><span class="header-section-number">14.4</span> Basic Charts with Derived Variables<a href="introduction-to-tableau.html#basic-charts-with-derived-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Tableau has a lot of built-in functions that can be used to define derived variables. This section uses several examples to illustrate how to use some of the commonly used functions for creating statistical graphics. The complete list of these built-in functions can be found at <a href="https://help.tableau.com/current/pro/desktop/en-us/functions_all_alphabetical.htm" class="uri">https://help.tableau.com/current/pro/desktop/en-us/functions_all_alphabetical.htm</a></p>
+</div>
+<div id="tableau-dashboards" class="section level2 hasAnchor" number="14.5">
+<h2><span class="header-section-number">14.5</span> Tableau Dashboards<a href="introduction-to-tableau.html#tableau-dashboards" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The data set is to be used in this case study. The visualization with be created using Tableau.</p>
+<p>We first load the working data to R perform a simple exploratory data analysis and then decide what specific visualizations will be created.</p>
+<p>The description of the data can be found at: <a href="https://github.com/pengdsci/sta553/raw/main/dash/mushroom-description.pdf" class="uri">https://github.com/pengdsci/sta553/raw/main/dash/mushroom-description.pdf</a></p>
+<p>The data set can be found at: <a href="https://github.com/pengdsci/sta553/raw/main/dash/mushroom-data.csv" class="uri">https://github.com/pengdsci/sta553/raw/main/dash/mushroom-data.csv</a></p>
+<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="introduction-to-tableau.html#cb303-1" tabindex="-1"></a>mushroom <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://github.com/pengdsci/sta553/raw/main/dash/mushroom-data.csv&quot;</span>)</span>
+<span id="cb303-2"><a href="introduction-to-tableau.html#cb303-2" tabindex="-1"></a><span class="fu">names</span>(mushroom)</span></code></pre></div>
+<pre><code>##  [1] &quot;class&quot;                &quot;cap.diameter&quot;         &quot;cap.shape&quot;            &quot;cap.surface&quot;         
+##  [5] &quot;cap.color&quot;            &quot;does.bruise.or.bleed&quot; &quot;gill.attachment&quot;      &quot;gill.spacing&quot;        
+##  [9] &quot;gill.color&quot;           &quot;stem.height&quot;          &quot;stem.width&quot;           &quot;stem.root&quot;           
+## [13] &quot;stem.surface&quot;         &quot;stem.color&quot;           &quot;veil.type&quot;            &quot;veil.color&quot;          
+## [17] &quot;has.ring&quot;             &quot;ring.type&quot;            &quot;spore.print.color&quot;    &quot;habitat&quot;             
+## [21] &quot;season&quot;</code></pre>
+<p>Three numerical variables are summarized in the following.</p>
+<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="introduction-to-tableau.html#cb305-1" tabindex="-1"></a><span class="fu">summary</span>(mushroom[,<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">10</span>,<span class="dv">11</span>)])</span></code></pre></div>
+<pre><code>##   cap.diameter     stem.height       stem.width    
+##  Min.   : 0.380   Min.   : 0.000   Min.   :  0.00  
+##  1st Qu.: 3.480   1st Qu.: 4.640   1st Qu.:  5.21  
+##  Median : 5.860   Median : 5.950   Median : 10.19  
+##  Mean   : 6.734   Mean   : 6.582   Mean   : 12.15  
+##  3rd Qu.: 8.540   3rd Qu.: 7.740   3rd Qu.: 16.57  
+##  Max.   :62.340   Max.   :33.920   Max.   :103.91</code></pre>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="introduction-to-tableau.html#cb307-1" tabindex="-1"></a>char.var <span class="ot">=</span> mushroom[,<span class="sc">-</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">10</span>,<span class="dv">11</span>)]</span>
+<span id="cb307-2"><a href="introduction-to-tableau.html#cb307-2" tabindex="-1"></a><span class="fu">names</span>(char.var)</span></code></pre></div>
+<pre><code>##  [1] &quot;class&quot;                &quot;cap.shape&quot;            &quot;cap.surface&quot;          &quot;cap.color&quot;           
+##  [5] &quot;does.bruise.or.bleed&quot; &quot;gill.attachment&quot;      &quot;gill.spacing&quot;         &quot;gill.color&quot;          
+##  [9] &quot;stem.root&quot;            &quot;stem.surface&quot;         &quot;stem.color&quot;           &quot;veil.type&quot;           
+## [13] &quot;veil.color&quot;           &quot;has.ring&quot;             &quot;ring.type&quot;            &quot;spore.print.color&quot;   
+## [17] &quot;habitat&quot;              &quot;season&quot;</code></pre>
+<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="introduction-to-tableau.html#cb309-1" tabindex="-1"></a><span class="fu">list</span>(<span class="at">class =</span> <span class="fu">table</span>(char.var<span class="sc">$</span>class),</span>
+<span id="cb309-2"><a href="introduction-to-tableau.html#cb309-2" tabindex="-1"></a>     <span class="at">cap.shape =</span> <span class="fu">table</span>(char.var<span class="sc">$</span>cap.shape),</span>
+<span id="cb309-3"><a href="introduction-to-tableau.html#cb309-3" tabindex="-1"></a>     <span class="at">cap.surface =</span> <span class="fu">table</span>(char.var<span class="sc">$</span>cap.surface),</span>
+<span id="cb309-4"><a href="introduction-to-tableau.html#cb309-4" tabindex="-1"></a>     <span class="at">cap.color =</span> <span class="fu">table</span>(char.var<span class="sc">$</span>cap.color),</span>
+<span id="cb309-5"><a href="introduction-to-tableau.html#cb309-5" tabindex="-1"></a>     <span class="at">does.bruise.or.bleed =</span> <span class="fu">table</span>(char.var<span class="sc">$</span>does.bruise.or.bleed),</span>
+<span id="cb309-6"><a href="introduction-to-tableau.html#cb309-6" tabindex="-1"></a>     <span class="at">gill.attachment =</span> <span class="fu">table</span>(char.var<span class="sc">$</span>gill.attachment),</span>
+<span id="cb309-7"><a href="introduction-to-tableau.html#cb309-7" tabindex="-1"></a>     <span class="at">gill.spacing =</span> <span class="fu">table</span>(char.var<span class="sc">$</span>gill.spacing),</span>
+<span id="cb309-8"><a href="introduction-to-tableau.html#cb309-8" tabindex="-1"></a>     <span class="at">gill.color =</span> <span class="fu">table</span>(char.var<span class="sc">$</span>gill.color),</span>
+<span id="cb309-9"><a href="introduction-to-tableau.html#cb309-9" tabindex="-1"></a>     <span class="at">stem.root =</span> <span class="fu">table</span>(char.var<span class="sc">$</span>stem.root),</span>
+<span id="cb309-10"><a href="introduction-to-tableau.html#cb309-10" tabindex="-1"></a>     <span class="at">stem.surface =</span> <span class="fu">table</span>(char.var<span class="sc">$</span>stem.surface),</span>
+<span id="cb309-11"><a href="introduction-to-tableau.html#cb309-11" tabindex="-1"></a>     <span class="at">stem.color =</span> <span class="fu">table</span>(char.var<span class="sc">$</span>stem.color),</span>
+<span id="cb309-12"><a href="introduction-to-tableau.html#cb309-12" tabindex="-1"></a>     <span class="at">veil.type =</span> <span class="fu">table</span>(char.var<span class="sc">$</span>veil.type),</span>
+<span id="cb309-13"><a href="introduction-to-tableau.html#cb309-13" tabindex="-1"></a>     <span class="at">veil.color =</span> <span class="fu">table</span>(char.var<span class="sc">$</span>veil.color),</span>
+<span id="cb309-14"><a href="introduction-to-tableau.html#cb309-14" tabindex="-1"></a>     <span class="at">has.ring =</span> <span class="fu">table</span>(char.var<span class="sc">$</span>has.ring),</span>
+<span id="cb309-15"><a href="introduction-to-tableau.html#cb309-15" tabindex="-1"></a>     <span class="at">ring.type =</span> <span class="fu">table</span>(char.var<span class="sc">$</span>ring.type),</span>
+<span id="cb309-16"><a href="introduction-to-tableau.html#cb309-16" tabindex="-1"></a>     <span class="at">spore.print.color =</span> <span class="fu">table</span>(char.var<span class="sc">$</span>spore.print.color),</span>
+<span id="cb309-17"><a href="introduction-to-tableau.html#cb309-17" tabindex="-1"></a>     <span class="at">habitat =</span> <span class="fu">table</span>(char.var<span class="sc">$</span>habitat),</span>
+<span id="cb309-18"><a href="introduction-to-tableau.html#cb309-18" tabindex="-1"></a>     <span class="at">season =</span> <span class="fu">table</span>(char.var<span class="sc">$</span>season)</span>
+<span id="cb309-19"><a href="introduction-to-tableau.html#cb309-19" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>## $class
+## 
+##     e     p 
+## 27181 33888 
+## 
+## $cap.shape
+## 
+##     b     c     f     o     p     s     x 
+##  5694  1815 13404  3460  2598  7164 26934 
+## 
+## $cap.surface
+## 
+##           d     e     g     h     i     k     l     s     t     w     y 
+## 14120  4432  2584  4724  4974  2225  2303  1412  7608  8196  2150  6341 
+## 
+## $cap.color
+## 
+##     b     e     g     k     l     n     o     p     r     u     w     y 
+##  1230  4035  4420  1279   828 24218  3656  1703  1782  1709  7666  8543 
+## 
+## $does.bruise.or.bleed
+## 
+##     f     t 
+## 50479 10590 
+## 
+## $gill.attachment
+## 
+##           a     d     e     f     p     s     x 
+##  9884 12698 10247  5648  3530  6001  5648  7413 
+## 
+## $gill.spacing
+## 
+##           c     d     f 
+## 25063 24710  7766  3530 
+## 
+## $gill.color
+## 
+##     b     e     f     g     k     n     o     p     r     u     w     y 
+##   954  1066  3530  4118  2375  9645  2909  5983  1399  1023 18521  9546 
+## 
+## $stem.root
+## 
+##           b     c     f     r     s 
+## 51538  3177   706  1059  1412  3177 
+## 
+## $stem.surface
+## 
+##           f     g     h     i     k     s     t     y 
+## 38124  1059  1765   535  4396  1581  6025  2644  4940 
+## 
+## $stem.color
+## 
+##     b     e     f     g     k     l     n     o     p     r     u     w     y 
+##   173  2050  1059  2626   837   226 18063  2187  1025   542  1490 22926  7865 
+## 
+## $veil.type
+## 
+##           u 
+## 57892  3177 
+## 
+## $veil.color
+## 
+##           e     k     n     u     w     y 
+## 53656   181   353   525   353  5474   527 
+## 
+## $has.ring
+## 
+##     f     t 
+## 45890 15179 
+## 
+## $ring.type
+## 
+##           e     f     g     l     m     p     r     z 
+##  2471  2435 48361  1240  1427   353  1265  1399  2118 
+## 
+## $spore.print.color
+## 
+##           g     k     n     p     r     u     w 
+## 54715   353  2118  1059  1259   171   182  1212 
+## 
+## $habitat
+## 
+##     d     g     h     l     m     p     u     w 
+## 44209  7943  2001  3168  2920   360   115   353 
+## 
+## $season
+## 
+##     a     s     u     w 
+## 30177  2727 22898  5267</code></pre>
+<p>The above frequency table indicates that several categorical variables have a significantly high percentage of missing values. Since we only perform visual analytics to illustrate how to use Tableau to create dashboards, we will not perform any data management for modeling purposes.</p>
+<div id="design-dashboards-with-tableau" class="section level3 hasAnchor" number="14.5.1">
+<h3><span class="header-section-number">14.5.1</span> Design Dashboards with Tableau<a href="introduction-to-tableau.html#design-dashboards-with-tableau" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We briefly introduced the basic statistics charts using Tableau. In this note, we choose both categorical and quantitative variables in the working data set to construct individual charts with Tableau and then <strong>demonstrate how to use these charts to construct a dashboard</strong> with Tableau. We will not write detailed steps here since there are too many different ways to do the same thing.</p>
+<div id="individual-charts" class="section level4 hasAnchor" number="14.5.1.1">
+<h4><span class="header-section-number">14.5.1.1</span> Individual Charts<a href="introduction-to-tableau.html#individual-charts" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>We will construct five descriptive charts: a two-way contingency table, a donuts chart (a variation pie chart), a scatter plot, box plots, and a histogram.</p>
+</div>
+<div id="reactive-dashboard" class="section level4 hasAnchor" number="14.5.1.2">
+<h4><span class="header-section-number">14.5.1.2</span> Reactive Dashboard<a href="introduction-to-tableau.html#reactive-dashboard" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>We will use four individual charts to construct a dashboard that includes a reactive filter to update all charts in the dashboard.</p>
+</div>
+</div>
+<div id="tableau-story-point" class="section level3 hasAnchor" number="14.5.2">
+<h3><span class="header-section-number">14.5.2</span> Tableau Story Point<a href="introduction-to-tableau.html#tableau-story-point" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Tableau can create a form presentation of the existing individual chart so we can tell the story based on the Tableau charts.</p>
+</div>
+</div>
+<div id="some-youtube-tutorials-on-tableau" class="section level2 hasAnchor" number="14.6">
+<h2><span class="header-section-number">14.6</span> Some Youtube Tutorials on Tableau<a href="introduction-to-tableau.html#some-youtube-tutorials-on-tableau" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><p><a href="https://www.youtube.com/watch?v=GrT0wlQ2LZQ" class="uri">https://www.youtube.com/watch?v=GrT0wlQ2LZQ</a> fancy pie charts</p></li>
+<li><p>&lt;<a href="https://public.tableau.com/views/US-States-Facts/Sheet1" class="uri">https://public.tableau.com/views/US-States-Facts/Sheet1</a>?:language=en-US&amp;:display_count=n&amp;:origin=viz_share_link</p></li>
+<li><p><a href="https://public.tableau.com/views/US-States-Facts/Sheet1?:language=en-US&amp;publish=yes&amp;:display_count=n&amp;:origin=viz_share_link" class="uri">https://public.tableau.com/views/US-States-Facts/Sheet1?:language=en-US&amp;publish=yes&amp;:display_count=n&amp;:origin=viz_share_link</a></p></li>
+<li><p><a href="https://www.youtube.com/watch?v=iFGt6j7GZX0" class="uri">https://www.youtube.com/watch?v=iFGt6j7GZX0</a> density curve</p></li>
+<li><p><a href="https://www.youtube.com/watch?v=JvE2q0hWIIo" class="uri">https://www.youtube.com/watch?v=JvE2q0hWIIo</a></p></li>
+<li><p><a href="https://www.youtube.com/watch?v=IIH19j_YG24" class="uri">https://www.youtube.com/watch?v=IIH19j_YG24</a> Excellent video!</p></li>
+<li><p><a href="https://www.youtube.com/watch?v=BcKMPRpHqZ0" class="uri">https://www.youtube.com/watch?v=BcKMPRpHqZ0</a> Dashboard</p></li>
+<li><p><a href="https://www.youtube.com/watch?v=ZfpUzp8mBSw" class="uri">https://www.youtube.com/watch?v=ZfpUzp8mBSw</a> Donut chart</p></li>
+<li><p><a href="https://www.youtube.com/watch?v=gWZtNdMko1k&amp;list=PLWPirh4EWFpGXTBu8ldLZGJCUeTMBpJFK" class="uri">https://www.youtube.com/watch?v=gWZtNdMko1k&amp;list=PLWPirh4EWFpGXTBu8ldLZGJCUeTMBpJFK</a> 91-video tutorials</p></li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="creating-maps-using-shapefiles.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="getting-started-with-r-shiny.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/pengdsci/STA553EB/edit/master/12-BasicChartsWithTableau.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["STA553EB.pdf", "STA553EB.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

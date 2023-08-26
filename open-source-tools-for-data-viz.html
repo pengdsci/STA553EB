@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Topic 3 Open-Source Tools for Data Viz | STA553 E-Pack: Data Visualization</title>
+  <meta name="description" content="The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Topic 3 Open-Source Tools for Data Viz | STA553 E-Pack: Data Visualization" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="The output format for this example is bookdown::gitbook." />
+  <meta name="github-repo" content="rstudio/STA553EB" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Topic 3 Open-Source Tools for Data Viz | STA553 E-Pack: Data Visualization" />
+  
+  <meta name="twitter:description" content="The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Cheng Peng" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="getting-started-with-rmarkdown.html"/>
+<link rel="next" href="r-functions-and-flow-controls.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.1/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/proj4-2.6.2/proj4.min.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.1.1/leaflet.js"></script>
+<script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
+<script src="libs/leaflet-providers-plugin-2.1.1/leaflet-providers-plugin.js"></script>
+<link href="libs/HomeButton-0.0.1/home-button.css" rel="stylesheet" />
+<script src="libs/HomeButton-0.0.1/home-button.js"></script>
+<script src="libs/HomeButton-0.0.1/easy-button-src.min.js"></script>
+<script src="libs/clipboard-0.0.1/setClipboardText.js"></script>
+<link href="libs/mapviewCSS-0.0.1/mapview-popup.css" rel="stylesheet" />
+<link href="libs/mapviewCSS-0.0.1/mapview.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<center><li><a href="./"><font color = "darkred"><b>STA 553 E-Pack: Data Visualization</b></font></a><br><font color = "navy">Cheng Peng</font></li></center>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#data-or-information-visualization"><i class="fa fa-check"></i><b>1.1</b> Data or Information Visualization?</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#aesthetic-considerations"><i class="fa fa-check"></i><b>1.2</b> Aesthetic Considerations</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#topic-coverage"><i class="fa fa-check"></i><b>1.3</b> Topic Coverage</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="getting-started-with-rmarkdown.html"><a href="getting-started-with-rmarkdown.html"><i class="fa fa-check"></i><b>2</b> Getting Started With RMarkdown</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="getting-started-with-rmarkdown.html"><a href="getting-started-with-rmarkdown.html#what-is-rmd"><i class="fa fa-check"></i><b>2.1</b> What is RMD</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="getting-started-with-rmarkdown.html"><a href="getting-started-with-rmarkdown.html#create-an-rmarkdown-file"><i class="fa fa-check"></i><b>2.1.1</b> Create an RMarkdown file</a></li>
+<li class="chapter" data-level="2.1.2" data-path="getting-started-with-rmarkdown.html"><a href="getting-started-with-rmarkdown.html#the-yaml-header"><i class="fa fa-check"></i><b>2.1.2</b> The YAML Header</a></li>
+<li class="chapter" data-level="2.1.3" data-path="getting-started-with-rmarkdown.html"><a href="getting-started-with-rmarkdown.html#markdown-syntax"><i class="fa fa-check"></i><b>2.1.3</b> Markdown Syntax</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="getting-started-with-rmarkdown.html"><a href="getting-started-with-rmarkdown.html#code-chunks"><i class="fa fa-check"></i><b>2.2</b> Code Chunks</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="getting-started-with-rmarkdown.html"><a href="getting-started-with-rmarkdown.html#code-chunk-options"><i class="fa fa-check"></i><b>2.2.1</b> Code Chunk Options</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="getting-started-with-rmarkdown.html"><a href="getting-started-with-rmarkdown.html#inserting-graphics"><i class="fa fa-check"></i><b>2.3</b> Inserting Graphics</a></li>
+<li class="chapter" data-level="2.4" data-path="getting-started-with-rmarkdown.html"><a href="getting-started-with-rmarkdown.html#inserting-tables"><i class="fa fa-check"></i><b>2.4</b> Inserting Tables</a></li>
+<li class="chapter" data-level="2.5" data-path="getting-started-with-rmarkdown.html"><a href="getting-started-with-rmarkdown.html#creating-pdf"><i class="fa fa-check"></i><b>2.5</b> Creating PDF</a></li>
+<li class="chapter" data-level="2.6" data-path="getting-started-with-rmarkdown.html"><a href="getting-started-with-rmarkdown.html#miscellaneous"><i class="fa fa-check"></i><b>2.6</b> Miscellaneous</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="getting-started-with-rmarkdown.html"><a href="getting-started-with-rmarkdown.html#markdown-presentations"><i class="fa fa-check"></i><b>2.6.1</b> Markdown Presentations</a></li>
+<li class="chapter" data-level="2.6.2" data-path="getting-started-with-rmarkdown.html"><a href="getting-started-with-rmarkdown.html#shiny-apps-and-rmarkdown"><i class="fa fa-check"></i><b>2.6.2</b> Shiny Apps and RMarkdown</a></li>
+<li class="chapter" data-level="2.6.3" data-path="getting-started-with-rmarkdown.html"><a href="getting-started-with-rmarkdown.html#working-directory"><i class="fa fa-check"></i><b>2.6.3</b> Working Directory</a></li>
+<li class="chapter" data-level="2.6.4" data-path="getting-started-with-rmarkdown.html"><a href="getting-started-with-rmarkdown.html#css-style"><i class="fa fa-check"></i><b>2.6.4</b> CSS Style</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html"><i class="fa fa-check"></i><b>3</b> Open-Source Tools for Data Viz</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#dataviz"><i class="fa fa-check"></i><b>3.1</b> DataViz</a></li>
+<li class="chapter" data-level="3.2" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#r-rstudio"><i class="fa fa-check"></i><b>3.2</b> R &amp; RStudio</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#what-is-r"><i class="fa fa-check"></i><b>3.2.1</b> What is R?</a></li>
+<li class="chapter" data-level="3.2.2" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#rstudio"><i class="fa fa-check"></i><b>3.2.2</b> RStudio</a></li>
+<li class="chapter" data-level="3.2.3" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#the-relationship-between-r-and-rstudio"><i class="fa fa-check"></i><b>3.2.3</b> The Relationship between R and RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#tableau-public"><i class="fa fa-check"></i><b>3.3</b> Tableau Public</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#about-tableau"><i class="fa fa-check"></i><b>3.3.1</b> About Tableau</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#shiny-server"><i class="fa fa-check"></i><b>3.4</b> Shiny Server</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#what-is-shiny.io"><i class="fa fa-check"></i><b>3.4.1</b> What is shiny.io?</a></li>
+<li class="chapter" data-level="3.4.2" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#register-an-account-with-shiny.io"><i class="fa fa-check"></i><b>3.4.2</b> Register An Account with shiny.io</a></li>
+<li class="chapter" data-level="3.4.3" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#requirements"><i class="fa fa-check"></i><b>3.4.3</b> Requirements</a></li>
+<li class="chapter" data-level="3.4.4" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#steps-for-publishing-shinyapps"><i class="fa fa-check"></i><b>3.4.4</b> Steps for Publishing ShinyApps</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#rpubs"><i class="fa fa-check"></i><b>3.5</b> RPubs</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#what-is-rpubs"><i class="fa fa-check"></i><b>3.5.1</b> What is RPubs?</a></li>
+<li class="chapter" data-level="3.5.2" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#register-an-account-with-rpubs"><i class="fa fa-check"></i><b>3.5.2</b> Register An Account With RPubs</a></li>
+<li class="chapter" data-level="3.5.3" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#requirements-1"><i class="fa fa-check"></i><b>3.5.3</b> Requirements</a></li>
+<li class="chapter" data-level="3.5.4" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#steps-for-publishing-on-rpubs"><i class="fa fa-check"></i><b>3.5.4</b> Steps for Publishing on RPubs</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#github"><i class="fa fa-check"></i><b>3.6</b> Github</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#what-is-github"><i class="fa fa-check"></i><b>3.6.1</b> What is Github?</a></li>
+<li class="chapter" data-level="3.6.2" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#register-a-github-account"><i class="fa fa-check"></i><b>3.6.2</b> Register A Github Account</a></li>
+<li class="chapter" data-level="3.6.3" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#getting-started-with-github"><i class="fa fa-check"></i><b>3.6.3</b> Getting Started With GitHub</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#sas-ondemand"><i class="fa fa-check"></i><b>3.7</b> SAS OnDemand</a>
+<ul>
+<li class="chapter" data-level="3.7.1" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#what-is-sas-ondemand-sas-studio"><i class="fa fa-check"></i><b>3.7.1</b> What is SAS OnDemand (SAS Studio)</a></li>
+<li class="chapter" data-level="3.7.2" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#sign-in-sign-up"><i class="fa fa-check"></i><b>3.7.2</b> Sign-in / Sign-up</a></li>
+<li class="chapter" data-level="3.7.3" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#create-an-sas-profile"><i class="fa fa-check"></i><b>3.7.3</b> Create An SAS Profile</a></li>
+<li class="chapter" data-level="3.7.4" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#log-into-sas-academic-ondemand"><i class="fa fa-check"></i><b>3.7.4</b> Log Into SAS Academic OnDemand</a></li>
+<li class="chapter" data-level="3.7.5" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#sas-studio-user-interfacce"><i class="fa fa-check"></i><b>3.7.5</b> SAS Studio User Interfacce</a></li>
+<li class="chapter" data-level="3.7.6" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#a-cautionary-note-on-data-security"><i class="fa fa-check"></i><b>3.7.6</b> <strong>A Cautionary Note On Data Security</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#r-viz-libraries"><i class="fa fa-check"></i><b>3.8</b> R Viz Libraries</a>
+<ul>
+<li class="chapter" data-level="3.8.1" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#tidyverse"><i class="fa fa-check"></i><b>3.8.1</b> Tidyverse</a></li>
+<li class="chapter" data-level="3.8.2" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#ggplot2"><i class="fa fa-check"></i><b>3.8.2</b> ggplot2</a></li>
+<li class="chapter" data-level="3.8.3" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#plotly"><i class="fa fa-check"></i><b>3.8.3</b> plotly</a></li>
+<li class="chapter" data-level="3.8.4" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#leaflet"><i class="fa fa-check"></i><b>3.8.4</b> leaflet</a></li>
+<li class="chapter" data-level="3.8.5" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#mapview"><i class="fa fa-check"></i><b>3.8.5</b> mapview</a></li>
+<li class="chapter" data-level="3.8.6" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#tmap"><i class="fa fa-check"></i><b>3.8.6</b> tmap</a></li>
+<li class="chapter" data-level="3.8.7" data-path="open-source-tools-for-data-viz.html"><a href="open-source-tools-for-data-viz.html#other-infrequently-used-packages"><i class="fa fa-check"></i><b>3.8.7</b> Other infrequently used packages</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="r-functions-and-flow-controls.html"><a href="r-functions-and-flow-controls.html"><i class="fa fa-check"></i><b>4</b> R Functions and Flow Controls</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="r-functions-and-flow-controls.html"><a href="r-functions-and-flow-controls.html#control-flow"><i class="fa fa-check"></i><b>4.1</b> Control flow</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="r-functions-and-flow-controls.html"><a href="r-functions-and-flow-controls.html#choices"><i class="fa fa-check"></i><b>4.1.1</b> Choices</a></li>
+<li class="chapter" data-level="4.1.2" data-path="r-functions-and-flow-controls.html"><a href="r-functions-and-flow-controls.html#loops"><i class="fa fa-check"></i><b>4.1.2</b> Loops</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="r-functions-and-flow-controls.html"><a href="r-functions-and-flow-controls.html#functions"><i class="fa fa-check"></i><b>4.2</b> Functions</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="r-functions-and-flow-controls.html"><a href="r-functions-and-flow-controls.html#function-fundamentals"><i class="fa fa-check"></i><b>4.2.1</b> Function fundamentals</a></li>
+<li class="chapter" data-level="4.2.2" data-path="r-functions-and-flow-controls.html"><a href="r-functions-and-flow-controls.html#function-composition"><i class="fa fa-check"></i><b>4.2.2</b> Function Composition</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="getting-started-with-base-r-graphics.html"><a href="getting-started-with-base-r-graphics.html"><i class="fa fa-check"></i><b>5</b> Getting Started with Base R Graphics</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="getting-started-with-base-r-graphics.html"><a href="getting-started-with-base-r-graphics.html#base-graphics"><i class="fa fa-check"></i><b>5.1</b> Base Graphics</a></li>
+<li class="chapter" data-level="5.2" data-path="getting-started-with-base-r-graphics.html"><a href="getting-started-with-base-r-graphics.html#simple-base-graphics"><i class="fa fa-check"></i><b>5.2</b> Simple Base Graphics</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="getting-started-with-base-r-graphics.html"><a href="getting-started-with-base-r-graphics.html#histogram"><i class="fa fa-check"></i><b>5.2.1</b> Histogram</a></li>
+<li class="chapter" data-level="5.2.2" data-path="getting-started-with-base-r-graphics.html"><a href="getting-started-with-base-r-graphics.html#boxplot"><i class="fa fa-check"></i><b>5.2.2</b> Boxplot</a></li>
+<li class="chapter" data-level="5.2.3" data-path="getting-started-with-base-r-graphics.html"><a href="getting-started-with-base-r-graphics.html#scatterplot"><i class="fa fa-check"></i><b>5.2.3</b> Scatterplot</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="getting-started-with-base-r-graphics.html"><a href="getting-started-with-base-r-graphics.html#some-important-base-graphics-parameters"><i class="fa fa-check"></i><b>5.3</b> Some Important Base Graphics Parameters</a></li>
+<li class="chapter" data-level="5.4" data-path="getting-started-with-base-r-graphics.html"><a href="getting-started-with-base-r-graphics.html#base-plotting-functions"><i class="fa fa-check"></i><b>5.4</b> Base Plotting Functions</a></li>
+<li class="chapter" data-level="5.5" data-path="getting-started-with-base-r-graphics.html"><a href="getting-started-with-base-r-graphics.html#base-plot-with-regression-line"><i class="fa fa-check"></i><b>5.5</b> Base Plot with Regression Line</a></li>
+<li class="chapter" data-level="5.6" data-path="getting-started-with-base-r-graphics.html"><a href="getting-started-with-base-r-graphics.html#multiple-base-plots"><i class="fa fa-check"></i><b>5.6</b> Multiple Base Plots</a></li>
+<li class="chapter" data-level="5.7" data-path="getting-started-with-base-r-graphics.html"><a href="getting-started-with-base-r-graphics.html#controlling-point-size-and-transparency"><i class="fa fa-check"></i><b>5.7</b> Controlling Point Size and Transparency</a></li>
+<li class="chapter" data-level="5.8" data-path="getting-started-with-base-r-graphics.html"><a href="getting-started-with-base-r-graphics.html#annotations"><i class="fa fa-check"></i><b>5.8</b> Annotations</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="foundations-of-data-visualization.html"><a href="foundations-of-data-visualization.html"><i class="fa fa-check"></i><b>6</b> Foundations of Data Visualization</a></li>
+<li class="chapter" data-level="7" data-path="ethics-in-data-visualization.html"><a href="ethics-in-data-visualization.html"><i class="fa fa-check"></i><b>7</b> Ethics in Data Visualization</a></li>
+<li class="chapter" data-level="8" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html"><i class="fa fa-check"></i><b>8</b> Data Processing with Tidyverse</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#data-cleaning-and-preparation-for-visualization"><i class="fa fa-check"></i><b>8.1</b> Data Cleaning and Preparation for Visualization</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#data-cleaning"><i class="fa fa-check"></i><b>8.1.1</b> Data Cleaning</a></li>
+<li class="chapter" data-level="8.1.2" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#data-preparation-for-visualization"><i class="fa fa-check"></i><b>8.1.2</b> Data Preparation for Visualization</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#basic-data-management-merging-data-sets"><i class="fa fa-check"></i><b>8.2</b> Basic Data Management: Merging Data Sets</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#merge-data-sets"><i class="fa fa-check"></i><b>8.2.1</b> Merge Data Sets</a></li>
+<li class="chapter" data-level="8.2.2" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#merging-data-in-base-r"><i class="fa fa-check"></i><b>8.2.2</b> Merging Data in Base R</a></li>
+<li class="chapter" data-level="8.2.3" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#merging-data-with-mutating-joins-in-dplyr"><i class="fa fa-check"></i><b>8.2.3</b> Merging Data with Mutating Joins in <strong>dplyr</strong></a></li>
+<li class="chapter" data-level="8.2.4" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#use-of-pipe-operator-with-mutating-joins"><i class="fa fa-check"></i><b>8.2.4</b> Use of Pipe Operator <code>%&gt;%</code> with Mutating Joins</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#basic-data-management-subsetting-data"><i class="fa fa-check"></i><b>8.3</b> Basic Data Management: Subsetting Data</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#accessors-in-r-and"><i class="fa fa-check"></i><b>8.3.1</b> Accessors in R <code>[</code>, <code>[[</code> and <code>$</code></a></li>
+<li class="chapter" data-level="8.3.2" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#subsetting-data-in-base-r"><i class="fa fa-check"></i><b>8.3.2</b> Subsetting Data in Base R</a></li>
+<li class="chapter" data-level="8.3.3" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#subsetting-data-with-dplyr"><i class="fa fa-check"></i><b>8.3.3</b> Subsetting Data with <code>dplyr</code></a></li>
+<li class="chapter" data-level="8.3.4" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#variable-definition-and-variable-type-conversion"><i class="fa fa-check"></i><b>8.3.4</b> Variable Definition and Variable Type Conversion</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#importingexporting-data"><i class="fa fa-check"></i><b>8.4</b> Importing/Exporting Data</a></li>
+<li class="chapter" data-level="8.5" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#importing-dara"><i class="fa fa-check"></i><b>8.5</b> Importing Dara</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#exporting-data"><i class="fa fa-check"></i><b>8.5.1</b> Exporting Data</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#overview-of-tidyverse-optional"><i class="fa fa-check"></i><b>8.6</b> <strong>Overview of <code>Tidyverse</code> (Optional)</strong></a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#packages-for-data-wrangling-and-transformation"><i class="fa fa-check"></i><b>8.6.1</b> Packages for Data Wrangling and Transformation</a></li>
+<li class="chapter" data-level="8.6.2" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#packages-for-data-import-and-management"><i class="fa fa-check"></i><b>8.6.2</b> Packages for Data Import and Management</a></li>
+<li class="chapter" data-level="8.6.3" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#functional-programming-with-library-purrr"><i class="fa fa-check"></i><b>8.6.3</b> Functional Programming with Library <strong>{purrr}</strong></a></li>
+<li class="chapter" data-level="8.6.4" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#data-visualization-and-exploration"><i class="fa fa-check"></i><b>8.6.4</b> Data Visualization and Exploration</a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#data-management-with-dplyr-optional"><i class="fa fa-check"></i><b>8.7</b> Data Management with <code>dplyr</code> (Optional)</a>
+<ul>
+<li class="chapter" data-level="8.7.1" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#common-dplyr-functions"><i class="fa fa-check"></i><b>8.7.1</b> Common <code>dplyr</code> Functions</a></li>
+<li class="chapter" data-level="8.7.2" data-path="data-processing-with-tidyverse.html"><a href="data-processing-with-tidyverse.html#reshaping-functions-in-tidyr"><i class="fa fa-check"></i><b>8.7.2</b> Reshaping Functions in <code>tidyr</code></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html"><i class="fa fa-check"></i><b>9</b> Introduction to Ggplot</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#basics-of-ggplot"><i class="fa fa-check"></i><b>9.1</b> Basics of <code>ggplot()</code></a></li>
+<li class="chapter" data-level="9.2" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#structure-of-ggplot"><i class="fa fa-check"></i><b>9.2</b> Structure of <code>ggplot()</code></a></li>
+<li class="chapter" data-level="9.3" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#geoms"><i class="fa fa-check"></i><b>9.3</b> Geoms</a></li>
+<li class="chapter" data-level="9.4" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#mapping-data-to-plot"><i class="fa fa-check"></i><b>9.4</b> Mapping Data to Plot</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#arranging-multiple-grobs-on-the-same-page"><i class="fa fa-check"></i><b>9.4.1</b> Arranging Multiple Grobs on the Same Page</a></li>
+<li class="chapter" data-level="9.4.2" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#plot-aesthetics"><i class="fa fa-check"></i><b>9.4.2</b> Plot Aesthetics</a></li>
+<li class="chapter" data-level="9.4.3" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#labels-in-ggplot"><i class="fa fa-check"></i><b>9.4.3</b> Labels in <code>ggplot()</code></a></li>
+<li class="chapter" data-level="9.4.4" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#themes-in-ggplot"><i class="fa fa-check"></i><b>9.4.4</b> Themes in <code>ggplot()</code></a></li>
+<li class="chapter" data-level="9.4.5" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#complete-components-of-theme"><i class="fa fa-check"></i><b>9.4.5</b> Complete Components of Theme</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#adding-annotations-to-graphics"><i class="fa fa-check"></i><b>9.5</b> Adding Annotations to Graphics</a>
+<ul>
+<li class="chapter" data-level="9.5.1" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#adding-text-annotation-to-graphics"><i class="fa fa-check"></i><b>9.5.1</b> Adding Text Annotation to Graphics</a></li>
+<li class="chapter" data-level="9.5.2" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#adding-mathematical-equations-to-graphics"><i class="fa fa-check"></i><b>9.5.2</b> Adding Mathematical Equations to Graphics</a></li>
+<li class="chapter" data-level="9.5.3" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#adding-images-to-existing-ggplots"><i class="fa fa-check"></i><b>9.5.3</b> Adding Images to Existing ggPlots</a></li>
+<li class="chapter" data-level="9.5.4" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#removing-chart-junks"><i class="fa fa-check"></i><b>9.5.4</b> Removing Chart Junks</a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#aminated-graph-with-gganimate"><i class="fa fa-check"></i><b>9.6</b> Aminated Graph with <code>gganimate()</code></a></li>
+<li class="chapter" data-level="9.7" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#ridgetline-plot-with-ggridges-library"><i class="fa fa-check"></i><b>9.7</b> Ridgetline Plot with <code>ggridges</code> Library</a></li>
+<li class="chapter" data-level="9.8" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#other-extensions-to-ggplot"><i class="fa fa-check"></i><b>9.8</b> Other Extensions to ggplot</a></li>
+<li class="chapter" data-level="9.9" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#save-ggplot-images"><i class="fa fa-check"></i><b>9.9</b> Save <code>ggplot</code> Images</a>
+<ul>
+<li class="chapter" data-level="9.9.1" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#general-steps"><i class="fa fa-check"></i><b>9.9.1</b> General Steps</a></li>
+<li class="chapter" data-level="9.9.2" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#save-ggplot-into-a-pdf-file"><i class="fa fa-check"></i><b>9.9.2</b> Save <code>ggplot</code> into a PDF File</a></li>
+</ul></li>
+<li class="chapter" data-level="9.10" data-path="introduction-to-ggplot.html"><a href="introduction-to-ggplot.html#save-ggplot-with-ggsave"><i class="fa fa-check"></i><b>9.10</b> Save ggplot with <code>ggsave()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="interactive-statistics-graphics.html"><a href="interactive-statistics-graphics.html"><i class="fa fa-check"></i><b>10</b> Interactive Statistics Graphics</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="interactive-statistics-graphics.html"><a href="interactive-statistics-graphics.html#plotly-1"><i class="fa fa-check"></i><b>10.1</b> Plotly</a></li>
+<li class="chapter" data-level="10.2" data-path="interactive-statistics-graphics.html"><a href="interactive-statistics-graphics.html#scatterplot-1"><i class="fa fa-check"></i><b>10.2</b> ScatterPlot</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="interactive-statistics-graphics.html"><a href="interactive-statistics-graphics.html#the-default-plot"><i class="fa fa-check"></i><b>10.2.1</b> The Default Plot</a></li>
+<li class="chapter" data-level="10.2.2" data-path="interactive-statistics-graphics.html"><a href="interactive-statistics-graphics.html#addiing-additional-information-through-hovertemplate"><i class="fa fa-check"></i><b>10.2.2</b> Addiing Additional Information Through <code>hovertemplate</code></a></li>
+<li class="chapter" data-level="10.2.3" data-path="interactive-statistics-graphics.html"><a href="interactive-statistics-graphics.html#enhancing-the-plot-with-layout-function"><i class="fa fa-check"></i><b>10.2.3</b> Enhancing the Plot with Layout() Function</a></li>
+<li class="chapter" data-level="10.2.4" data-path="interactive-statistics-graphics.html"><a href="interactive-statistics-graphics.html#rendering-a-ggplot-with-ggplotly"><i class="fa fa-check"></i><b>10.2.4</b> Rendering A GGPLOT with <code>ggplotly</code></a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="interactive-statistics-graphics.html"><a href="interactive-statistics-graphics.html#barplot"><i class="fa fa-check"></i><b>10.3</b> Barplot</a></li>
+<li class="chapter" data-level="10.4" data-path="interactive-statistics-graphics.html"><a href="interactive-statistics-graphics.html#histogram-1"><i class="fa fa-check"></i><b>10.4</b> Histogram</a></li>
+<li class="chapter" data-level="10.5" data-path="interactive-statistics-graphics.html"><a href="interactive-statistics-graphics.html#boxplot-1"><i class="fa fa-check"></i><b>10.5</b> Boxplot</a></li>
+<li class="chapter" data-level="10.6" data-path="interactive-statistics-graphics.html"><a href="interactive-statistics-graphics.html#pie-chart"><i class="fa fa-check"></i><b>10.6</b> Pie Chart</a></li>
+<li class="chapter" data-level="10.7" data-path="interactive-statistics-graphics.html"><a href="interactive-statistics-graphics.html#density-curve"><i class="fa fa-check"></i><b>10.7</b> Density Curve</a></li>
+<li class="chapter" data-level="10.8" data-path="interactive-statistics-graphics.html"><a href="interactive-statistics-graphics.html#serial-plot"><i class="fa fa-check"></i><b>10.8</b> Serial Plot</a></li>
+<li class="chapter" data-level="10.9" data-path="interactive-statistics-graphics.html"><a href="interactive-statistics-graphics.html#plotly-maps"><i class="fa fa-check"></i><b>10.9</b> Plotly Maps</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="interactive-maps.html"><a href="interactive-maps.html"><i class="fa fa-check"></i><b>11</b> Interactive Maps</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="interactive-maps.html"><a href="interactive-maps.html#map-types"><i class="fa fa-check"></i><b>11.1</b> Map Types</a></li>
+<li class="chapter" data-level="11.2" data-path="interactive-maps.html"><a href="interactive-maps.html#leaflet-maps"><i class="fa fa-check"></i><b>11.2</b> Leaflet Maps</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="interactive-maps.html"><a href="interactive-maps.html#introduction-1"><i class="fa fa-check"></i><b>11.2.1</b> 1. Introduction</a></li>
+<li class="chapter" data-level="11.2.2" data-path="interactive-maps.html"><a href="interactive-maps.html#customizing-marker-icons"><i class="fa fa-check"></i><b>11.2.2</b> 2. Customizing Marker Icons</a></li>
+<li class="chapter" data-level="11.2.3" data-path="interactive-maps.html"><a href="interactive-maps.html#popups-and-labels"><i class="fa fa-check"></i><b>11.2.3</b> 3. Popups and Labels</a></li>
+<li class="chapter" data-level="11.2.4" data-path="interactive-maps.html"><a href="interactive-maps.html#examples-using-real-world-data"><i class="fa fa-check"></i><b>11.2.4</b> 4. Examples Using Real-World Data</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="interactive-maps.html"><a href="interactive-maps.html#choropleth-maps"><i class="fa fa-check"></i><b>11.3</b> Choropleth Maps</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="interactive-maps.html"><a href="interactive-maps.html#loading-data"><i class="fa fa-check"></i><b>11.3.1</b> Loading Data</a></li>
+<li class="chapter" data-level="11.3.2" data-path="interactive-maps.html"><a href="interactive-maps.html#load-map-shape-data"><i class="fa fa-check"></i><b>11.3.2</b> Load Map Shape Data</a></li>
+<li class="chapter" data-level="11.3.3" data-path="interactive-maps.html"><a href="interactive-maps.html#merge-the-map-data-with-the-price-data"><i class="fa fa-check"></i><b>11.3.3</b> Merge the Map Data with the Price Data</a></li>
+<li class="chapter" data-level="11.3.4" data-path="interactive-maps.html"><a href="interactive-maps.html#color-states-based-on-unit-price"><i class="fa fa-check"></i><b>11.3.4</b> Color States Based On Unit Price</a></li>
+<li class="chapter" data-level="11.3.5" data-path="interactive-maps.html"><a href="interactive-maps.html#labeling-cost-information"><i class="fa fa-check"></i><b>11.3.5</b> 5. Labeling Cost Information</a></li>
+<li class="chapter" data-level="11.3.6" data-path="interactive-maps.html"><a href="interactive-maps.html#finalizing-the-map"><i class="fa fa-check"></i><b>11.3.6</b> 6. Finalizing The Map</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="interactive-maps.html"><a href="interactive-maps.html#plotly-map"><i class="fa fa-check"></i><b>11.4</b> Plotly Map</a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="interactive-maps.html"><a href="interactive-maps.html#choropleth-maps-with-plot_geo"><i class="fa fa-check"></i><b>11.4.1</b> 2. Choropleth Maps with <code>plot_geo()</code></a></li>
+<li class="chapter" data-level="11.4.2" data-path="interactive-maps.html"><a href="interactive-maps.html#scatter-map-with-plot_geo-and-add_markers"><i class="fa fa-check"></i><b>11.4.2</b> 3.Scatter Map with <code>plot_geo()</code> and <code>add_markers()</code></a></li>
+<li class="chapter" data-level="11.4.3" data-path="interactive-maps.html"><a href="interactive-maps.html#custom-map-with-special-libraries"><i class="fa fa-check"></i><b>11.4.3</b> 4. Custom Map With Special Libraries</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="interactive-maps.html"><a href="interactive-maps.html#mapview-maps"><i class="fa fa-check"></i><b>11.5</b> Mapview Maps</a>
+<ul>
+<li class="chapter" data-level="11.5.1" data-path="interactive-maps.html"><a href="interactive-maps.html#choropleth-map-with-mapview"><i class="fa fa-check"></i><b>11.5.1</b> 1. Choropleth Map with <code>mapview</code></a></li>
+<li class="chapter" data-level="11.5.2" data-path="interactive-maps.html"><a href="interactive-maps.html#scatter-map-with-mapview"><i class="fa fa-check"></i><b>11.5.2</b> 2. Scatter Map with <code>mapview</code></a></li>
+<li class="chapter" data-level="11.5.3" data-path="interactive-maps.html"><a href="interactive-maps.html#scatter-map-without-using-sf-object"><i class="fa fa-check"></i><b>11.5.3</b> 3. Scatter Map Without Using <code>sf</code> Object</a></li>
+<li class="chapter" data-level="11.5.4" data-path="interactive-maps.html"><a href="interactive-maps.html#customizing-default-maps"><i class="fa fa-check"></i><b>11.5.4</b> 4. Customizing Default Maps</a></li>
+<li class="chapter" data-level="11.5.5" data-path="interactive-maps.html"><a href="interactive-maps.html#mapview-options"><i class="fa fa-check"></i><b>11.5.5</b> 5. Mapview Options</a></li>
+<li class="chapter" data-level="11.5.6" data-path="interactive-maps.html"><a href="interactive-maps.html#more-enhancements-of-mapview-leaflet"><i class="fa fa-check"></i><b>11.5.6</b> 6. More Enhancements of Mapview (Leaflet)</a></li>
+</ul></li>
+<li class="chapter" data-level="11.6" data-path="interactive-maps.html"><a href="interactive-maps.html#thematic-maps"><i class="fa fa-check"></i><b>11.6</b> Thematic Maps</a>
+<ul>
+<li class="chapter" data-level="11.6.1" data-path="interactive-maps.html"><a href="interactive-maps.html#choropleth-maps-1"><i class="fa fa-check"></i><b>11.6.1</b> 1. Choropleth Maps</a></li>
+<li class="chapter" data-level="11.6.2" data-path="interactive-maps.html"><a href="interactive-maps.html#mixed-maps-multilayer"><i class="fa fa-check"></i><b>11.6.2</b> Mixed Maps (Multilayer)</a></li>
+<li class="chapter" data-level="11.6.3" data-path="interactive-maps.html"><a href="interactive-maps.html#scatter-maps-with-geocoordinates"><i class="fa fa-check"></i><b>11.6.3</b> Scatter Maps With geoCoordinates</a></li>
+</ul></li>
+<li class="chapter" data-level="11.7" data-path="interactive-maps.html"><a href="interactive-maps.html#tableau-maps"><i class="fa fa-check"></i><b>11.7</b> Tableau Maps</a>
+<ul>
+<li class="chapter" data-level="11.7.1" data-path="interactive-maps.html"><a href="interactive-maps.html#choropleth-map"><i class="fa fa-check"></i><b>11.7.1</b> Choropleth Map</a></li>
+<li class="chapter" data-level="11.7.2" data-path="interactive-maps.html"><a href="interactive-maps.html#scatter-map"><i class="fa fa-check"></i><b>11.7.2</b> Scatter Map</a></li>
+</ul></li>
+<li class="chapter" data-level="11.8" data-path="interactive-maps.html"><a href="interactive-maps.html#r-color-palettes"><i class="fa fa-check"></i><b>11.8</b> R Color Palettes</a>
+<ul>
+<li class="chapter" data-level="11.8.1" data-path="interactive-maps.html"><a href="interactive-maps.html#all-palettes"><i class="fa fa-check"></i><b>11.8.1</b> All Palettes</a></li>
+<li class="chapter" data-level="11.8.2" data-path="interactive-maps.html"><a href="interactive-maps.html#color-bind-friendly-palettes"><i class="fa fa-check"></i><b>11.8.2</b> <strong>2. Color-bind Friendly Palettes</strong></a></li>
+<li class="chapter" data-level="11.8.3" data-path="interactive-maps.html"><a href="interactive-maps.html#color-palette-codes"><i class="fa fa-check"></i><b>11.8.3</b> <strong>3. Color Palette Codes</strong></a></li>
+<li class="chapter" data-level="11.8.4" data-path="interactive-maps.html"><a href="interactive-maps.html#functions-for-selecting-specific-color-palettes"><i class="fa fa-check"></i><b>11.8.4</b> <strong>4. Functions for Selecting Specific Color Palettes</strong></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="a-mapview-map-demo.html"><a href="a-mapview-map-demo.html"><i class="fa fa-check"></i><b>12</b> A <code>mapview</code> Map Demo</a></li>
+<li class="chapter" data-level="13" data-path="creating-maps-using-shapefiles.html"><a href="creating-maps-using-shapefiles.html"><i class="fa fa-check"></i><b>13</b> Creating Maps Using Shapefiles</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="creating-maps-using-shapefiles.html"><a href="creating-maps-using-shapefiles.html#existing-base-map-file-and-new-information"><i class="fa fa-check"></i><b>13.1</b> Existing Base Map File and New Information</a></li>
+<li class="chapter" data-level="13.2" data-path="creating-maps-using-shapefiles.html"><a href="creating-maps-using-shapefiles.html#creating-shapefiles-from-dataframes"><i class="fa fa-check"></i><b>13.2</b> Creating Shapefiles from Dataframes</a></li>
+<li class="chapter" data-level="13.3" data-path="creating-maps-using-shapefiles.html"><a href="creating-maps-using-shapefiles.html#thematics-map-with-created-and-built-in-shapefiles"><i class="fa fa-check"></i><b>13.3</b> Thematics Map with Created and Built-in Shapefiles</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="creating-maps-using-shapefiles.html"><a href="creating-maps-using-shapefiles.html#example-1-gapminder-data"><i class="fa fa-check"></i><b>13.3.1</b> Example 1: Gapminder Data</a></li>
+<li class="chapter" data-level="13.3.2" data-path="creating-maps-using-shapefiles.html"><a href="creating-maps-using-shapefiles.html#example-2-philadelphia-neighborhood-shapefiles-in-json"><i class="fa fa-check"></i><b>13.3.2</b> Example 2: Philadelphia Neighborhood Shapefiles in Json</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="introduction-to-tableau.html"><a href="introduction-to-tableau.html"><i class="fa fa-check"></i><b>14</b> Introduction to Tableau</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="introduction-to-tableau.html"><a href="introduction-to-tableau.html#data-loading"><i class="fa fa-check"></i><b>14.1</b> Data Loading</a></li>
+<li class="chapter" data-level="14.2" data-path="introduction-to-tableau.html"><a href="introduction-to-tableau.html#opening-work-sheet"><i class="fa fa-check"></i><b>14.2</b> Opening Work Sheet</a></li>
+<li class="chapter" data-level="14.3" data-path="introduction-to-tableau.html"><a href="introduction-to-tableau.html#basic-statistical-charts-with-existing-variables"><i class="fa fa-check"></i><b>14.3</b> Basic Statistical Charts with Existing Variables</a>
+<ul>
+<li class="chapter" data-level="14.3.1" data-path="introduction-to-tableau.html"><a href="introduction-to-tableau.html#bar-chart"><i class="fa fa-check"></i><b>14.3.1</b> Bar Chart</a></li>
+<li class="chapter" data-level="14.3.2" data-path="introduction-to-tableau.html"><a href="introduction-to-tableau.html#pie-chart-1"><i class="fa fa-check"></i><b>14.3.2</b> Pie Chart</a></li>
+<li class="chapter" data-level="14.3.3" data-path="introduction-to-tableau.html"><a href="introduction-to-tableau.html#histogram-2"><i class="fa fa-check"></i><b>14.3.3</b> Histogram</a></li>
+<li class="chapter" data-level="14.3.4" data-path="introduction-to-tableau.html"><a href="introduction-to-tableau.html#box-plot"><i class="fa fa-check"></i><b>14.3.4</b> Box-plot</a></li>
+<li class="chapter" data-level="14.3.5" data-path="introduction-to-tableau.html"><a href="introduction-to-tableau.html#line-chart"><i class="fa fa-check"></i><b>14.3.5</b> Line Chart</a></li>
+<li class="chapter" data-level="14.3.6" data-path="introduction-to-tableau.html"><a href="introduction-to-tableau.html#scatter-plot"><i class="fa fa-check"></i><b>14.3.6</b> Scatter Plot</a></li>
+<li class="chapter" data-level="14.3.7" data-path="introduction-to-tableau.html"><a href="introduction-to-tableau.html#bubble-chart"><i class="fa fa-check"></i><b>14.3.7</b> Bubble Chart</a></li>
+<li class="chapter" data-level="14.3.8" data-path="introduction-to-tableau.html"><a href="introduction-to-tableau.html#treemap"><i class="fa fa-check"></i><b>14.3.8</b> Treemap</a></li>
+<li class="chapter" data-level="14.3.9" data-path="introduction-to-tableau.html"><a href="introduction-to-tableau.html#maps"><i class="fa fa-check"></i><b>14.3.9</b> Maps</a></li>
+<li class="chapter" data-level="14.3.10" data-path="introduction-to-tableau.html"><a href="introduction-to-tableau.html#density-maps"><i class="fa fa-check"></i><b>14.3.10</b> Density Maps</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="introduction-to-tableau.html"><a href="introduction-to-tableau.html#basic-charts-with-derived-variables"><i class="fa fa-check"></i><b>14.4</b> Basic Charts with Derived Variables</a></li>
+<li class="chapter" data-level="14.5" data-path="introduction-to-tableau.html"><a href="introduction-to-tableau.html#tableau-dashboards"><i class="fa fa-check"></i><b>14.5</b> Tableau Dashboards</a>
+<ul>
+<li class="chapter" data-level="14.5.1" data-path="introduction-to-tableau.html"><a href="introduction-to-tableau.html#design-dashboards-with-tableau"><i class="fa fa-check"></i><b>14.5.1</b> Design Dashboards with Tableau</a></li>
+<li class="chapter" data-level="14.5.2" data-path="introduction-to-tableau.html"><a href="introduction-to-tableau.html#tableau-story-point"><i class="fa fa-check"></i><b>14.5.2</b> Tableau Story Point</a></li>
+</ul></li>
+<li class="chapter" data-level="14.6" data-path="introduction-to-tableau.html"><a href="introduction-to-tableau.html#some-youtube-tutorials-on-tableau"><i class="fa fa-check"></i><b>14.6</b> Some Youtube Tutorials on Tableau</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="getting-started-with-r-shiny.html"><a href="getting-started-with-r-shiny.html"><i class="fa fa-check"></i><b>15</b> Getting Started with R Shiny</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="getting-started-with-r-shiny.html"><a href="getting-started-with-r-shiny.html#the-ide-of-rshiny-apps"><i class="fa fa-check"></i><b>15.1</b> The IDE of RShiny Apps</a></li>
+<li class="chapter" data-level="15.2" data-path="getting-started-with-r-shiny.html"><a href="getting-started-with-r-shiny.html#embedding-shiny-apps-in-rmarkdown"><i class="fa fa-check"></i><b>15.2</b> Embedding Shiny Apps in RMarkdown</a></li>
+<li class="chapter" data-level="15.3" data-path="getting-started-with-r-shiny.html"><a href="getting-started-with-r-shiny.html#components-of-an-shiny-applications"><i class="fa fa-check"></i><b>15.3</b> Components of An Shiny Applications</a></li>
+<li class="chapter" data-level="15.4" data-path="getting-started-with-r-shiny.html"><a href="getting-started-with-r-shiny.html#the-anatomy-of-a-shiny-application"><i class="fa fa-check"></i><b>15.4</b> The Anatomy of a Shiny Application</a></li>
+<li class="chapter" data-level="15.5" data-path="getting-started-with-r-shiny.html"><a href="getting-started-with-r-shiny.html#how-shiny-apps-work"><i class="fa fa-check"></i><b>15.5</b> How Shiny Apps Work?</a></li>
+<li class="chapter" data-level="15.6" data-path="getting-started-with-r-shiny.html"><a href="getting-started-with-r-shiny.html#some-built-in-demonstrations-of-shiny-apps"><i class="fa fa-check"></i><b>15.6</b> Some Built-in Demonstrations of Shiny Apps</a></li>
+<li class="chapter" data-level="15.7" data-path="getting-started-with-r-shiny.html"><a href="getting-started-with-r-shiny.html#ui-layout-designs---a-glance"><i class="fa fa-check"></i><b>15.7</b> UI Layout Designs - A Glance</a>
+<ul>
+<li class="chapter" data-level="15.7.1" data-path="getting-started-with-r-shiny.html"><a href="getting-started-with-r-shiny.html#siderbar-layout"><i class="fa fa-check"></i><b>15.7.1</b> Siderbar Layout</a></li>
+</ul></li>
+<li class="chapter" data-level="15.8" data-path="getting-started-with-r-shiny.html"><a href="getting-started-with-r-shiny.html#some-basic-input-widgets"><i class="fa fa-check"></i><b>15.8</b> Some Basic Input Widgets</a>
+<ul>
+<li class="chapter" data-level="15.8.1" data-path="getting-started-with-r-shiny.html"><a href="getting-started-with-r-shiny.html#free-text"><i class="fa fa-check"></i><b>15.8.1</b> Free Text</a></li>
+<li class="chapter" data-level="15.8.2" data-path="getting-started-with-r-shiny.html"><a href="getting-started-with-r-shiny.html#numeric-inputs"><i class="fa fa-check"></i><b>15.8.2</b> Numeric Inputs</a></li>
+<li class="chapter" data-level="15.8.3" data-path="getting-started-with-r-shiny.html"><a href="getting-started-with-r-shiny.html#limited-choices"><i class="fa fa-check"></i><b>15.8.3</b> Limited Choices</a></li>
+<li class="chapter" data-level="15.8.4" data-path="getting-started-with-r-shiny.html"><a href="getting-started-with-r-shiny.html#file-uploading-and-downloading"><i class="fa fa-check"></i><b>15.8.4</b> File Uploading and Downloading</a></li>
+</ul></li>
+<li class="chapter" data-level="15.9" data-path="getting-started-with-r-shiny.html"><a href="getting-started-with-r-shiny.html#case-study-i---density-of-normal-distribution"><i class="fa fa-check"></i><b>15.9</b> Case Study I - Density of Normal Distribution</a></li>
+<li class="chapter" data-level="15.10" data-path="getting-started-with-r-shiny.html"><a href="getting-started-with-r-shiny.html#case-study-2---central-limit-theorem"><i class="fa fa-check"></i><b>15.10</b> Case Study 2 - Central Limit Theorem</a></li>
+<li class="chapter" data-level="15.11" data-path="getting-started-with-r-shiny.html"><a href="getting-started-with-r-shiny.html#more-effective-code"><i class="fa fa-check"></i><b>15.11</b> More Effective Code</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="shiny-ui-and-server-design.html"><a href="shiny-ui-and-server-design.html"><i class="fa fa-check"></i><b>16</b> Shiny UI and Server Design</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="shiny-ui-and-server-design.html"><a href="shiny-ui-and-server-design.html#naming-conventions-revisited"><i class="fa fa-check"></i><b>16.1</b> Naming Conventions Revisited</a></li>
+<li class="chapter" data-level="16.2" data-path="shiny-ui-and-server-design.html"><a href="shiny-ui-and-server-design.html#working-data-set"><i class="fa fa-check"></i><b>16.2</b> Working Data Set</a></li>
+<li class="chapter" data-level="16.3" data-path="shiny-ui-and-server-design.html"><a href="shiny-ui-and-server-design.html#ui-module-front-end-design"><i class="fa fa-check"></i><b>16.3</b> UI Module: Front-end Design</a></li>
+<li class="chapter" data-level="16.4" data-path="shiny-ui-and-server-design.html"><a href="shiny-ui-and-server-design.html#server-module-back-end-coding"><i class="fa fa-check"></i><b>16.4</b> Server Module: Back-end Coding</a></li>
+<li class="chapter" data-level="16.5" data-path="shiny-ui-and-server-design.html"><a href="shiny-ui-and-server-design.html#file-uploading"><i class="fa fa-check"></i><b>16.5</b> File Uploading</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="shiny-dashboard-and-storyboard.html"><a href="shiny-dashboard-and-storyboard.html"><i class="fa fa-check"></i><b>17</b> Shiny Dashboard and Storyboard</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="shiny-dashboard-and-storyboard.html"><a href="shiny-dashboard-and-storyboard.html#flexdashboard"><i class="fa fa-check"></i><b>17.1</b> <strong>flexdashboard</strong></a></li>
+<li class="chapter" data-level="17.2" data-path="shiny-dashboard-and-storyboard.html"><a href="shiny-dashboard-and-storyboard.html#shinydashboard"><i class="fa fa-check"></i><b>17.2</b> <strong>shinydashboard</strong></a></li>
+<li class="chapter" data-level="17.3" data-path="shiny-dashboard-and-storyboard.html"><a href="shiny-dashboard-and-storyboard.html#three-web-application-terms"><i class="fa fa-check"></i><b>17.3</b> Three Web Application Terms</a></li>
+<li class="chapter" data-level="17.4" data-path="shiny-dashboard-and-storyboard.html"><a href="shiny-dashboard-and-storyboard.html#using-flexdashboard"><i class="fa fa-check"></i><b>17.4</b> Using Flexdashboard</a>
+<ul>
+<li class="chapter" data-level="17.4.1" data-path="shiny-dashboard-and-storyboard.html"><a href="shiny-dashboard-and-storyboard.html#components"><i class="fa fa-check"></i><b>17.4.1</b> Components</a></li>
+<li class="chapter" data-level="17.4.2" data-path="shiny-dashboard-and-storyboard.html"><a href="shiny-dashboard-and-storyboard.html#basic-flexdashboar-layout"><i class="fa fa-check"></i><b>17.4.2</b> Basic Flexdashboar Layout</a></li>
+</ul></li>
+<li class="chapter" data-level="17.5" data-path="shiny-dashboard-and-storyboard.html"><a href="shiny-dashboard-and-storyboard.html#storyboards"><i class="fa fa-check"></i><b>17.5</b> Storyboards</a>
+<ul>
+<li class="chapter" data-level="17.5.1" data-path="shiny-dashboard-and-storyboard.html"><a href="shiny-dashboard-and-storyboard.html#storyboard-basics"><i class="fa fa-check"></i><b>17.5.1</b> Storyboard Basics</a></li>
+<li class="chapter" data-level="17.5.2" data-path="shiny-dashboard-and-storyboard.html"><a href="shiny-dashboard-and-storyboard.html#storyboard-pages"><i class="fa fa-check"></i><b>17.5.2</b> Storyboard Pages</a></li>
+<li class="chapter" data-level="17.5.3" data-path="shiny-dashboard-and-storyboard.html"><a href="shiny-dashboard-and-storyboard.html#commentary"><i class="fa fa-check"></i><b>17.5.3</b> Commentary</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">STA553 E-Pack: Data Visualization</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="open-source-tools-for-data-viz" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Topic 3</span> Open-Source Tools for Data Viz<a href="open-source-tools-for-data-viz.html#open-source-tools-for-data-viz" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>This note introduces software programs and platforms to be used for this data visualization course.</p>
+<div id="dataviz" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> DataViz<a href="open-source-tools-for-data-viz.html#dataviz" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><BR><BR></p>
+<pre class="echo"><code>w &lt;- ggplot(gapminder, aes(gdpPercap, lifeExp, 
+                  size = pop, colour = country)) +
+           geom_point(alpha = 0.7, show.legend = FALSE) +
+           scale_colour_manual(values = country_colors) +
+           scale_size(range = c(2, 12)) +
+           scale_x_log10() +
+           # break down the previous single plot by continent 
+            facet_wrap(~continent) +
+           # Here comes the gganimate specific bits
+           labs(title = &#39;Year: {frame_time}&#39;, 
+                x = &#39;GDP per capita&#39;, y = &#39;life expectancy&#39;) +
+           transition_time(year) +
+           ease_aes(&#39;linear&#39;)
+###
+animate(w, renderer = gifski_renderer())</code></pre>
+<p><img src="img01/w01-lifeExpContinent02.gif" width="65%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="r-rstudio" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> R &amp; RStudio<a href="open-source-tools-for-data-viz.html#r-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="what-is-r" class="section level3 hasAnchor" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> What is R?<a href="open-source-tools-for-data-viz.html#what-is-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<center>
+<a href="https://www.r-project.org/"><img src = "https://www.r-project.org/Rlogo.png" width = 100 height = 100></a>
+</center>
+<p><BR>
+R is a language and environment for statistical computing and graphics. It is a GNU project that is similar to the S language and environment which was developed at Bell Laboratories (formerly AT&amp;T, now Lucent Technologies) by John Chambers and colleagues. R can be considered as a different implementation of S. There are some important differences, but much code written for S runs unaltered under R.</p>
+<p>R is an integrated suite of software facilities for data manipulation, calculation, and graphical display. It includes</p>
+<ul>
+<li>an effective data handling and storage facility,</li>
+<li>a suite of operators for calculations on arrays, in particular matrices,</li>
+<li>a large, coherent, integrated collection of intermediate tools for data analysis,</li>
+<li>graphical facilities for data analysis and display either on-screen or on hardcopy, and</li>
+<li>a well-developed, simple, and effective programming language that includes conditionals, loops, user-defined recursive functions, and input and output facilities.</li>
+</ul>
+<p>– <a href="https://www.r-project.org/about.html" class="uri">https://www.r-project.org/about.html</a></p>
+</div>
+<div id="rstudio" class="section level3 hasAnchor" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> RStudio<a href="open-source-tools-for-data-viz.html#rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<BR>
+<center>
+<a href="https://www.rstudio.com/products/rstudio/"><img src = "https://www.rstudio.com/assets/img/logo.svg" width = 100 height = 100></a>
+</center>
+<p><BR></p>
+<p>RStudio is an integrated development environment (IDE) for R. It includes a console and syntax-highlighting editor that supports direct code execution, as well as tools for plotting, history, debugging, and workspace management.</p>
+<p>There are two versions of RStudio: RStudio Desktop and RStudio Server. Both versions have free open-source and commercial editions. We use the free open-source edition of RStudio Desktop that has the following features:</p>
+<ul>
+<li>Access RStudio locally</li>
+<li>Syntax highlighting, code completion, and smart indentation</li>
+<li>Execute R code directly from the source editor</li>
+<li>Quickly jump to function definitions</li>
+<li>View content changes in real time with the Visual Markdown Editor</li>
+<li>Easily manage multiple working directories using projects</li>
+<li>Integrated R help and documentation</li>
+<li>Interactive debugger to diagnose and fix errors</li>
+<li>Extensive package development tools</li>
+</ul>
+</div>
+<div id="the-relationship-between-r-and-rstudio" class="section level3 hasAnchor" number="3.2.3">
+<h3><span class="header-section-number">3.2.3</span> The Relationship between R and RStudio<a href="open-source-tools-for-data-viz.html#the-relationship-between-r-and-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>R and RStudio are two distinctly different applications that serve different purposes. R is a programming language used for statistical computing while RStudio uses the R language to develop statistical programs.</p>
+<p>R and RStudio are not separate versions of the same program, and cannot be substituted for one another. R may be used without RStudio, but RStudio may not be used without R.</p>
+</div>
+</div>
+<div id="tableau-public" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Tableau Public<a href="open-source-tools-for-data-viz.html#tableau-public" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="about-tableau" class="section level3 hasAnchor" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> About Tableau<a href="open-source-tools-for-data-viz.html#about-tableau" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Tableau is a powerful and fastest-growing data visualization tool used in the Business Intelligence Industry. The great thing about Tableau software is that it doesn’t require any technical or any kind of programming skills to operate. Tableau suite has different products that confuse new users.</p>
+<br>
+<center>
+<img src="https://github.com/pengdsci/sta553/blob/main/image/TableWhatis1.png?raw=true"  height="350" width="300">
+</center>
+<p><br></p>
+<ul>
+<li><p><strong>Tableau Desktop</strong> has a rich feature set and allows you to code and customize reports. <font color = "red"><b>It is not free (actually pretty expensive)! </font></b></p></li>
+<li><p><strong>Tableau Public</strong> creates workbooks that cannot be saved locally, in turn, it should be saved to Tableau’s <code>public server</code> in the cloud which can be viewed and accessed by anyone. You need to download and install it on your computer to design workbooks offline and then save them to Tableau’s <code>public server</code>. <font color = "red"><b>It is totally free!</font></b></p></li>
+<li><p><strong>Tableau Server</strong> is specifically used to share the workbooks, and visualizations that are created in the Tableau Desktop application across the organization. <font color = "red"><b>It is NOT free! </font></b>. <font color = "blue"><b>However, the public server is free.</font></b></p></li>
+<li><p><strong>Tableau Online</strong> has all the similar functionalities of the Tableau Public, but the data is stored on servers hosted in the cloud which are maintained by the Tableau group. That means you design workbooks on the Tableau’s public server. <font color = "blue"><b>It is also free!</b></font></p></li>
+<li><p><font color = "red"><b><strong>Tableau Reader</strong> is a free tool </b></font> that allows you to view the workbooks and visualizations created using Tableau Desktop or Tableau Public.</p></li>
+</ul>
+</div>
+</div>
+<div id="shiny-server" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Shiny Server<a href="open-source-tools-for-data-viz.html#shiny-server" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="what-is-shiny.io" class="section level3 hasAnchor" number="3.4.1">
+<h3><span class="header-section-number">3.4.1</span> What is shiny.io?<a href="open-source-tools-for-data-viz.html#what-is-shiny.io" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>Shinyapps.io</code> is an easy-to-use, scalable place to put <code>Shiny applications</code> so that other people can use them over the web without having to set up a Shiny Server.</p>
+<p><code>Shinyapps.io</code> is not completely free but has a free version with limited. We can register a free account for practice purposes. The following is brief information about <code>Shinyapps.io</code>.</p>
+<br>
+<center>
+<img src="https://github.com/pengdsci/sta553/blob/main/image/ShinyPricingInfo.png?raw=true"  height="250" width="600">
+</center>
+<p><br></p>
+</div>
+<div id="register-an-account-with-shiny.io" class="section level3 hasAnchor" number="3.4.2">
+<h3><span class="header-section-number">3.4.2</span> Register An Account with shiny.io<a href="open-source-tools-for-data-viz.html#register-an-account-with-shiny.io" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>If you don’t have an account with <code>shinyapps.io</code>, you need to register an account. Otherwise, log into the account to publish your ShinyApps. The following two hyperlink buttons provide the links to the appropriate web pages.</p>
+<BR><BR>
+<center>
+<p><a href="https://www.shinyapps.io/admin/#/login" target="popup"                           onclick="window.open('https://www.shinyapps.io/admin/#/login')"><img src="https://github.com/pengdsci/sta553/blob/main/image/Signin.png?raw=true"  height="30" width="60"></a></p>
+<a href="https://www.shinyapps.io/admin/#/signup" target="popup"                         onclick="window.open('https://www.shinyapps.io/admin/#/signup')"><img src="https://github.com/pengdsci/sta553/blob/main/image/Register.png?raw=true"  height="30" width="65"></a>
+</center>
+<p><BR></p>
+<p>You can also find the official web page at
+<a href="https://www.shinyapps.io/" target="popup"                         onclick="window.open('https://www.shinyapps.io/')">https://www.shinyapps.io/</a>
+<BR></p>
+</div>
+<div id="requirements" class="section level3 hasAnchor" number="3.4.3">
+<h3><span class="header-section-number">3.4.3</span> Requirements<a href="open-source-tools-for-data-viz.html#requirements" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Your deed to install a recent version of You’ll need <code>R</code> itself, <code>RStudio</code>, and the <code>knitr</code> package on your machine.</p>
+</div>
+<div id="steps-for-publishing-shinyapps" class="section level3 hasAnchor" number="3.4.4">
+<h3><span class="header-section-number">3.4.4</span> Steps for Publishing ShinyApps<a href="open-source-tools-for-data-viz.html#steps-for-publishing-shinyapps" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><p>In RStudio, create a new R ShinyApps (e.g., <code>myshinyapps.R</code>) document by choosing <code>File</code> | <code>New File</code> | <code>Shiny Web Apps</code>.
+<br></p>
+<center>
+<p><img src="https://github.com/pengdsci/sta553/blob/main/image/ShinyFileCreation.png?raw=true"  height="180" width="400"></p>
+</center>
+<p><br></p></li>
+<li><p>Click <img src="https://github.com/pengdsci/sta553/blob/main/image/runapp.png?raw=true" height="22" width="85"> button in top right toolbar to preview the shinyapp.</p></li>
+<li><p>In the preview window, click <img src="https://github.com/pengdsci/sta553/blob/main/image/publish.png?raw=true" height="22" width="85"> button.</p></li>
+</ul>
+</div>
+</div>
+<div id="rpubs" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> RPubs<a href="open-source-tools-for-data-viz.html#rpubs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="what-is-rpubs" class="section level3 hasAnchor" number="3.5.1">
+<h3><span class="header-section-number">3.5.1</span> What is RPubs?<a href="open-source-tools-for-data-viz.html#what-is-rpubs" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<center>
+<img src="https://github.com/pengdsci/sta553/blob/main/image/RPubsBanner.png?raw=true"  height="250" width="600">
+</center>
+</div>
+<div id="register-an-account-with-rpubs" class="section level3 hasAnchor" number="3.5.2">
+<h3><span class="header-section-number">3.5.2</span> Register An Account With RPubs<a href="open-source-tools-for-data-viz.html#register-an-account-with-rpubs" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>First of all, you need to sign up for an account with RPubs if you don’t have one. Otherwise, sign in to your existing RPubs account. The following two hyperlink buttons will bring you to the appropriate website.
+<BR><BR></p>
+<center>
+<a href="https://rpubs.com/auth/login" target="popup"                           onclick="window.open('https://rpubs.com/auth/login')"><img src="https://github.com/pengdsci/sta553/blob/main/image/Signin.png?raw=true"  height="30" width="60"></a>
+<a href="https://rpubs.com/users/new" target="popup"                         onclick="window.open('https://rpubs.com/users/new')"><img src="https://github.com/pengdsci/sta553/blob/main/image/Register.png?raw=true"  height="30" width="65"></a>
+</center>
+<p><BR></p>
+</div>
+<div id="requirements-1" class="section level3 hasAnchor" number="3.5.3">
+<h3><span class="header-section-number">3.5.3</span> Requirements<a href="open-source-tools-for-data-viz.html#requirements-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Your deed to install a recent version of You’ll need <code>R</code> itself, <code>RStudio</code>, and the <code>knitr</code> package on your machine.</p>
+</div>
+<div id="steps-for-publishing-on-rpubs" class="section level3 hasAnchor" number="3.5.4">
+<h3><span class="header-section-number">3.5.4</span> Steps for Publishing on RPubs<a href="open-source-tools-for-data-viz.html#steps-for-publishing-on-rpubs" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><p>In RStudio, create a new R Markdown document by choosing <code>File</code> | <code>New</code> | <code>R Markdown</code>.</p></li>
+<li><p>Click the <code>Knit HTML</code> button in the doc toolbar to preview your document.</p></li>
+<li><p>In the preview window, click <img src="https://github.com/pengdsci/sta553/blob/main/image/publish.png?raw=true" height="22" width="85"> button.</p></li>
+</ul>
+</div>
+</div>
+<div id="github" class="section level2 hasAnchor" number="3.6">
+<h2><span class="header-section-number">3.6</span> Github<a href="open-source-tools-for-data-viz.html#github" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="what-is-github" class="section level3 hasAnchor" number="3.6.1">
+<h3><span class="header-section-number">3.6.1</span> What is Github?<a href="open-source-tools-for-data-viz.html#what-is-github" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>GitHub is a social networking site for programmers to share their code. Many companies and organizations use it to facilitate project management and collaboration. It is the most prominent source code host, with over 60 millions of new repositories.</p>
+<p>Most importantly, it is free. We can also use this resource to host web pages. Many images and data sets that I used are stored on GitHub.</p>
+<br>
+<center>
+<img src="https://github.com/pengdsci/sta553/blob/main/image/github.png?raw=true"  height="360" width="550">
+</center>
+<p><br></p>
+</div>
+<div id="register-a-github-account" class="section level3 hasAnchor" number="3.6.2">
+<h3><span class="header-section-number">3.6.2</span> Register A Github Account<a href="open-source-tools-for-data-viz.html#register-a-github-account" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>You can use the following two buttons to sign up an an account with Github or sign in to an existing Github account.</p>
+<center>
+<a href="https://github.com/login" target="popup"                           onclick="window.open('https://github.com/login')"><img src="https://github.com/pengdsci/sta553/blob/main/image/Signin.png?raw=true"  height="30" width="60"></a>
+<a href="https://github.com/signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F&source=header-home" target="popup"                         onclick="window.open('https://github.com/signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F&source=header-home')"><img src="https://github.com/pengdsci/sta553/blob/main/image/Register.png?raw=true"  height="30" width="65"></a>
+</center>
+<p><BR></p>
+</div>
+<div id="getting-started-with-github" class="section level3 hasAnchor" number="3.6.3">
+<h3><span class="header-section-number">3.6.3</span> Getting Started With GitHub<a href="open-source-tools-for-data-viz.html#getting-started-with-github" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We will use screenshots to demonstrate how to create repositories, folders, and files.</p>
+<ol style="list-style-type: decimal">
+<li>After you log into your account, you click the “continue for free” button located in the bottom of the following page (screenshot)</li>
+</ol>
+<br>
+<center>
+<img src="https://github.com/pengdsci/sta553/blob/main/image/FreeGithub.png?raw=true"  height="250" width="550">
+</center>
+<p><br></p>
+<ol start="2" style="list-style-type: decimal">
+<li>Now you see your GitHub front page. Click the green button “create repository” on the left panel. Our first repository is called “sta553”</li>
+</ol>
+<br>
+<center>
+<img src="https://github.com/pengdsci/sta553/blob/main/image/GithubFrontPage.png?raw=true"  height="280" width="550">
+</center>
+<p><br></p>
+<ol start="3" style="list-style-type: decimal">
+<li>To organize the file in the repository <code>sta553</code>, We want folders for different files. To create a folder under <code>sta553</code>, click the hyperlink <code>creating a new file</code></li>
+</ol>
+<br>
+<center>
+<img src="https://github.com/pengdsci/sta553/blob/main/image/Create1stFolder.png?raw=true"  height="290" width="550">
+</center>
+<p><br></p>
+<ol start="4" style="list-style-type: decimal">
+<li>The first folder to create is called <code>data</code> folder which will be used to store data files. After typing “data/”, a new box appears under “data” folder, type the first file name - readme, and the content of the file (see the screenshot). In the end, click the green button “commit new file” to complete the creation of the first folder in the repository <code>data</code>.</li>
+</ol>
+<br>
+<center>
+<img src="https://github.com/pengdsci/sta553/blob/main/image/Create1stFileIn1stFolder.png?raw=true"  height="360" width="550">
+</center>
+<p><br></p>
+<ol start="5" style="list-style-type: decimal">
+<li>To load the data file to the <code>data</code> folder, we click drop-down menu on the top right corner and select <code>upload files</code></li>
+</ol>
+<br>
+<center>
+<img src="https://github.com/pengdsci/sta553/blob/main/image/CreateNextFolder.png?raw=true"  height="300" width="650">
+</center>
+<p><br></p>
+<ol start="6" style="list-style-type: decimal">
+<li>To create other folders under <code>sta553</code>, we click <code>Creating New File</code>, we can create a new folder <code>image</code> similarly.</li>
+</ol>
+<br>
+<center>
+<img src="https://github.com/pengdsci/sta553/blob/main/image/CreateNewImageFolder.png?raw=true"  height="290" width="600">
+</center>
+<p><br></p>
+<ol start="7" style="list-style-type: decimal">
+<li>To create a new repository, Click the drop-down menu on the top right corner and select <code>New repository</code> to create a new repository.</li>
+</ol>
+<br>
+<center>
+<img src="https://github.com/pengdsci/sta553/blob/main/image/CreateNewRepos.png?raw=true"  height="280" width="600">
+</center>
+<p><br></p>
+</div>
+</div>
+<div id="sas-ondemand" class="section level2 hasAnchor" number="3.7">
+<h2><span class="header-section-number">3.7</span> SAS OnDemand<a href="open-source-tools-for-data-viz.html#sas-ondemand" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="what-is-sas-ondemand-sas-studio" class="section level3 hasAnchor" number="3.7.1">
+<h3><span class="header-section-number">3.7.1</span> What is SAS OnDemand (SAS Studio)<a href="open-source-tools-for-data-viz.html#what-is-sas-ondemand-sas-studio" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>SAS OnDemand provides <strong>free</strong> data management and data analysis tools. The advantage of SAS OnDemand is that it does not require any installation and it runs on the cloud via the Internet and process data by connecting to the SAS server in the cloud. In other words, your computer is only used as a monitor since it does not use any resources (memory and CPU) of your computer.</p>
+<br>
+<center>
+<img src="https://github.com/pengdsci/sta553/blob/main/image/SASEntryPage.png?raw=true"  height="280" width="400">
+</center>
+<p><br></p>
+<p>Click <code>Access</code> to enter into the SAS OnDemand login page.</p>
+</div>
+<div id="sign-in-sign-up" class="section level3 hasAnchor" number="3.7.2">
+<h3><span class="header-section-number">3.7.2</span> Sign-in / Sign-up<a href="open-source-tools-for-data-viz.html#sign-in-sign-up" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>If you have already created your SAS Profile, use the email or user ID and the password to log into the SAS OnDemand page.</p>
+<br>
+<center>
+<img src="https://github.com/pengdsci/sta553/blob/main/image/SASLogin.png?raw=true"  height="280" width="400">
+</center>
+<p><br></p>
+</div>
+<div id="create-an-sas-profile" class="section level3 hasAnchor" number="3.7.3">
+<h3><span class="header-section-number">3.7.3</span> Create An SAS Profile<a href="open-source-tools-for-data-viz.html#create-an-sas-profile" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>If you don’t have a SAS profile, click the link ’ Don’t have a SAS profile?<code>, you will have the following pop-up dialogue box. Click</code>Create profile`, then you will see a pop-up sign-up page. You then follow the direction to create your SAS profile.</p>
+<br>
+<center>
+<img src="https://github.com/pengdsci/sta553/blob/main/image/SAS1stVisit.png?raw=true"  height="80" width="300">
+</center>
+<p><br></p>
+</div>
+<div id="log-into-sas-academic-ondemand" class="section level3 hasAnchor" number="3.7.4">
+<h3><span class="header-section-number">3.7.4</span> Log Into SAS Academic OnDemand<a href="open-source-tools-for-data-viz.html#log-into-sas-academic-ondemand" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Provide your profile information to log into the OnDemand page, you will see the link to the SAS Studio user interface and your account information as well.</p>
+<br>
+<center>
+<img src="https://github.com/pengdsci/sta553/blob/main/image/SASProfileFrontPage.png?raw=true"  height="280" width="400">
+</center>
+<p><br></p>
+<p>Once you create a SAS profile, you will have 5 GB of free storage.</p>
+</div>
+<div id="sas-studio-user-interfacce" class="section level3 hasAnchor" number="3.7.5">
+<h3><span class="header-section-number">3.7.5</span> SAS Studio User Interfacce<a href="open-source-tools-for-data-viz.html#sas-studio-user-interfacce" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In the <code>Applications</code> tab, click <code>SAS Studio</code>, and you see the SAS Studio user interface on a separate page (it may take a little bit of time to initialize your account if you use it for the first time).</p>
+<br>
+<center>
+<img src="https://github.com/pengdsci/sta553/blob/main/image/SASStudioUI.png?raw=true"  height="280" width="500">
+</center>
+<p><br></p>
+<p>The above screenshot was taken from my SAS course webpage. For those who learned SAS using the classical SAS, you will see SAS Studio is much more convenient and easier to use.</p>
+</div>
+<div id="a-cautionary-note-on-data-security" class="section level3 hasAnchor" number="3.7.6">
+<h3><span class="header-section-number">3.7.6</span> <strong>A Cautionary Note On Data Security</strong><a href="open-source-tools-for-data-viz.html#a-cautionary-note-on-data-security" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><font color = "red">SAS Studio (Academic OnDemand) is installed on SAS servers hosted in the Microsoft Azure Cloud. Although SAS claims that your assigned storage is private and secured, it is suggested to avoid uploading <code>sensitive data</code> to your private storage on the SAS server since SAS does not release the level of security for the storage.</font></p>
+</div>
+</div>
+<div id="r-viz-libraries" class="section level2 hasAnchor" number="3.8">
+<h2><span class="header-section-number">3.8</span> R Viz Libraries<a href="open-source-tools-for-data-viz.html#r-viz-libraries" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The following libraries will be used throughout this class.</p>
+<div id="tidyverse" class="section level3 hasAnchor" number="3.8.1">
+<h3><span class="header-section-number">3.8.1</span> Tidyverse<a href="open-source-tools-for-data-viz.html#tidyverse" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="ggplot2" class="section level3 hasAnchor" number="3.8.2">
+<h3><span class="header-section-number">3.8.2</span> ggplot2<a href="open-source-tools-for-data-viz.html#ggplot2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Ggplot2 is a system for creating charts based on the Grammar of Graphics. It proved to be one of the most powerful R libraries for visualization.</p>
+</div>
+<div id="plotly" class="section level3 hasAnchor" number="3.8.3">
+<h3><span class="header-section-number">3.8.3</span> plotly<a href="open-source-tools-for-data-viz.html#plotly" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>plotly</code> is an online platform for data visualization in R (also available in Python). This package creates interactive web-based plots using <code>plotly.js</code> library. Plotly gives users an opportunity to interact with graphs, change their scale and point out the necessary record. The library also supports graph hovering. Moreover, one can easily add Plotly in knitr/R Markdown or Shiny apps.</p>
+</div>
+<div id="leaflet" class="section level3 hasAnchor" number="3.8.4">
+<h3><span class="header-section-number">3.8.4</span> leaflet<a href="open-source-tools-for-data-viz.html#leaflet" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Leaflet is a well-known package based on JavaScript libraries for interactive maps. It is widely used for mapping and working with the customization and design of interactive maps. Besides, Leaflet provides an opportunity to make these maps mobile-friendly.</p>
+</div>
+<div id="mapview" class="section level3 hasAnchor" number="3.8.5">
+<h3><span class="header-section-number">3.8.5</span> mapview<a href="open-source-tools-for-data-viz.html#mapview" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="tmap" class="section level3 hasAnchor" number="3.8.6">
+<h3><span class="header-section-number">3.8.6</span> tmap<a href="open-source-tools-for-data-viz.html#tmap" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="other-infrequently-used-packages" class="section level3 hasAnchor" number="3.8.7">
+<h3><span class="header-section-number">3.8.7</span> Other infrequently used packages<a href="open-source-tools-for-data-viz.html#other-infrequently-used-packages" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>ggmap</code>, <code>map</code>, <code>dygraph</code>,</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="getting-started-with-rmarkdown.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="r-functions-and-flow-controls.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/pengdsci/STA553EB/edit/master/02-IntroVizTools.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["STA553EB.pdf", "STA553EB.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
